@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import "./ProductDetail.scss";
 
 export default class ProductDetail extends Component {
   render() {
