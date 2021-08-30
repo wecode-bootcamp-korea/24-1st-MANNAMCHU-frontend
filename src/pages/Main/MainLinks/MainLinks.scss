@@ -32,7 +32,20 @@
     }
 
     &.mapLink {
+      display: flex;
+      align-items: center;
       background-image: url("../../../assets/madamju.jpg");
+
+      a {
+        display: inline-block;
+        color: #fff;
+        line-height: 1.6em;
+
+        .mapLinkBold {
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
     }
   }
 }
