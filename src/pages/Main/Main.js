@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MainCarousel from "./MainCarousel/MainCarousel";
 import MainLinks from "./MainLinks/MainLinks";
+import MainContents from "./MainContents/MainContents";
 import "./Main.scss";
 
 class Main extends Component {
@@ -9,6 +10,7 @@ class Main extends Component {
       <>
         <MainCarousel />
         <MainLinks />
+        <MainContents />
       </>
     );
   }
