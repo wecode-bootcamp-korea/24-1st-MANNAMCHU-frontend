@@ -1,0 +1,48 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Nanum+Myeongjo:wght@400;700&display=swap");
+
+.logo {
+  font-family: "Hina Mincho", serif;
+}
+
+.letter {
+  font-family: "Nanum Myeongjo", serif;
+}
+
+/* background color */
+.background {
+  &.default {
+    background-color: #fefefe;
+  }
+
+  &.beige {
+    background-color: #fefdf7;
+  }
+}
+
+/* button */
+.purple {
+  color: #fff;
+  background-color: #2e2452;
+}
+
+.whilte {
+  background-color: #fff;
+}
+
+.count {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #2e2452;
+  color: #fff;
+
+  &.large {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.small {
+    width: 15px;
+    height: 15px;
+  }
+}
