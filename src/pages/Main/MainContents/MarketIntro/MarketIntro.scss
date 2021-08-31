@@ -1,6 +1,9 @@
 @import "../../../../styles/mixins.scss";
 
 .marketIntro {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
   background-color: #f3eeea;
   text-align: center;
   padding: 150px;

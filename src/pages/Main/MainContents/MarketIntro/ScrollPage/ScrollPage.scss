@@ -1,7 +1,7 @@
 .scrollWrapper {
   position: relative;
-  width: 100%;
-  height: 800px;
+  height: 70vh;
+  z-index: -1;
 
   .scrollBg {
     position: absolute;
@@ -9,10 +9,10 @@
     top: 0;
     right: 0;
     bottom: 0;
+    height: 1200px;
     background-image: url("../../../../../assets/mainScroll.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    z-index: -1;
   }
 }

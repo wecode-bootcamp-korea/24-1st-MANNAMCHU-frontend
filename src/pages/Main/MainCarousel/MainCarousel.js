@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import "./MainCarousel.scss";
 
 class MainCarousel extends Component {
   render() {
-    return <div>하이</div>;
+    return <div className="hello">하이</div>;
   }
 }
 
