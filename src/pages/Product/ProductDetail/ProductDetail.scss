@@ -1,1 +1,161 @@
-//ProductDetail
+.detailPageMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #efefef;
+
+  .detailPageTop {
+    display: flex;
+    width: 1250px;
+    padding: 15px;
+
+    .detailPageImage {
+      width: 50%;
+      padding: 15px;
+
+      .detailPageImageMain {
+        width: 100%;
+      }
+    }
+
+    .detailPageInpo {
+      width: 50%;
+      padding: 15px;
+
+      &Name {
+        height: 30px;
+
+        &Text {
+          color: #404040;
+        }
+
+        &New {
+          margin: 3px;
+          padding: 2px 4px;
+          color: white;
+          background-color: purple;
+        }
+
+        &Sale {
+          margin: 3px;
+          padding: 2px 4px;
+          color: white;
+          background-color: red;
+        }
+
+        &Best {
+          margin: 3px;
+          padding: 2px 4px;
+          color: red;
+          background-color: white;
+          border: 1px solid black;
+        }
+
+        &MD {
+          margin: 3px;
+          padding: 2px 4px;
+          color: black;
+          background-color: white;
+          border: 1px solid black;
+        }
+      }
+
+      &Price {
+        display: flex;
+        justify-content: space-between;
+        height: 40px;
+
+        &Real {
+          font-size: 30px;
+        }
+
+        &Sale {
+          font-size: 20px;
+        }
+
+        &Share {
+          font-size: 25px;
+        }
+      }
+
+      &Image {
+        width: 100%;
+      }
+
+      &Benefit {
+        height: 30px;
+
+        &Text {
+          margin: 3px;
+        }
+      }
+
+      &Send {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        background-color: #e7e7e7;
+
+        &Truck {
+          width: 40px;
+          height: 40px;
+          margin-left: 20px;
+          color: white;
+          background-color: #2e2452;
+          border-radius: 20px;
+        }
+
+        &Text {
+          margin-left: 10px;
+        }
+      }
+
+      &Config {
+        margin-top: 20px;
+        padding-top: 10px;
+        background-color: #eaeaea;
+
+        &Btn {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 30px;
+          margin-top: 10px;
+        }
+
+        &Order {
+          display: flex;
+          height: 40px;
+          margin-top: 20px;
+
+          &Buy {
+            flex-grow: 1;
+            color: white;
+            background-color: #2e2452;
+          }
+
+          &Cart {
+            flex-grow: 1;
+          }
+
+          &Like {
+            flex-grow: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .detailPageTab {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 20px;
+    font-size: 20px;
+  }
+
+  .detailPageDetailInpo {
+    border-top: 1px solid gray;
+  }
+}
