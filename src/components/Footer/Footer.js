@@ -1,35 +1,40 @@
 import React, { Component } from "react";
-import "./Footer.scss";
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 
 export default class Footer extends Component {
   render() {
     return (
-      <>
-        <div className="footerInfo">
-          <div>
-            마담주 | 대표 : 위맛츄 | 사업자등록번호 : 307-24-05277 호스팅제공자
-            : (주)드코위
+      <div className="footer background beige">
+        <div className="info">
+          <div className="company">
+            맛남츄 | 대표 : 위사장 | 사업자등록번호 : 307-24-05277 |
+            호스팅제공자 : (주)드코위
           </div>
-          <div>
+          <div className="contact">
             통신판매업신고번호 : 2021-서울강강남-02424
             <br />
             주소 : 서울 강남구 테헤란로 427
             <br />
             연락처 : 0000-0000
           </div>
-          <div>
-            전화 가능 시간 10:00am - 7:00pm
+          <div className="csTime">
+            전화 가능 시간 10:00 AM - 7:00 PM
             <br />
-            cs 가능 시간 10:00am - 5:00pm
+            CS 가능 시간 10:00 AM - 5:00 PM
+          </div>
+          <br />
+          <hr />
+          <div className="copyright">
+            Copyleft © 2021 맛남츄 ∷ 맛난과일쇼핑몰 All rights free.
           </div>
         </div>
-        <div>CopyleftⒸ 2021 맛남츄 ∷ All rights free.</div>
-        <div>
-          <Link to="주소를 넣어">Terms of Use</Link>
-          <Link to="주소를 넣어">Privacy</Link>
+        <div className="link">
+          <Link to="/">Terms of Use</Link>
+          <br />
+          <Link to="/">Privacy</Link>
         </div>
-      </>
+      </div>
     );
   }
 }
