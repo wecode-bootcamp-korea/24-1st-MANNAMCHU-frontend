@@ -1,5 +1,27 @@
-.hello {
+.carouselBox {
+  position: relative;
+  width: 300vw;
   height: 100vh;
-  background-color: #fff;
+  overflow-y: hidden;
   z-index: 1;
+
+  .carousels {
+    width: 300vw;
+    height: 100vh;
+    background-color: #000;
+  }
+
+  button {
+    font-size: 30px;
+    color: #fff;
+    background: none;
+    border: none;
+    z-index: 1;
+
+    &.goRight {
+      position: absolute;
+      top: 50vh;
+      left: 1850px;
+    }
+  }
 }

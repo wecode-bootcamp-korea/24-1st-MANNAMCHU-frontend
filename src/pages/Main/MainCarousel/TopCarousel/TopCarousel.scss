@@ -1,0 +1,13 @@
+.slideWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  float: left;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.45;
+  transition: all 200ms ease-in-out;
+}
