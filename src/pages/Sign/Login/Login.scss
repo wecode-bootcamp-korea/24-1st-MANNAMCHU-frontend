@@ -1,1 +1,71 @@
-//Login
+// 모달창에 넣을 거면 요소들 width를 100% 바꿔야 함
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  margin: 50px auto;
+  font-family: "Nanum Myeongjo", serif;
+
+  .inputEmail,
+  .inputPw {
+    width: 350px;
+    height: 50px;
+    padding: 15px;
+    margin-top: 50px;
+    border: solid 1px lightgray;
+    // border: solid 3px #2e2452; 조건에 맞지 않으면 이렇게 하고 싶습니다.
+
+    &::placeholder {
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 15px;
+    }
+  }
+
+  h1 {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .loginBtn {
+    width: 350px;
+    height: 50px;
+    margin-top: 50px;
+    border-color: none;
+    font-family: "Nanum Myeongjo", serif;
+    font-size: 15px;
+    font-weight: bold;
+    // 아래 스타일링을 .purple로 하고 싶어요 (common css)
+    color: #fff;
+    background-color: #2e2452;
+    cursor: pointer;
+  }
+
+  .disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .warning {
+    width: 350px;
+    margin: 15px 0 0 36px;
+    color: #2e2452;
+    font-size: 13px;
+  }
+
+  .toJoin {
+    width: 350px;
+    text-align: left;
+    margin-top: 15px;
+    margin-left: 35px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .copyRight {
+    margin-top: 100px;
+    font-size: 13px;
+    color: grey;
+  }
+}
