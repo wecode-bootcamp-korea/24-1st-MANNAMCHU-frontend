@@ -25,15 +25,16 @@ class MainCarousel extends Component {
     currIndex: 0,
   };
 
-  handleAdd = () => {
-    const currIndex = this.state.currIndex % 3;
-    const newCarousel = this.state.topCarousel[currIndex];
-    const topCarousel = [...this.state.topCarousel, newCarousel];
+  //! 무한 carousel 시도 중
+  // handleAdd = () => {
+  //   const currIndex = this.state.currIndex % 3;
+  //   const newCarousel = this.state.topCarousel[currIndex];
+  //   const topCarousel = [...this.state.topCarousel, newCarousel];
 
-    this.setState({ topCarousel });
-  };
+  //   this.setState({ topCarousel });
+  // };
 
-  // 우선 단방향 carousel 완성
+  //! 우선 단방향 carousel 완성
   handleRight = () => {
     const { topCarousel, currIndex, startNum } = this.state;
     const slideWidth = window.innerWidth; //찍어보기
@@ -48,9 +49,7 @@ class MainCarousel extends Component {
     }
 
     // Add copied Slides
-    this.handleAdd();
-
-    //
+    // this.handleAdd();
 
     // if (currIndex < 3) {
     //   carousels.style.transform = `translateX(-${currIndex * slideWidth}px)`;
@@ -61,6 +60,7 @@ class MainCarousel extends Component {
     // }
   };
 
+  //! 양방향 시도 흔적
   handleLeft = () => {
     const { currIndex } = this.state;
     const slideWidth = window.innerWidth; //찍어보기
