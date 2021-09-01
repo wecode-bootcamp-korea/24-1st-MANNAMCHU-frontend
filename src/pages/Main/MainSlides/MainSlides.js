@@ -25,15 +25,21 @@ export default class MainSlides extends Component {
   };
 
   handleCurrentSlide = () => {
-    // selected에 index값이나 id로 잡아주기
     const { selected } = this.state;
     this.setState({ selected: selected === 3 ? 1 : selected + 1 });
-    console.log(this.state);
-    // (selected === item.id? "active" : "disappear")
+  };
+
+  handleReverse = () => {
+    const { selected } = this.state;
+    this.setState({ selected: selected === 1 ? 3 : selected - 1 });
   };
 
   handleRight = () => {
     this.handleCurrentSlide();
+  };
+
+  handleLeft = () => {
+    this.handleReverse();
   };
 
   render() {

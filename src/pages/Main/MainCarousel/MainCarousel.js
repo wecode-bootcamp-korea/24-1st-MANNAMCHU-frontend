@@ -69,7 +69,6 @@ class MainCarousel extends Component {
 
   render() {
     const { topCarousel } = this.state;
-    console.log(topCarousel);
     return (
       <div className="slideWrapper">
         <div className="carouselBox">
