@@ -4,50 +4,92 @@ import "./MainCarousel.scss";
 
 class MainCarousel extends Component {
   state = {
-    topCarousel: [],
-    rightIndex: 1,
-    leftIndex: 0,
+    topCarousel: [
+      {
+        id: 1,
+        name: "firstSlide",
+        url: "https://cdn.imweb.me/thumbnail/20200118/ee11fcc596837.jpg",
+      },
+      {
+        id: 2,
+        name: "secondSlide",
+        url: "https://cdn.imweb.me/thumbnail/20190820/1304ccbbcbcf9.jpg",
+      },
+      {
+        id: 3,
+        name: "thirdSlide",
+        url: "https://cdn.imweb.me/thumbnail/20190820/c970d753d4c5a.jpg",
+      },
+    ],
+    startNum: 0,
+    currIndex: 0,
   };
 
-  componentDidMount = () => {
-    fetch("/data/main/carousel.json", {
-      method: "GET",
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ topCarousel: data.topCarousel });
-      });
+  handleAdd = () => {
+    const currIndex = this.state.currIndex % 3;
+    const newCarousel = this.state.topCarousel[currIndex];
+    const topCarousel = [...this.state.topCarousel, newCarousel];
+
+    this.setState({ topCarousel });
   };
 
   // 우선 단방향 carousel 완성
   handleRight = () => {
-    console.log(this.state.rightIndex);
-    const slideWidth = 1920;
+    const { topCarousel, currIndex, startNum } = this.state;
+    const slideWidth = window.innerWidth; //찍어보기
     const carousels = document.querySelector(".carousels");
 
-    if (this.state.rightIndex < 3) {
-      carousels.style.transform = `translateX(-${
-        this.state.rightIndex * slideWidth
-      }px)`;
-      this.setState({ ...this.state, rightIndex: this.state.rightIndex + 1 });
-    } else if (this.state.rightIndex === 3) {
+    if (currIndex > -3) {
+      carousels.style.transform = `translateX(-${currIndex * slideWidth}px)`;
+      this.setState({ ...this.state, currIndex: this.state.currIndex + 1 });
+    } else if (this.state.currIndex === -3) {
       carousels.style.transform = `translateX(0px)`;
-      this.setState({ ...this.state, rightIndex: 1 });
+      this.setState({ ...this.state, currIndex: 0 });
+    }
+
+    // Add copied Slides
+    this.handleAdd();
+
+    //
+
+    // if (currIndex < 3) {
+    //   carousels.style.transform = `translateX(-${currIndex * slideWidth}px)`;
+    //   this.setState({ ...this.state, currIndex: this.state.currIndex + 1 });
+    // } else if (this.state.currIndex === 3) {
+    //   carousels.style.transform = `translateX(0px)`;
+    //   this.setState({ ...this.state, currIndex: 0 });
+    // }
+  };
+
+  handleLeft = () => {
+    const { currIndex } = this.state;
+    const slideWidth = window.innerWidth; //찍어보기
+    const carousels = document.querySelector(".carousels");
+
+    if (currIndex > -3) {
+      carousels.style.transform = `translateX(${2 * slideWidth}px)`;
+      this.setState({ ...this.state, currIndex: this.state.currIndex + 1 });
+    } else if (this.state.currIndex === -3) {
+      carousels.style.transform = `translateX(0px)`;
+      this.setState({ ...this.state, currIndex: 0 });
     }
   };
 
   render() {
     const { topCarousel } = this.state;
+    console.log(topCarousel);
     return (
       <div className="slideWrapper">
         <div className="carouselBox">
           <div className="carousels">
             {topCarousel.map((carousel, idx) => (
-              <TopCarousel key={carousel.id} carousel={carousel} id={idx} />
+              <TopCarousel key={idx} carousel={carousel} id={carousel.id} />
             ))}
           </div>
         </div>
-        <button className="goLeft"></button>
+        <button className="goLeft" onClick={this.handleLeft}>
+          <i className="fas fa-arrow-left"></i>
+        </button>
         <button className="goRight" onClick={this.handleRight}>
           <i className="fas fa-arrow-right"></i>
         </button>
