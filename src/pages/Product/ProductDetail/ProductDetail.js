@@ -1,88 +1,76 @@
 import React, { Component } from "react";
+import ImgSubList from "./ProductDetailComponent/ImgSubList";
+import InfoName from "./ProductDetailComponent/InfoName";
+import InfoPrice from "./ProductDetailComponent/InfoPrice";
+import InfoImg from "./ProductDetailComponent/InfoImg";
+import InfoBenefit from "./ProductDetailComponent/InfoBenefit";
+import InfoSend from "./ProductDetailComponent/InfoSend";
+import InfoConfig from "./ProductDetailComponent/InfoConfig";
+import InfoOrder from "./ProductDetailComponent/InfoOrder";
 import "./ProductDetail.scss";
 
 export default class ProductDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      detailData: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch("/data/detailPage.json")
+      .then(response => response.json())
+      .then(mockData => {
+        this.setState({
+          detailData: mockData,
+        });
+      });
+  }
+
   render() {
     return (
-      <div className="detailPageMain">
-        <div className="detailPageTop">
-          <div className="detailPageImage">
+      <div className="main">
+        <div className="top">
+          <div className="img">
             <img
               alt=""
               src="https://cdn.imweb.me/thumbnail/20210822/e5016ca280ca8.jpg"
-              className="detailPageImageMain"
+              className="imgMain"
             />
-            <div className="detailPageImageSub">이미지서브</div>
+            <ul className="imgSub">
+              {this.state.detailData.mockImgSub &&
+                this.state.detailData.mockImgSub.map(imgSub => {
+                  return <ImgSubList imgUrl={imgSub} />;
+                })}
+            </ul>
           </div>
-          <div className="detailPageInpo">
-            <div className="detailPageInpoName">
-              <span className="detailPageInpoNameText">
-                [반짝할인]제주 자연산 민어 사시미/지리/매운탕
-              </span>
-              <span className="detailPageInpoNameNew">NEW</span>
-              <span className="detailPageInpoNameSale">SALE</span>
-              <span className="detailPageInpoNameBest">BEST</span>
-              <span className="detailPageInpoNameMD">MD</span>
-            </div>
-            <div className="detailPageInpoPrice">
-              <span>
-                <span className="detailPageInpoPriceReal">67,500원</span>
-                <span className="detailPageInpoPriceSale">75,000원</span>
-              </span>
-              <span className="detailPageInpoPriceShare">
-                <i class="fas fa-share-alt"></i>
-              </span>
-            </div>
-            <img
-              alt=""
-              src="./sources/images/상세정보.png"
-              className="detailPageInpoImage"
+          <div className="info">
+            <InfoName infoName={this.state.detailData} />
+            <InfoPrice
+              priceReal={this.state.detailData.mockInfoPriceReal}
+              priceSale={this.state.detailData.mockInfoPriceSale}
             />
-            <div className="detailPageInpoBenefit">
-              <span className="detailPageInpoBenefitText">구매혜택</span>
-              <span className="detailPageInpoBenefitPoint">
-                675 포인트 적립예정
-              </span>
-              <span>
-                <i class="far fa-question-circle"></i>
-              </span>
-            </div>
-            <div className="detailPageInpoSend">
-              <span>
-                <i className="fas fa-truck detailPageInpoSendTruck"></i>
-              </span>
-              <span className="detailPageInpoSendText">
-                <div>오늘출발 상품</div>
-                <div>오늘출발 마감되었습니다.(평일 15:00까지)</div>
-              </span>
-            </div>
-            <div className="detailPageInpoConfig">
-              <div className="detailPageInpoConfigText">상품 구성 선택 *</div>
-              <button className="detailPageInpoConfigBtn">
-                <span>상품 구성 선택 (필수)</span>
-                <span>펼치기</span>
-              </button>
-              <div className="detailPageInpoConfigOrder">
-                <button className="detailPageInpoConfigOrderBuy">
-                  구매하기
-                </button>
-                <button className="detailPageInpoConfigOrderCart">
-                  장바구니
-                </button>
-                <button className="detailPageInpoConfigOrderLike">
-                  <i class="far fa-heart"></i> 2
-                </button>
-              </div>
-            </div>
+            <InfoImg />
+            <InfoBenefit
+              priceReal={this.state.detailData.mockInfoPriceReal}
+              priceSale={this.state.detailData.mockInfoPriceSale}
+            />
+            <InfoSend />
+            <InfoConfig optLists={this.state.detailData.mockInfoConfig} />
+            <InfoOrder />
           </div>
         </div>
-        <div className="detailPageTab">
+        <div className="tab">
           <span>상세정보</span>
           <span>/</span>
           <span>구매평</span>
         </div>
-        <div className="detailPageDetailInpo">
-          <img alt="detailpage" src="./sources/images/test-detail.jpeg" />
+        <div className="detailInfo">
+          <img
+            alt=""
+            src="./sources/images/test-detail.jpeg"
+            className="detailInfoImg"
+          />
         </div>
       </div>
     );

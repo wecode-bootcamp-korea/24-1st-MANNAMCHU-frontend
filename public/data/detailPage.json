@@ -1,0 +1,25 @@
+{
+  "mockImgSub": [
+    "https://cdn.imweb.me/thumbnail/20210703/e1c5fa2de3d5f.jpg",
+    "https://cdn.imweb.me/thumbnail/20210822/e5016ca280ca8.jpg",
+    "https://cdn.imweb.me/thumbnail/20210428/abf87c50cc78c.jpg",
+    "https://cdn.imweb.me/thumbnail/20210428/bb18f39ab6286.jpg",
+    "https://cdn.imweb.me/thumbnail/20210428/23521fb7ff6df.jpg"
+  ],
+  "mockInfoNameText": "[반짝할인]제주 자연산 민어 사시미/지리/매운탕",
+  "mockInfoNameNew": true,
+  "mockInfoNameSale": true,
+  "mockInfoNameBest": true,
+  "mockInfoPriceReal": 75000,
+  "mockInfoPriceSale": 0.1,
+  "mockInfoConfig": [
+    "1)민어사시미(필렛500g)",
+    "2)민어지리 600g(2-3인분)",
+    "3)민어매운탕 600g(2-3인분)",
+    "4)민어지리 1.2Kg(3-4인분)",
+    "5)민어매운탕 1.2Kg(3-4인분)"
+  ],
+  "mockInfoOrderLike": false,
+  "mockInfoOrderLikeCount": 2,
+  "mockDetailInfo": "./sources/images/test-detail.jpeg"
+}

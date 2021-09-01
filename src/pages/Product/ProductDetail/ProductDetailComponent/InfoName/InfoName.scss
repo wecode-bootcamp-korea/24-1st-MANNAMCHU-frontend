@@ -1,0 +1,29 @@
+.infoName {
+  height: 30px;
+
+  &Text {
+    color: #404040;
+  }
+
+  &New {
+    margin: 3px;
+    padding: 2px 4px;
+    color: white;
+    background-color: purple;
+  }
+
+  &Sale {
+    margin: 3px;
+    padding: 2px 4px;
+    color: white;
+    background-color: red;
+  }
+
+  &Best {
+    margin: 3px;
+    padding: 2px 4px;
+    color: red;
+    background-color: white;
+    border: 1px solid black;
+  }
+}
