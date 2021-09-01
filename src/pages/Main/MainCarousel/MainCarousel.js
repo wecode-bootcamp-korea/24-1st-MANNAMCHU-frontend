@@ -26,53 +26,45 @@ class MainCarousel extends Component {
   };
 
   //! 무한 carousel 시도 중
-  // handleAdd = () => {
-  //   const currIndex = this.state.currIndex % 3;
-  //   const newCarousel = this.state.topCarousel[currIndex];
-  //   const topCarousel = [...this.state.topCarousel, newCarousel];
+  handleAdd = () => {
+    const currIndex = this.state.currIndex % 3;
+    const newCarousel = this.state.topCarousel[currIndex];
+    const topCarousel = [...this.state.topCarousel, newCarousel];
 
-  //   this.setState({ topCarousel });
-  // };
+    this.setState({ topCarousel, currIndex: currIndex + 1 });
+  };
+
+  moveCarousel = () => {
+    const { currIndex } = this.state;
+    const slideWidth = window.innerWidth; //찍어보기
+    const carouselBox = document.querySelector(".carouselBox");
+    const carousels = document.querySelector(".carousels");
+    carouselBox.style.width = `${300 + currIndex * 100}vw`;
+    carousels.style.transform = `translateX(-${currIndex * slideWidth}px)`;
+  };
 
   //! 우선 단방향 carousel 완성
   handleRight = () => {
-    const { topCarousel, currIndex, startNum } = this.state;
-    const slideWidth = window.innerWidth; //찍어보기
-    const carousels = document.querySelector(".carousels");
-
-    if (currIndex > -3) {
-      carousels.style.transform = `translateX(-${currIndex * slideWidth}px)`;
-      this.setState({ currIndex: this.state.currIndex + 1 });
-    } else if (this.state.currIndex === -3) {
-      carousels.style.transform = `translateX(0px)`;
-      this.setState({ currIndex: 0 });
-    }
-
     // Add copied Slides
-    // this.handleAdd();
+    this.handleAdd();
 
-    // if (currIndex < 3) {
-    //   carousels.style.transform = `translateX(-${currIndex * slideWidth}px)`;
-    //   this.setState({ ...this.state, currIndex: this.state.currIndex + 1 });
-    // } else if (this.state.currIndex === 3) {
-    //   carousels.style.transform = `translateX(0px)`;
-    //   this.setState({ ...this.state, currIndex: 0 });
-    // }
-  };
+    // stlyling
+    this.moveCarousel();
 
-  //! 양방향 시도 흔적
-  handleLeft = () => {
-    const { currIndex } = this.state;
-    const slideWidth = window.innerWidth; //찍어보기
-    const carousels = document.querySelector(".carousels");
+    //! 양방향 시도 흔적
+    // handleLeft = () => {
+    //   const { currIndex } = this.state;
+    //   const slideWidth = window.innerWidth; //찍어보기
+    //   const carousels = document.querySelector(".carousels");
 
-    if (currIndex > -3) {
-      carousels.style.transform = `translateX(${2 * slideWidth}px)`;
-      this.setState({ currIndex: this.state.currIndex + 1 });
-    } else if (this.state.currIndex === -3) {
-      carousels.style.transform = `translateX(0px)`;
-      this.setState({ currIndex: 0 });
-    }
+    //   if (currIndex > -3) {
+    //     carousels.style.transform = `translateX(${2 * slideWidth}px)`;
+    //     this.setState({ currIndex: this.state.currIndex + 1 });
+    //   } else if (this.state.currIndex === -3) {
+    //     carousels.style.transform = `translateX(0px)`;
+    //     this.setState({ currIndex: 0 });
+    //   }
+    // };
   };
 
   render() {
