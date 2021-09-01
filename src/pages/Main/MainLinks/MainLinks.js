@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MainLink from "./ManiLink/MainLink";
+import MainLink from "./MainLink/MainLink";
 import mainLists from "./mainLinkData";
 import "./MainLinks.scss";
 
