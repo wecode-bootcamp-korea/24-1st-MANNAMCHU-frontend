@@ -5,8 +5,8 @@ import "./MainCarousel.scss";
 class MainCarousel extends Component {
   state = {
     topCarousel: [],
-    rightIndex: 0,
-    scrollLeft: 0,
+    rightIndex: 1,
+    leftIndex: 0,
   };
 
   componentDidMount = () => {
@@ -19,35 +19,30 @@ class MainCarousel extends Component {
       });
   };
 
-  // translateX(이동거리)로 움직이기
-  // 전체 갯수 /3으로 무한 돌리기
-  handleRight = e => {
-    if (e.target.className && e.target.className === "fas fa-arrow-right") {
-      this.setState({
-        ...this.state,
-        rightIndex: this.state.rightIndex + 1,
-      });
+  // 우선 단방향 carousel 완성
+  handleRight = () => {
+    console.log(this.state.rightIndex);
+    const slideWidth = 1920;
+
+    if (this.state.rightIndex < 3) {
+      const carousels = document.querySelector(".carousels");
+      carousels.style.transform = `translateX(-${
+        this.state.rightIndex * slideWidth
+      }px)`;
+      this.setState({ ...this.state, rightIndex: this.state.rightIndex + 1 });
+    } else if (this.state.rightIndex === 3) {
+      this.setState({ ...this.state, rightIndex: 0 });
     }
   };
 
   render() {
-    const { topCarousel, rightIndex } = this.state;
-    const slideWidth = 1920;
+    const { topCarousel } = this.state;
     return (
       <div className="slideWrapper">
         <div className="carouselBox">
-          <div
-            className="carousels"
-            style={{
-              transform: `translateX(-${rightIndex * slideWidth}px)`,
-            }}
-          >
-            {topCarousel.map(carousel => (
-              <TopCarousel
-                key={carousel.id}
-                carousel={carousel}
-                id={carousel.id}
-              />
+          <div className="carousels">
+            {topCarousel.map((carousel, idx) => (
+              <TopCarousel key={carousel.id} carousel={carousel} id={idx} />
             ))}
           </div>
         </div>
