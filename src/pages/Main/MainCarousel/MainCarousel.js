@@ -23,15 +23,16 @@ class MainCarousel extends Component {
   handleRight = () => {
     console.log(this.state.rightIndex);
     const slideWidth = 1920;
+    const carousels = document.querySelector(".carousels");
 
     if (this.state.rightIndex < 3) {
-      const carousels = document.querySelector(".carousels");
       carousels.style.transform = `translateX(-${
         this.state.rightIndex * slideWidth
       }px)`;
       this.setState({ ...this.state, rightIndex: this.state.rightIndex + 1 });
     } else if (this.state.rightIndex === 3) {
-      this.setState({ ...this.state, rightIndex: 0 });
+      carousels.style.transform = `translateX(0px)`;
+      this.setState({ ...this.state, rightIndex: 1 });
     }
   };
 

@@ -1,14 +1,17 @@
-.carouselBox {
-  position: relative;
-  width: 300vw;
-  height: 100vh;
-  overflow-y: hidden;
-  z-index: 1;
-
-  .carousels {
+.slideWrapper {
+  .carouselBox {
+    position: relative;
     width: 300vw;
     height: 100vh;
-    background-color: #000;
+    overflow-y: hidden;
+    z-index: 1;
+
+    .carousels {
+      width: 300vw;
+      height: 100vh;
+      background-color: #000;
+      transition: all 1000ms ease-in-out;
+    }
   }
 
   button {
@@ -17,6 +20,7 @@
     background: none;
     border: none;
     z-index: 1;
+    cursor: pointer;
 
     &.goRight {
       position: absolute;
