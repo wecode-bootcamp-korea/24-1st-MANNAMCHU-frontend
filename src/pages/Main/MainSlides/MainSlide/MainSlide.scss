@@ -1,0 +1,20 @@
+.slideWrapper {
+  background-color: #000;
+  opacity: 0;
+  z-index: 0;
+  transition: all 500ms ease-in-out;
+  overflow: hidden;
+
+  &.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .slideImg {
+    width: 100vw;
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.5;
+  }
+}
