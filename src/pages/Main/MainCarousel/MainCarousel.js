@@ -41,10 +41,10 @@ class MainCarousel extends Component {
 
     if (currIndex > -3) {
       carousels.style.transform = `translateX(-${currIndex * slideWidth}px)`;
-      this.setState({ ...this.state, currIndex: this.state.currIndex + 1 });
+      this.setState({ currIndex: this.state.currIndex + 1 });
     } else if (this.state.currIndex === -3) {
       carousels.style.transform = `translateX(0px)`;
-      this.setState({ ...this.state, currIndex: 0 });
+      this.setState({ currIndex: 0 });
     }
 
     // Add copied Slides
@@ -68,10 +68,10 @@ class MainCarousel extends Component {
 
     if (currIndex > -3) {
       carousels.style.transform = `translateX(${2 * slideWidth}px)`;
-      this.setState({ ...this.state, currIndex: this.state.currIndex + 1 });
+      this.setState({ currIndex: this.state.currIndex + 1 });
     } else if (this.state.currIndex === -3) {
       carousels.style.transform = `translateX(0px)`;
-      this.setState({ ...this.state, currIndex: 0 });
+      this.setState({ currIndex: 0 });
     }
   };
 
@@ -88,10 +88,10 @@ class MainCarousel extends Component {
           </div>
         </div>
         <button className="goLeft" onClick={this.handleLeft}>
-          <i className="fas fa-arrow-left"></i>
+          <i className="fas fa-arrow-left" />
         </button>
         <button className="goRight" onClick={this.handleRight}>
-          <i className="fas fa-arrow-right"></i>
+          <i className="fas fa-arrow-right" />
         </button>
         <ul className="pagination"></ul>
       </div>

@@ -10,7 +10,6 @@ export default class ScrollPage extends Component {
   componentDidMount = () => {
     window.addEventListener("scroll", e => {
       this.setState({
-        ...this.state,
         scrollTop: document.documentElement.scrollTop,
       });
     });
