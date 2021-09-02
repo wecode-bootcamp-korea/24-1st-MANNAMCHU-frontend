@@ -1,1 +1,32 @@
-//footer
+.footer {
+  display: flex;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  color: grey;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 13px;
+  line-height: 150%;
+
+  .contact,
+  .csTime,
+  .copyright {
+    margin-top: 20px;
+  }
+
+  .info {
+    margin: 50px 0 0 150px;
+  }
+
+  .link {
+    margin: 50px 0 0 200px;
+
+    a {
+      color: grey;
+    }
+  }
+
+  hr {
+    width: 140%;
+    color: grey;
+  }
+}
