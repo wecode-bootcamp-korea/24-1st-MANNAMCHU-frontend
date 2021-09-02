@@ -6,6 +6,7 @@ export default class ProductLists extends Component {
   state = {
     items: {},
     fliter: "",
+    view: 8,
   };
 
   handleFetch = () => {
@@ -25,6 +26,13 @@ export default class ProductLists extends Component {
   componentDidMount() {
     this.handleFetch();
   }
+
+  //  fetch url 완성하면 아래 로직 통해서 filter uri 호출
+  // componentDidUpdate = (prevProps, prevState) => {
+  //   if (this.state.filter !== prevState.state.filter) {
+  //     this.handleFetch();
+  //   }
+  // };
 
   render() {
     const { discountRatio, listData } = this.state.items;
