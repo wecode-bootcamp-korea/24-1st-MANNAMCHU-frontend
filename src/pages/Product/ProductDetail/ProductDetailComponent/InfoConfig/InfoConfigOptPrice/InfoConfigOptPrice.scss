@@ -1,0 +1,46 @@
+.infoConfigOptPrice {
+  margin-top: 20px;
+  border: 1px solid gray;
+
+  &Name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 15px;
+    border-bottom: 1px solid gray;
+  }
+
+  &Count {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 15px;
+
+    &Box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 120px;
+      background-color: #fff;
+      border: 1px solid black;
+    }
+
+    &Down {
+      width: 25px;
+      height: 30px;
+      background-color: #fff;
+    }
+
+    &Num {
+      text-align: center;
+    }
+
+    &Up {
+      width: 25px;
+      height: 30px;
+      background-color: #fff;
+    }
+  }
+}

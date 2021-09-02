@@ -3,7 +3,7 @@
   padding-top: 10px;
   background-color: #eaeaea;
 
-  &Choice {
+  &Sel {
     position: relative;
 
     &Btn {
@@ -21,6 +21,21 @@
       position: absolute;
       top: 30px;
       width: 100%;
+    }
+  }
+
+  &OptResult {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .infoConfigOptTotalCount {
+      margin-left: 15px;
+    }
+
+    .infoConfigOptTotalPrice {
+      margin-right: 15px;
+      font-size: 30px;
     }
   }
 }

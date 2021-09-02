@@ -1,38 +1,42 @@
 import React, { Component } from "react";
-import InfoConfigChoiceOpt from "../InfoConfigChoiceOpt";
+import InfoConfigSelOpt from "./InfoConfigSelOpt/InfoConfigSelOpt";
+import InfoConfigOptPrice from "./InfoConfigOptPrice/InfoConfigOptPrice";
 import "./InfoConfig.scss";
 
 export default class InfoConfig extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeOpt: "disappear",
-    };
-    this.optionViewer = this.optionViewer.bind(this);
-  }
-
-  optionViewer = () => {
-    if (this.state.activeOpt === "disappear") {
-      this.setState({ activeOpt: "infoConfigChoiceOpt" });
-    } else {
-      this.setState({ activeOpt: "disappear" });
-    }
-  };
-
   render() {
     return (
       <div className="infoConfig">
         <div className="infoConfigText">상품 구성 선택 *</div>
-        <div className="infoConfigChoice">
-          <button className="infoConfigChoiceBtn" onClick={this.optionViewer}>
+        <div className="infoConfigSel">
+          <button
+            className="infoConfigSelBtn"
+            onClick={this.props.activeOptionViewer}
+          >
             <span>상품 구성 선택 (필수)</span>
             <span>펼치기</span>
           </button>
-          <div className={this.state.activeOpt}>
-            {this.props.optLists &&
-              this.props.optLists.map(optList => {
-                return <InfoConfigChoiceOpt optList={optList} />;
-              })}
+          <div className={this.props.activeOpt}>
+            {this.props.optLists?.map((optList, idx) => {
+              return (
+                <InfoConfigSelOpt
+                  key={idx}
+                  optList={optList}
+                  addCartData={this.props.addCartData}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className={this.props.activeCartData}>
+          <InfoConfigOptPrice />
+          <div className="infoConfigOptResult">
+            <span className="infoConfigOptTotalCount">
+              총 상품금액({this.props.totalCount})
+            </span>
+            <span className="infoConfigOptTotalPrice">
+              {this.props.totalPrice}
+            </span>
           </div>
         </div>
       </div>
