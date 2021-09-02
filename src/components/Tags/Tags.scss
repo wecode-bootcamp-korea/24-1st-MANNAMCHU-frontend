@@ -1,0 +1,25 @@
+.tags {
+  min-height: 30px;
+
+  .new {
+    margin: 3px;
+    padding: 2px 4px;
+    color: white;
+    background-color: purple;
+  }
+
+  .sale {
+    margin: 3px;
+    padding: 2px 4px;
+    color: white;
+    background-color: red;
+  }
+
+  .best {
+    margin: 3px;
+    padding: 2px 4px;
+    color: red;
+    background-color: white;
+    border: 1px solid black;
+  }
+}
