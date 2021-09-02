@@ -24,6 +24,10 @@ export default class MainSlides extends Component {
     selected: 1,
   };
 
+  componentDidMount = () => {
+    setInterval(this.handleCurrentSlide, 5000);
+  };
+
   handleCurrentSlide = () => {
     const { selected } = this.state;
     this.setState({ selected: selected === 3 ? 1 : selected + 1 });
@@ -51,10 +55,7 @@ export default class MainSlides extends Component {
             <MainSlide key={slide.id} slide={slide} selected={selected} />
           ))}
         </div>
-        <div className="comment">
-          <p>특별한 분들께 드리는</p>
-          <strong>프리미엄 과일 선물</strong>
-        </div>
+
         <button className="goLeft" onClick={this.handleLeft}>
           <i className="fas fa-arrow-left" />
         </button>
