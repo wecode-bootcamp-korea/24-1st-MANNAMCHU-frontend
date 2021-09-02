@@ -2,15 +2,36 @@ import React, { Component } from "react";
 import "./ProductList.scss";
 
 export default class ProductList extends Component {
+  state = {
+    isEntered: false,
+  };
+
+  handleMouse = () => {
+    this.setState({ isEntered: !this.state.isEntered });
+  };
+
   render() {
     const { item, discountRatio } = this.props;
+    const { thumbnails } = item;
+    const { isEntered } = this.state;
     return (
       <li className="productList">
-        <img
-          src={item.thumbnails[0].first}
-          alt="product_image"
-          className="productImg"
-        />
+        <div
+          className="imgWrapper"
+          onMouseEnter={() => this.handleMouse()}
+          onMouseLeave={() => this.handleMouse()}
+        >
+          <img
+            src={thumbnails[0].item}
+            alt="product_image"
+            className={`productImg ${isEntered === true ? "disappear" : ""}`}
+          />
+          <img
+            src={thumbnails[1].item}
+            alt="product_image"
+            className={`productImg ${isEntered === true ? "" : "disappear"}`}
+          />
+        </div>
         <div className="letterWrapper">
           <strong className="title letter">{item.name}</strong>
           <div className="priceWrapper original">
