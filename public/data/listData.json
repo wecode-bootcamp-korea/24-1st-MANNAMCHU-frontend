@@ -10,10 +10,12 @@
       "likeCount": 3,
       "thumbnails": [
         {
-          "first": "https://cdn.imweb.me/thumbnail/20210815/f1ef564f843db.jpeg"
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210815/f1ef564f843db.jpeg"
         },
         {
-          "second": "https://cdn.imweb.me/thumbnail/20210815/affb07c5ce796.jpeg"
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210815/affb07c5ce796.jpeg"
         }
       ]
     },
@@ -26,10 +28,12 @@
       "likeCount": 2,
       "thumbnails": [
         {
-          "first": "https://cdn.imweb.me/thumbnail/20210703/234bfb01c89a5.jpg"
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210703/234bfb01c89a5.jpg"
         },
         {
-          "second": "https://cdn.imweb.me/thumbnail/20210822/a65b9482d054d.jpg"
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210822/a65b9482d054d.jpg"
         }
       ]
     },
@@ -42,10 +46,12 @@
       "likeCount": 0,
       "thumbnails": [
         {
-          "first": "https://cdn.imweb.me/thumbnail/20210829/20b3bddfc8457.jpg"
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210829/20b3bddfc8457.jpg"
         },
         {
-          "second": "https://cdn.imweb.me/thumbnail/20210829/01de1332adfbe.jpg"
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210829/01de1332adfbe.jpg"
         }
       ]
     },
@@ -58,10 +64,12 @@
       "likeCount": 0,
       "thumbnails": [
         {
-          "first": "https://cdn.imweb.me/thumbnail/20210818/0aac7b336339f.png"
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210818/0aac7b336339f.png"
         },
         {
-          "second": "https://cdn.imweb.me/thumbnail/20210325/ef766cbd72546.jpg"
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210325/ef766cbd72546.jpg"
         }
       ]
     },
@@ -74,10 +82,12 @@
       "likeCount": 56,
       "thumbnails": [
         {
-          "first": "https://cdn.imweb.me/thumbnail/20190930/cb0399b66e4dc.jpeg"
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20190930/cb0399b66e4dc.jpeg"
         },
         {
-          "second": "https://cdn.imweb.me/thumbnail/20200208/a006ef9d4b9b6.jpeg"
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20200208/a006ef9d4b9b6.jpeg"
         }
       ]
     },
@@ -90,10 +100,12 @@
       "likeCount": 0,
       "thumbnails": [
         {
-          "first": "https://cdn.imweb.me/thumbnail/20210819/cf9f46b089d78.jpeg"
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210819/cf9f46b089d78.jpeg"
         },
         {
-          "second": "https://cdn.imweb.me/thumbnail/20210819/d6b096d262f5d.jpeg"
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210819/d6b096d262f5d.jpeg"
         }
       ]
     },
@@ -106,10 +118,12 @@
       "likeCount": 8,
       "thumbnails": [
         {
-          "first": "https://cdn.imweb.me/thumbnail/20210824/881ebed4a8ce8.jpeg"
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210824/881ebed4a8ce8.jpeg"
         },
         {
-          "second": "https://cdn.imweb.me/thumbnail/20200830/f862a221d4449.jpg"
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20200830/f862a221d4449.jpg"
         }
       ]
     },
@@ -122,10 +136,12 @@
       "likeCount": 0,
       "thumbnails": [
         {
-          "first": "https://cdn.imweb.me/thumbnail/20210815/59cdfa49d7e65.jpg"
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210815/59cdfa49d7e65.jpg"
         },
         {
-          "second": "https://cdn.imweb.me/thumbnail/20210815/738e8ba36fff7.jpg"
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210815/738e8ba36fff7.jpg"
         }
       ]
     }
