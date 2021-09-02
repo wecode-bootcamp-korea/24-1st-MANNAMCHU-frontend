@@ -1,12 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
+
 .productList {
   width: 25%;
 
+  .productImg {
+    display: block;
+    width: 100%;
+  }
+
   .letterWrapper {
     width: 100%;
+    margin: 20px 0;
 
     .title {
       display: block;
       font-weight: 700;
+      line-height: 24px;
+    }
+
+    .priceWrapper {
+      display: inline-block;
+      margin: 7px 0;
+
+      &.original {
+        color: rgba(64, 64, 64, 0.5);
+        text-decoration: line-through;
+        margin-right: 5px;
+      }
+
+      .amount {
+        font-family: "Libre Baskerville", sans-serif;
+      }
+    }
+
+    .likes {
+      color: rgba(64, 64, 64, 0.5);
     }
   }
 }
