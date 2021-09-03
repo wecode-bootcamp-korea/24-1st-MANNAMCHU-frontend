@@ -5,7 +5,7 @@ import "./ProductLists.scss";
 export default class ProductLists extends Component {
   state = {
     items: {},
-    fliter: "",
+    fliter: "new",
     view: 8,
   };
 
@@ -19,8 +19,7 @@ export default class ProductLists extends Component {
 
   handleClick = e => {
     const clickedName = e.target.className;
-    const filter = { filter: clickedName };
-    this.setState({ ...this.state, filter });
+    this.setState({ ...this.state, filter: clickedName });
   };
 
   componentDidMount() {
@@ -37,6 +36,7 @@ export default class ProductLists extends Component {
   render() {
     const { discountRatio, listData } = this.state.items;
     const { filter } = this.state;
+
     return (
       <>
         <div className="filterWrapper">
