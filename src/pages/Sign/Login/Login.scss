@@ -1,68 +1,77 @@
-.loginContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 400px;
-  margin: 50px auto;
-  font-family: "Nanum Myeongjo", serif;
+.login {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
 
-  .inputEmail,
-  .inputPw {
-    width: 350px;
-    height: 50px;
-    padding: 15px;
-    margin-top: 50px;
-    border: solid 1px lightgray;
+  .loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin: 50px auto;
 
-    &::placeholder {
+    .inputEmail,
+    .inputPw {
+      width: 350px;
+      height: 50px;
+      padding: 15px;
+      margin-top: 50px;
+      border: solid 1px lightgray;
+
+      &::placeholder {
+        font-family: "Nanum Myeongjo", serif;
+        font-size: 15px;
+      }
+    }
+
+    h1 {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .loginBtn {
+      width: 350px;
+      height: 50px;
+      margin-top: 50px;
+      border-color: none;
       font-family: "Nanum Myeongjo", serif;
       font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #2e2452;
+      cursor: pointer;
     }
-  }
 
-  h1 {
-    font-size: 15px;
-    font-weight: bold;
-  }
+    .disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
 
-  .loginBtn {
-    width: 350px;
-    height: 50px;
-    margin-top: 50px;
-    border-color: none;
-    font-family: "Nanum Myeongjo", serif;
-    font-size: 15px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #2e2452;
-    cursor: pointer;
-  }
+    .warning {
+      width: 350px;
+      margin: 0;
+      padding: 15px 0 0 17px;
+      color: #2e2452;
+      font-size: 13px;
+    }
 
-  .disabled {
-    opacity: 0.5;
-    cursor: default;
-  }
+    .toJoin {
+      width: 350px;
+      text-align: left;
+      margin-top: 15px;
+      margin-left: 35px;
+      font-size: 13px;
+      font-weight: bold;
+    }
 
-  .warning {
-    width: 350px;
-    margin: 0;
-    padding: 15px 0 0 17px;
-    color: #2e2452;
-    font-size: 13px;
-  }
-
-  .toJoin {
-    width: 350px;
-    text-align: left;
-    margin-top: 15px;
-    margin-left: 35px;
-    font-size: 13px;
-    font-weight: bold;
-  }
-
-  .copyRight {
-    margin-top: 100px;
-    font-size: 13px;
-    color: grey;
+    .copyRight {
+      margin-top: 100px;
+      font-size: 13px;
+      color: grey;
+    }
   }
 }
