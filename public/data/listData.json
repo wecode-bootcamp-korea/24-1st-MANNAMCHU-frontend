@@ -6,7 +6,7 @@
       "name": "제주의 포근한, 감자🥔",
       "price": 10000,
       "discounted": false,
-      "tags": ["new"],
+      "tags": [{ "isNew": true }, { "isSale": false }, { "isBest": false }],
       "likeCount": 3,
       "thumbnails": [
         {
@@ -24,7 +24,7 @@
       "name": "[반짝할인] 제주 자연산 민어 사시미/지리/매운탕",
       "price": 75000,
       "discounted": true,
-      "tags": ["sale", "best"],
+      "tags": [{ "isNew": true }, { "isSale": true }, { "isBest": true }],
       "likeCount": 2,
       "thumbnails": [
         {
@@ -42,7 +42,7 @@
       "name": "[전국택배] 최상급! 국내산 푸룬(자두)💜",
       "price": 39000,
       "discounted": true,
-      "tags": ["sale"],
+      "tags": [{ "isNew": true }, { "isSale": true }, { "isBest": true }],
       "likeCount": 0,
       "thumbnails": [
         {
@@ -60,7 +60,7 @@
       "name": "[전국택배] 달달구리 Candy,heart💝 (강력추천!)",
       "price": 42500,
       "discounted": true,
-      "tags": ["new", "sale"],
+      "tags": [{ "isNew": true }, { "isSale": true }, { "isBest": false }],
       "likeCount": 0,
       "thumbnails": [
         {
@@ -78,7 +78,7 @@
       "name": "[전국택배] 떴다, 마담주 골드망고",
       "price": 52000,
       "discounted": true,
-      "tags": ["new", "sale", "best"],
+      "tags": [{ "isNew": false }, { "isSale": true }, { "isBest": false }],
       "likeCount": 56,
       "thumbnails": [
         {
@@ -96,7 +96,7 @@
       "name": "[전국택배] 찐유학파, 캐너리메론🐤",
       "price": 34500,
       "discounted": true,
-      "tags": ["new", "sale"],
+      "tags": [{ "isNew": true }, { "isSale": true }, { "isBest": true }],
       "likeCount": 0,
       "thumbnails": [
         {
