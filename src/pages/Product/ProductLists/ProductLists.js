@@ -38,7 +38,7 @@ export default class ProductLists extends Component {
     const { filter } = this.state;
 
     return (
-      <>
+      <section className="productLists">
         <div className="filterWrapper">
           <ul className="filters">
             <li className={`filter ${filter === "new" ? "active" : ""}`}>
@@ -69,7 +69,7 @@ export default class ProductLists extends Component {
               />
             ))}
         </ul>
-      </>
+      </section>
     );
   }
 }
