@@ -1,25 +1,28 @@
 .tags {
   min-height: 30px;
 
+  span {
+    display: inline-block;
+    padding: 2px 4px;
+    height: 16px;
+  }
+
   .new {
     margin: 3px;
-    padding: 2px 4px;
     color: white;
-    background-color: purple;
+    background-color: #2e2452;
   }
 
   .sale {
     margin: 3px;
-    padding: 2px 4px;
     color: white;
-    background-color: red;
+    background-color: #e85a58;
   }
 
   .best {
     margin: 3px;
-    padding: 2px 4px;
-    color: red;
+    color: #e85a58;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid rgba(64, 64, 64, 0.5);
   }
 }
