@@ -6,10 +6,10 @@ import ProductLists from "./ProductLists/ProductLists";
 export default class Product extends Component {
   render() {
     return (
-      <>
+      <section>
         <ListHeader />
         <ProductLists />
-      </>
+      </section>
     );
   }
 }

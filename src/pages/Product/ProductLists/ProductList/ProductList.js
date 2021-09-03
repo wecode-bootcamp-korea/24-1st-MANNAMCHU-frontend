@@ -34,10 +34,17 @@ export default class ProductList extends Component {
         </div>
         <div className="letterWrapper">
           <strong className="title letter">{item.name}</strong>
-          <div className="priceWrapper original">
-            <span className="amount">{item.price}</span>
-            <span className="currency">원</span>
-          </div>
+          {item.discounted === true ? (
+            <div className="priceWrapper original">
+              <span className="amount">
+                {item.discounted === true ? item.price : ""}
+              </span>
+              <span className="currency">원</span>
+            </div>
+          ) : (
+            ""
+          )}
+
           <div className="priceWrapper discount">
             <span className="amount">
               {item.discounted === true

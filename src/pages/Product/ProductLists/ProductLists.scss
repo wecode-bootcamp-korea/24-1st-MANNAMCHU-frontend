@@ -1,0 +1,23 @@
+.filterWrapper {
+  width: 70%;
+
+  .filters {
+    .filter {
+      &::after {
+        content: "|";
+      }
+
+      &:last-child::after {
+        content: "";
+      }
+
+      button {
+      }
+    }
+  }
+}
+
+.listWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

@@ -58,7 +58,7 @@ export default class ProductLists extends Component {
             </li>
           </ul>
         </div>
-        <ul>
+        <ul className="listWrapper">
           {listData &&
             listData.map(item => (
               <ProductList
