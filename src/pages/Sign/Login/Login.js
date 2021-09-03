@@ -38,7 +38,14 @@ class Login extends Component {
       }),
     })
       .then(response => response.json())
-      .then(result => console.log("결과: ", result));
+      .then(response => {
+        if (response.token) {
+          localStorage.setItem("token", response.token);
+          this.props.history.push("/");
+        } else {
+          alert("이메일, 비밀번호를 다시 입력해 주세요.");
+        }
+      });
   };
 
   render() {
