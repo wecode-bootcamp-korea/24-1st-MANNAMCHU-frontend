@@ -71,7 +71,26 @@ class Signup extends Component {
   };
 
   handleSignup = () => {
-    this.checkValid() && this.props.history.push("/signup");
+    fetch("주소를 주세요.", {
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.emailVal,
+        password: this.state.pwVal,
+        checkPassword: this.state.pwCheckVal,
+        name: this.state.nameVal,
+        phone: this.state.phoneVal,
+        address: this.state.addressVal,
+      }),
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.token) {
+          localStorage.setItem("token", response.token);
+          this.props.history.push("/");
+        } else {
+          alert("회원 가입에 실패했습니다.");
+        }
+      });
   };
 
   render() {
