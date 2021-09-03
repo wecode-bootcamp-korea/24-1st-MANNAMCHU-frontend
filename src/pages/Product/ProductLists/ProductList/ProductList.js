@@ -12,8 +12,8 @@ export default class ProductList extends Component {
   };
 
   render() {
-    const { item } = this.props;
-    const { image, tags } = item;
+    const { product } = this.props;
+    const { image, tag } = product;
     const { isEntered } = this.state;
 
     return (
@@ -24,22 +24,22 @@ export default class ProductList extends Component {
           onMouseLeave={() => this.handleMouse()}
         >
           <img
-            src={image[0][0].item}
+            src={image[0].url}
             alt="product_image"
             className={`productImg ${isEntered === true ? "disappear" : ""}`}
           />
           <img
-            src={image[0][1].item}
+            src={image[1].url}
             alt="product_image"
             className={`productImg ${isEntered === true ? "" : "disappear"}`}
           />
         </div>
         <div className="letterWrapper">
-          <strong className="title letter">{item.name}</strong>
-          {item.discount > 0 ? (
+          <strong className="title letter">{product.name}</strong>
+          {product.discount > 0 ? (
             <div className="priceWrapper original">
               <span className="amount">
-                {item.discount > 0 ? item.price.toLocaleString() : ""}
+                {product.discount > 0 ? product.price.toLocaleString() : ""}
               </span>
               <span className="currency">원</span>
             </div>
@@ -49,20 +49,16 @@ export default class ProductList extends Component {
 
           <div className="priceWrapper discount">
             <span className="amount">
-              {item.discount > 0
-                ? ((1 - item.discount) * item.price).toLocaleString()
-                : item.price}
+              {product.discount > 0
+                ? ((1 - product.discount) * product.price).toLocaleString()
+                : product.price}
             </span>
             <span className="currency">원</span>
           </div>
-          <Tags
-            isNew={tags[0].new}
-            isSale={tags[0].sale}
-            isBest={tags[0].best}
-          />
+          <Tags isNew={tag[0].new} isSale={tag[0].sale} isBest={tag[0].best} />
           <div className="likes">
             <i className="far fa-heart" />
-            <span>{item.like_count}</span>
+            <span>{product.like_count}</span>
           </div>
         </div>
       </li>
