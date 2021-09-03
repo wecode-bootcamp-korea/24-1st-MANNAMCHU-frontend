@@ -33,16 +33,12 @@ class Login extends Component {
     fetch("주소를 주세요.", {
       method: "POST",
       body: JSON.stringify({
-        login_email: this.state.emailVal,
-        login_password: this.state.pwVal,
+        email: this.state.emailVal,
+        password: this.state.pwVal,
       }),
     })
       .then(response => response.json())
       .then(result => console.log("결과: ", result));
-    if (this.checkValid()) {
-      this.props.history.push("/main-jeong");
-    }
-    this.checkValid() && this.props.history.push("/login");
   };
 
   render() {
