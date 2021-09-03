@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import Tags from "../../../../components/Tags/Tags";
+import Tags from "../../../../components/Tags/Tags";
 import "./ProductList.scss";
 
 export default class ProductList extends Component {
@@ -12,9 +12,10 @@ export default class ProductList extends Component {
   };
 
   render() {
-    const { item, discountRatio } = this.props;
-    const { thumbnails } = item;
+    const { item } = this.props;
+    const { image, tags } = item;
     const { isEntered } = this.state;
+
     return (
       <li className="productList">
         <div
@@ -23,22 +24,22 @@ export default class ProductList extends Component {
           onMouseLeave={() => this.handleMouse()}
         >
           <img
-            src={thumbnails[0].item}
+            src={image[0][0].item}
             alt="product_image"
             className={`productImg ${isEntered === true ? "disappear" : ""}`}
           />
           <img
-            src={thumbnails[1].item}
+            src={image[0][1].item}
             alt="product_image"
             className={`productImg ${isEntered === true ? "" : "disappear"}`}
           />
         </div>
         <div className="letterWrapper">
           <strong className="title letter">{item.name}</strong>
-          {item.discounted === true ? (
+          {item.discount > 0 ? (
             <div className="priceWrapper original">
               <span className="amount">
-                {item.discounted === true ? item.price.toLocaleString() : ""}
+                {item.discount > 0 ? item.price.toLocaleString() : ""}
               </span>
               <span className="currency">원</span>
             </div>
@@ -48,16 +49,20 @@ export default class ProductList extends Component {
 
           <div className="priceWrapper discount">
             <span className="amount">
-              {item.discounted === true
-                ? ((1 - discountRatio) * item.price).toLocaleString()
+              {item.discount > 0
+                ? ((1 - item.discount) * item.price).toLocaleString()
                 : item.price}
             </span>
             <span className="currency">원</span>
           </div>
-          {/* <Tags /> */}
+          <Tags
+            isNew={tags[0].new}
+            isSale={tags[0].sale}
+            isBest={tags[0].best}
+          />
           <div className="likes">
             <i className="far fa-heart" />
-            <span>{item.likeCount}</span>
+            <span>{item.like_count}</span>
           </div>
         </div>
       </li>

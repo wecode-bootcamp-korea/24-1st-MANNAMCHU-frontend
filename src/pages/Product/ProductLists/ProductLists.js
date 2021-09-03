@@ -34,9 +34,8 @@ export default class ProductLists extends Component {
   // };
 
   render() {
-    const { discountRatio, listData } = this.state.items;
+    const { listData } = this.state.items;
     const { filter } = this.state;
-
     return (
       <section className="productLists">
         <div className="filterWrapper">
@@ -61,12 +60,7 @@ export default class ProductLists extends Component {
         <ul className="listWrapper">
           {listData &&
             listData.map(item => (
-              <ProductList
-                key={item.id}
-                item={item}
-                discountRatio={discountRatio}
-                filter={filter}
-              />
+              <ProductList key={item.id} item={item} filter={filter} />
             ))}
         </ul>
       </section>
