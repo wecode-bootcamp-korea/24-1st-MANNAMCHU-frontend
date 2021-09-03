@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./Login.scss";
 import { Link } from "react-router-dom";
+import "./Login.scss";
 
 class Login extends Component {
   constructor() {
@@ -30,16 +30,26 @@ class Login extends Component {
   };
 
   handleLogin = () => {
+    fetch("주소를 주세요.", {
+      method: "POST",
+      body: JSON.stringify({
+        login_email: this.state.emailVal,
+        login_password: this.state.pwVal,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => console.log("결과: ", result));
+    if (this.checkValid()) {
+      this.props.history.push("/main-jeong");
+    }
     this.checkValid() && this.props.history.push("/login");
   };
 
   render() {
     const { emailVal, pwVal } = this.state;
     return (
-      // 모달창 만들고 그 안에 아래 코드는 컴포넌트로 만들어서 삽입
       <div className="loginContainer">
         <h1>로그인</h1>
-        {/* h1 자리에 맛남츄 로고를 넣고 싶어요 */}
         <input
           type="text"
           placeholder="이메일"
@@ -61,7 +71,7 @@ class Login extends Component {
           <div className="warning">6글자 이상 입력해 주세요.</div>
         )}
         <button
-          className={this.checkValid() ? "loginBtn" : "loginBtn disabled"}
+          className={`loginBtn ${this.checkValid() ? "" : "disabled"}`}
           type="button"
           onClick={this.handleLogin}
         >
@@ -72,7 +82,6 @@ class Login extends Component {
         </div>
         <div className="copyRight">© mannamchu, Co., Ltd.. All Rights Free</div>
       </div>
-      // 오른쪽 상단에 x 버튼 추가해야 함
     );
   }
 }

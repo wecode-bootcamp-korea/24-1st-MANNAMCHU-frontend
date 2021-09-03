@@ -1,4 +1,4 @@
-.loginContainer {
+.signupContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,8 +6,10 @@
   margin: 50px auto;
   font-family: "Nanum Myeongjo", serif;
 
-  .inputEmail,
-  .inputPw {
+  .inputPw,
+  .inputPwCheck,
+  .inputPhone,
+  .inputAddress {
     width: 350px;
     height: 50px;
     padding: 15px;
@@ -20,19 +22,51 @@
     }
   }
 
+  .inputEmail,
+  .inputName {
+    width: 350px;
+    height: 50px;
+    padding: 15px;
+    margin-top: 20px;
+    border: solid 1px lightgray;
+
+    &::placeholder {
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 15px;
+    }
+  }
+
+  .inputAddressDetail {
+    width: 350px;
+    height: 50px;
+    padding: 15px;
+    margin-top: 20px;
+    border: solid 1px lightgray;
+
+    &::placeholder {
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 15px;
+    }
+  }
+
   h1 {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
   }
 
-  .loginBtn {
+  h3 {
+    margin-top: 70px;
+  }
+
+  .signupBtn {
     width: 350px;
     height: 50px;
     margin-top: 50px;
     border-color: none;
     font-family: "Nanum Myeongjo", serif;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
+    // 아래 스타일링을 .purple로 하고 싶어요 (common css)
     color: #fff;
     background-color: #2e2452;
     cursor: pointer;
@@ -48,15 +82,6 @@
     margin: 15px 0 0 36px;
     color: #2e2452;
     font-size: 13px;
-  }
-
-  .toJoin {
-    width: 350px;
-    text-align: left;
-    margin-top: 15px;
-    margin-left: 35px;
-    font-size: 13px;
-    font-weight: bold;
   }
 
   .copyRight {
