@@ -37,7 +37,7 @@ export default class ProductList extends Component {
           {item.discounted === true ? (
             <div className="priceWrapper original">
               <span className="amount">
-                {item.discounted === true ? item.price : ""}
+                {item.discounted === true ? item.price.toLocaleString() : ""}
               </span>
               <span className="currency">원</span>
             </div>
@@ -48,7 +48,7 @@ export default class ProductList extends Component {
           <div className="priceWrapper discount">
             <span className="amount">
               {item.discounted === true
-                ? (1 - discountRatio) * item.price
+                ? ((1 - discountRatio) * item.price).toLocaleString()
                 : item.price}
             </span>
             <span className="currency">원</span>
