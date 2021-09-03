@@ -1,1 +1,199 @@
-//cart
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+  margin: 0px auto;
+
+  &Top {
+    display: flex;
+    width: 1200px;
+    margin-top: 100px;
+
+    .cartHead {
+      font-size: 20px;
+    }
+
+    .cartCount {
+      width: 25px;
+      margin-left: 20px;
+      color: white;
+      background-color: purple;
+      border-radius: 13px;
+      text-align: center;
+      line-height: 1.5;
+    }
+  }
+
+  .product {
+    display: flex;
+    width: 1200px;
+
+    &List {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0px;
+      border-bottom: 1px solid black;
+
+      .productCheck {
+        width: 100px;
+        text-align: center;
+
+        &Btn {
+          font-size: 100px;
+        }
+      }
+
+      .productItem {
+        width: 450px;
+      }
+
+      .productWish {
+        width: 100px;
+        text-align: center;
+      }
+
+      .productCount {
+        width: 100px;
+        text-align: center;
+      }
+
+      .productShip {
+        width: 100px;
+        text-align: center;
+      }
+
+      .productShipPrice {
+        width: 100px;
+        text-align: center;
+      }
+
+      .productPrice {
+        width: 100px;
+        text-align: end;
+      }
+
+      .productBtn {
+        width: 150px;
+        text-align: center;
+      }
+    }
+  }
+
+  .itemTotal {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding: 20px 0px;
+    border-bottom: 1px solid black;
+
+    .itemTotalTitle {
+      display: flex;
+      flex-direction: column;
+      margin: 0px 50px 0px auto;
+      text-align: end;
+
+      & span {
+        margin: 5px;
+      }
+    }
+
+    .itemTotalContent {
+      display: flex;
+      flex-direction: column;
+      margin-right: 150px;
+      text-align: end;
+
+      & span {
+        margin: 5px;
+      }
+    }
+  }
+
+  &Select {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+
+    &Btn {
+      button {
+        margin-right: 10px;
+        padding-right: 15px;
+        border-radius: 15px;
+      }
+    }
+
+    &Total {
+      margin-right: 150px;
+
+      &Text {
+        margin-right: 70px;
+      }
+    }
+  }
+
+  &Order {
+    width: 150px;
+    height: 40px;
+    margin-top: 30px;
+  }
+
+  &GoProduct {
+    margin-top: 30px;
+  }
+
+  &WishListTop {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  &WishListMore {
+    margin-left: 30px;
+    border-radius: 10px;
+  }
+
+  &WishList {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin-top: 20px;
+  }
+
+  .wishList {
+    display: flex;
+    flex-direction: column;
+
+    &Img {
+      width: 230px;
+      height: 230px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &Name {
+      margin-top: 30px;
+      font-weight: 600;
+    }
+
+    &Price {
+      margin-top: 10px;
+      font-size: 15px;
+
+      &Sale {
+        margin-left: 10px;
+      }
+    }
+
+    &Tags {
+      margin-top: 10px;
+    }
+
+    &Wish {
+      margin-top: 15px;
+    }
+  }
+}

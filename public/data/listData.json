@@ -1,0 +1,149 @@
+{
+  "discountRatio": 0.1,
+  "listData": [
+    {
+      "id": 1,
+      "name": "제주의 포근한, 감자🥔",
+      "price": 10000,
+      "discounted": false,
+      "tags": ["new"],
+      "likeCount": 3,
+      "thumbnails": [
+        {
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210815/f1ef564f843db.jpeg"
+        },
+        {
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210815/affb07c5ce796.jpeg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "[반짝할인] 제주 자연산 민어 사시미/지리/매운탕",
+      "price": 75000,
+      "discounted": true,
+      "tags": ["sale", "best"],
+      "likeCount": 2,
+      "thumbnails": [
+        {
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210703/234bfb01c89a5.jpg"
+        },
+        {
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210822/a65b9482d054d.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "[전국택배] 최상급! 국내산 푸룬(자두)💜",
+      "price": 39000,
+      "discounted": true,
+      "tags": ["sale"],
+      "likeCount": 0,
+      "thumbnails": [
+        {
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210829/20b3bddfc8457.jpg"
+        },
+        {
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210829/01de1332adfbe.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "[전국택배] 달달구리 Candy,heart💝 (강력추천!)",
+      "price": 42500,
+      "discounted": true,
+      "tags": ["new", "sale"],
+      "likeCount": 0,
+      "thumbnails": [
+        {
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210818/0aac7b336339f.png"
+        },
+        {
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210325/ef766cbd72546.jpg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "[전국택배] 떴다, 마담주 골드망고",
+      "price": 52000,
+      "discounted": true,
+      "tags": ["new", "sale", "best"],
+      "likeCount": 56,
+      "thumbnails": [
+        {
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20190930/cb0399b66e4dc.jpeg"
+        },
+        {
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20200208/a006ef9d4b9b6.jpeg"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "[전국택배] 찐유학파, 캐너리메론🐤",
+      "price": 34500,
+      "discounted": true,
+      "tags": ["new", "sale"],
+      "likeCount": 0,
+      "thumbnails": [
+        {
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210819/cf9f46b089d78.jpeg"
+        },
+        {
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210819/d6b096d262f5d.jpeg"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "[전국택배] 소중한 첫수확, 햇사과🍎",
+      "price": 48000,
+      "discounted": true,
+      "tags": ["new", "sale"],
+      "likeCount": 8,
+      "thumbnails": [
+        {
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210824/881ebed4a8ce8.jpeg"
+        },
+        {
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20200830/f862a221d4449.jpg"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "[전국택배] Air, 열정의 브라질 애플망고🇧🇷(강력추천!)",
+      "price": 80000,
+      "discounted": true,
+      "tags": ["new", "sale"],
+      "likeCount": 0,
+      "thumbnails": [
+        {
+          "id": 1,
+          "item": "https://cdn.imweb.me/thumbnail/20210815/59cdfa49d7e65.jpg"
+        },
+        {
+          "id": 2,
+          "item": "https://cdn.imweb.me/thumbnail/20210815/738e8ba36fff7.jpg"
+        }
+      ]
+    }
+  ]
+}
