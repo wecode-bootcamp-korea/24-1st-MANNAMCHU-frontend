@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import Tags from "../../../../components/Tags/Tags";
 import "./ProductList.scss";
 
 export default class ProductList extends Component {
@@ -53,6 +54,7 @@ export default class ProductList extends Component {
             </span>
             <span className="currency">원</span>
           </div>
+          {/* <Tags /> */}
           <div className="likes">
             <i className="far fa-heart" />
             <span>{item.likeCount}</span>

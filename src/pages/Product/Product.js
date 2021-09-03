@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ListHeader from "./ListHeader/ListHeader";
-import "./Product.scss";
 import ProductLists from "./ProductLists/ProductLists";
+import "./Product.scss";
 
 export default class Product extends Component {
   render() {
