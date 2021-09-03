@@ -1,1 +1,28 @@
-//Navbar
+.nav {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  opacity: 0.3;
+  color: white;
+  font-size: 20px;
+}
+
+.mainMenu {
+  margin-right: 200px;
+  font-weight: bold;
+}
+
+ul li {
+  float: left;
+  margin: 50px 30px 50px 30px;
+}
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
+}
