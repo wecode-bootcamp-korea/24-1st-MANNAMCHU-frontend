@@ -71,12 +71,12 @@ class Signup extends Component {
   };
 
   handleSignup = () => {
-    fetch("주소를 주세요.", {
+    fetch("http://10.58.5.141:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.emailVal,
         password: this.state.pwVal,
-        checkPassword: this.state.pwCheckVal,
+        // checkPassword: this.state.pwCheckVal,
         name: this.state.nameVal,
         phone: this.state.phoneVal,
         address: this.state.addressVal,
