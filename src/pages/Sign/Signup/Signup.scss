@@ -36,6 +36,11 @@
     }
   }
 
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
   .inputAddressDetail {
     width: 350px;
     height: 50px;
@@ -66,7 +71,6 @@
     font-family: "Nanum Myeongjo", serif;
     font-size: 17px;
     font-weight: bold;
-    // 아래 스타일링을 .purple로 하고 싶어요 (common css)
     color: #fff;
     background-color: #2e2452;
     cursor: pointer;
