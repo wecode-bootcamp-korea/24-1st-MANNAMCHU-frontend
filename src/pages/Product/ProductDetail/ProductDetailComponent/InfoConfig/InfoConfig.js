@@ -17,11 +17,11 @@ export default class InfoConfig extends Component {
             <span>펼치기</span>
           </button>
           <div className={this.props.activeOpt}>
-            {this.props.optLists?.map((optList, idx) => {
+            {this.props.options?.map((option, idx) => {
               return (
                 <InfoConfigSelOpt
                   key={idx}
-                  optList={optList}
+                  option={option}
                   addCartData={this.props.addCartData}
                 />
               );

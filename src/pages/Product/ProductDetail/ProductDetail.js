@@ -13,37 +13,35 @@ export default class ProductDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      detailData: {},
+      detailData: { product_detail: {} },
       activeOpt: "disappear",
       activeCartData: "disappear",
-      products: {
-        id: "",
-        name: "",
-        price: "",
-        image_id: [],
-        tag_id: {
-          new: "",
-          sale: "",
-          best: "",
-        },
-        like_count: 0,
-        description: "",
-      },
-      options: {
-        id: "",
-        product_id: "",
-        option: [],
-        additional_price: [],
-      },
+      // cartTotalCount: 0,
+      // cartTotalPrice: 0,
+      cartData: { cartTotalCount: 0, cartTotalPrice: 0, cartTotalOption: [] },
     };
   }
+
+  //서버와 통신
+  // componentDidMount = () => {
+  //   fetch("http://10.58.6.58:8000/products/detail?id=4", {
+  //     method: "GET",
+  //   })
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       console.log(response);
+  //       this.setState({
+  //         detailData: response,
+  //       });
+  //     });
+  // };
 
   componentDidMount = () => {
     fetch("/data/detailPage.json")
       .then(response => response.json())
-      .then(mockData => {
+      .then(response => {
         this.setState({
-          detailData: mockData,
+          detailData: response,
         });
       });
   };
@@ -60,91 +58,107 @@ export default class ProductDetail extends Component {
       : this.setState({ activeCartData: "infoConfigOpt" });
   };
 
-  optionSelect = e => {
+  addCartData = (id, option, price) => {
+    //선택 옵션 추가
     const addCartData = {
-      productOptID: e.target.id,
-      productOptCount: e.target.count,
-      productOptPrice: e.target.price,
+      cartId: id,
+      cartOptionCount: 1,
+      cartOption: option,
+      cartPrice: price,
     };
-    this.setState({ cartData: this.state.cartData.concat(addCartData) });
-    let totalPrice = 0;
-    for (let i = 0; i < this.state.cartData.length; i++) {
-      totalPrice = totalPrice + this.state.cartData[i].productOptPrice;
-      this.setState({ cartTotalPrice: totalPrice });
-    }
-
-    for (let i = 0; i < this.state.cartData.length; i++) {
-      let totalCount = this.state.cartData[i].productOptCount;
-      this.setState({ cartTotalCount: totalCount });
-    }
+    this.setState({
+      cartData: this.state.cartData.cartTotalOption.concat(addCartData),
+    });
+    // this.addTotalPrice();
+    // this.addTotalCount();
+    this.activeCartDataViewer();
   };
+
+  // addTotalCount = () => {
+  //   let totalCount = 0;
+  //   for (let i = 0; i < this.state.cartData.cartTotalOption.length; i++) {
+  //     totalCount =
+  //       totalCount + this.state.cartData.cartTotalOption[i].cartOptionCount;
+  //   }
+
+  //   console.log(this.state.cartData.cartTotalCount);
+  // };
+
+  // addTotalPrice = () => {
+  //   let totalPrice = 0;
+  //   for (let i = 0; i < this.state.cartData.length; i++) {
+  //     totalPrice += parseInt(this.state.cartData[i].cartPrice);
+  //   }
+  //   this.setState({ cartTotalPrice: totalPrice });
+  // };
 
   render() {
     const {
-      mockImgSub,
-      mockInfoName,
-      mockInfoPriceReal,
-      mockInfoPriceSale,
-      mockInfoConfig,
-      //좋아요 기능 구현 시 사용할 state
-      // mockInfoOrderLike,
-      // mockInfoOrderLikeCount,
-      // mockDetailInfo,
-    } = this.state.detailData;
+      name,
+      price,
+      like_count,
+      discount,
+      description,
+      options,
+      origin,
+      image,
+      tag,
+    } = this.state.detailData.product_detail;
 
     return (
-      <div className="productDetail">
-        <div className="top">
-          <div className="img">
-            <img
-              alt="임시데이터"
-              src="https://cdn.imweb.me/thumbnail/20210822/e5016ca280ca8.jpg"
-              className="imgMain"
-            />
-            <ul className="imgSub">
-              {mockImgSub?.map((imgSub, idx) => {
-                return <ImgSubList key={idx} imgUrl={imgSub} />;
-              })}
-            </ul>
+      <>
+        {this.state.detailData.product_detail && (
+          <div className="productDetail">
+            <div className="top">
+              <div className="img">
+                <img
+                  alt="임시데이터"
+                  src="https://cdn.imweb.me/thumbnail/20210822/e5016ca280ca8.jpg"
+                  className="imgMain"
+                />
+                <ul className="imgSub">
+                  {image &&
+                    image[0].map((imgSub, idx) => {
+                      return <ImgSubList key={idx} imgUrl={imgSub.url} />;
+                    })}
+                </ul>
+              </div>
+              <div className="info">
+                {name && <InfoName infoName={name} infoTag={tag} />}
+                <InfoPrice priceReal={parseInt(price)} priceSale={discount} />
+                <InfoImg />
+                <InfoBenefit priceReal={price} priceSale={discount} />
+                <InfoSend />
+                {options && (
+                  <InfoConfig
+                    options={options[0]}
+                    activeOptionViewer={this.activeOptionViewer}
+                    activeOpt={this.state.activeOpt}
+                    activeCartDataViewer={this.activeCartDataViewer}
+                    activeCartData={this.state.activeCartData}
+                    totalCount={this.state.cartTotalCount}
+                    totalPrice={this.state.cartTotalPrice}
+                    addCartData={this.addCartData}
+                  />
+                )}
+                <InfoOrder />
+              </div>
+            </div>
+            <div className="tab">
+              <span>상세정보</span>
+              <span>/</span>
+              <span>구매평</span>
+            </div>
+            <div className="detailInfo">
+              <img
+                alt="임시데이터"
+                src={description}
+                className="detailInfoImg"
+              />
+            </div>
           </div>
-          <div className="info">
-            {mockInfoName && <InfoName infoName={mockInfoName} />}
-            <InfoPrice
-              priceReal={mockInfoPriceReal}
-              priceSale={mockInfoPriceSale}
-            />
-            <InfoImg />
-            <InfoBenefit
-              priceReal={mockInfoPriceReal}
-              priceSale={mockInfoPriceSale}
-            />
-            <InfoSend />
-            <InfoConfig
-              optLists={mockInfoConfig}
-              activeOptionViewer={this.activeOptionViewer}
-              activeOpt={this.state.activeOpt}
-              activeCartDataViewer={this.activeCartDataViewer}
-              activeCartData={this.state.activeCartData}
-              totalCount={this.state.cartTotalCount}
-              totalPrice={this.state.cartTotalPrice}
-              addCartData={this.optionSelect}
-            />
-            <InfoOrder />
-          </div>
-        </div>
-        <div className="tab">
-          <span>상세정보</span>
-          <span>/</span>
-          <span>구매평</span>
-        </div>
-        <div className="detailInfo">
-          <img
-            alt="임시데이터"
-            src="./sources/images/test-detail.jpeg"
-            className="detailInfoImg"
-          />
-        </div>
-      </div>
+        )}
+      </>
     );
   }
 }
