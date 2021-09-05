@@ -60,8 +60,8 @@ export default class ProductLists extends Component {
         </div>
         <ul className="listWrapper">
           {products &&
-            products.map(product => (
-              <ProductList key={product.id} product={product} filter={filter} />
+            products.map((product, idx) => (
+              <ProductList key={idx} product={product} filter={filter} />
             ))}
         </ul>
       </section>
