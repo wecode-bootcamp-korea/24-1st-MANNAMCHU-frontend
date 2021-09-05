@@ -52,6 +52,7 @@ class Login extends Component {
     const { emailVal, pwVal } = this.state;
     return (
       <div className="login">
+        <div className="loginBackground"></div>
         <div className="loginContainer letter">
           <h1>로그인</h1>
           <input
@@ -71,8 +72,8 @@ class Login extends Component {
             className="inputPw"
             onChange={this.handlePwInput}
           />
-          {pwVal && pwVal.length < 6 && (
-            <div className="warning">6글자 이상 입력해 주세요.</div>
+          {pwVal && pwVal.length < 8 && (
+            <div className="warning">8글자 이상 입력해 주세요.</div>
           )}
           <button
             className={`loginBtn ${this.checkValid() ? "" : "disabled"}`}

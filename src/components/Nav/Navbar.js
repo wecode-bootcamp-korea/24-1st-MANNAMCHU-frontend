@@ -1,8 +1,20 @@
 import React, { Component } from "react";
+import Login from "../../pages/Sign/Login/Login";
 import "./Navbar.scss";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
+  state = {
+    isLogin: false,
+  };
   render() {
-    return <div>안녕하세요</div>;
+    return (
+      <div className="navbarMenu">
+        crying...
+        <button onClick={() => this.setState({ isLogin: true })}>Login</button>
+        {this.state.isLogin && <Login />}
+      </div>
+    );
   }
 }
+
+export default Navbar;
