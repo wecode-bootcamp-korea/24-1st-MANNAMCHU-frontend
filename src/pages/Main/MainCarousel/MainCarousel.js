@@ -1,89 +1,103 @@
 import React, { Component } from "react";
-import TopCarousel from "./TopCarousel/TopCarousel";
+import CarouselContent from "./CarouselContent/CarouselContent";
 import "./MainCarousel.scss";
 
 class MainCarousel extends Component {
   state = {
-    topCarousel: [
+    carousels: [
       {
         id: 1,
-        name: "firstSlide",
-        url: "https://cdn.imweb.me/thumbnail/20200118/ee11fcc596837.jpg",
+        name: "firstCarousel",
+        image: [
+          { id: 1, url: "/sources/images/instagram/apples.jpg" },
+          { id: 2, url: "/sources/images/instagram/book.jpg" },
+          { id: 3, url: "/sources/images/instagram/boxes.jpg" },
+          { id: 4, url: "/sources/images/instagram/car.jpg" },
+        ],
       },
       {
         id: 2,
-        name: "secondSlide",
-        url: "https://cdn.imweb.me/thumbnail/20190820/1304ccbbcbcf9.jpg",
+        name: "secondCarousel",
+        image: [
+          { id: 1, url: "/sources/images/instagram/drinks.jpg" },
+          { id: 2, url: "/sources/images/instagram/gifts.jpg" },
+          { id: 3, url: "/sources/images/instagram/haircut.jpg" },
+          { id: 4, url: "/sources/images/instagram/heart.jpg" },
+        ],
       },
       {
         id: 3,
-        name: "thirdSlide",
-        url: "https://cdn.imweb.me/thumbnail/20190820/c970d753d4c5a.jpg",
+        name: "thirdCarousel",
+        image: [
+          { id: 1, url: "/sources/images/instagram/giftsagain.jpg" },
+          { id: 2, url: "/sources/images/instagram/news.jpg" },
+          { id: 3, url: "/sources/images/instagram/ottuki.jpg" },
+          { id: 4, url: "/sources/images/instagram/peach.jpg" },
+        ],
+      },
+      {
+        id: 4,
+        name: "forthCarousel",
+        image: [
+          { id: 1, url: "/sources/images/instagram/peachdisplay.jpg" },
+          { id: 2, url: "/sources/images/instagram/peachmodel.jpg" },
+          { id: 3, url: "/sources/images/instagram/play.jpg" },
+          { id: 4, url: "/sources/images/instagram/pork.jpg" },
+        ],
+      },
+      {
+        id: 5,
+        name: "thirdCarousel",
+        image: [
+          { id: 1, url: "/sources/images/instagram/pot.jpg" },
+          { id: 2, url: "/sources/images/instagram/potato.jpg" },
+          { id: 3, url: "/sources/images/instagram/pumpkins.jpg" },
+          { id: 4, url: "/sources/images/instagram/redapple.jpg" },
+        ],
       },
     ],
-    startNum: 0,
-    currIndex: 0,
+    selected: 1,
   };
 
-  //! 무한 carousel 시도 중
-  handleAdd = () => {
-    const currIndex = this.state.currIndex % 3;
-    const newCarousel = this.state.topCarousel[currIndex];
-    const topCarousel = [...this.state.topCarousel, newCarousel];
+  // componentDidMount = () => {
+  //   setInterval(this.handleCurrentSlide, 5000);
+  // };
 
-    this.setState({ topCarousel, currIndex: currIndex + 1 });
+  handleCurrentSlide = () => {
+    const { selected } = this.state;
+    this.setState({ selected: selected === 3 ? 1 : selected + 1 });
   };
 
-  moveCarousel = () => {
-    const { currIndex } = this.state;
-    const slideWidth = window.innerWidth; //찍어보기
-    const carouselBox = document.querySelector(".carouselBox");
-    const carousels = document.querySelector(".carousels");
-    carouselBox.style.width = `${300 + currIndex * 100}vw`;
-    carousels.style.transform = `translateX(-${currIndex * slideWidth}px)`;
+  handleReverse = () => {
+    const { selected } = this.state;
+    this.setState({ selected: selected === 1 ? 3 : selected - 1 });
   };
 
-  //! 우선 단방향 carousel 완성
   handleRight = () => {
-    // Add copied Slides
-    this.handleAdd();
+    this.handleCurrentSlide();
+  };
 
-    // stlyling
-    this.moveCarousel();
-
-    //! 양방향 시도 흔적
-    // handleLeft = () => {
-    //   const { currIndex } = this.state;
-    //   const slideWidth = window.innerWidth; //찍어보기
-    //   const carousels = document.querySelector(".carousels");
-
-    //   if (currIndex > -3) {
-    //     carousels.style.transform = `translateX(${2 * slideWidth}px)`;
-    //     this.setState({ currIndex: this.state.currIndex + 1 });
-    //   } else if (this.state.currIndex === -3) {
-    //     carousels.style.transform = `translateX(0px)`;
-    //     this.setState({ currIndex: 0 });
-    //   }
-    // };
+  handleLeft = () => {
+    this.handleReverse();
   };
 
   render() {
-    const { topCarousel } = this.state;
+    const { carousels, selected } = this.state;
     return (
-      <div className="slideWrapper">
-        <div className="carouselBox">
-          <div className="carousels">
-            {topCarousel.map((carousel, idx) => (
-              <TopCarousel key={idx} carousel={carousel} id={carousel.id} />
-            ))}
-          </div>
+      <div className="mainCarousel">
+        <div className="instagram">
+          <i className="fab fa-instagram" />
+          <div className="quotes">Follow us on Instagram</div>
         </div>
-        <button className="goLeft" onClick={this.handleLeft}>
-          <i className="fas fa-arrow-left" />
-        </button>
-        <button className="goRight" onClick={this.handleRight}>
-          <i className="fas fa-arrow-right" />
-        </button>
+        <div className="container">
+          {carousels.map(carousel => (
+            <CarouselContent
+              key={carousel.id}
+              carousel={carousel}
+              selected={selected}
+            />
+          ))}
+        </div>
         <ul className="pagination"></ul>
       </div>
     );

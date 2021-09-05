@@ -12,7 +12,7 @@ class Main extends Component {
         <MainSlides />
         <MainLinks />
         <MainContents />
-        {/* <MainCarousel /> */}
+        <MainCarousel />
       </>
     );
   }
