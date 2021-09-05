@@ -56,16 +56,16 @@ class MainCarousel extends Component {
         ],
       },
     ],
-    selected: 1,
+    selected: 0,
   };
 
-  // componentDidMount = () => {
-  //   setInterval(this.handleCurrentSlide, 5000);
-  // };
+  componentDidMount = () => {
+    setInterval(this.handleCurrentSlide, 5000);
+  };
 
   handleCurrentSlide = () => {
     const { selected } = this.state;
-    this.setState({ selected: selected === 3 ? 1 : selected + 1 });
+    this.setState({ selected: selected === 3 ? 0 : selected + 1 });
   };
 
   handleReverse = () => {
@@ -90,13 +90,14 @@ class MainCarousel extends Component {
           <div className="quotes">Follow us on Instagram</div>
         </div>
         <div className="container">
-          {carousels.map(carousel => (
-            <CarouselContent
-              key={carousel.id}
-              carousel={carousel}
-              selected={selected}
-            />
-          ))}
+          <div
+            className="carouselWrapper"
+            style={{ marginLeft: `-${selected * 1240}px` }}
+          >
+            {carousels.map(carousel => (
+              <CarouselContent key={carousel.id} carousel={carousel} />
+            ))}
+          </div>
         </div>
         <ul className="pagination"></ul>
       </div>

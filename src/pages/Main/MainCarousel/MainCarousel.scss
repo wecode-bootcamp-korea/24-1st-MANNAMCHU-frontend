@@ -23,5 +23,16 @@
     width: 73%;
     margin: auto;
     overflow: hidden;
+
+    .carouselWrapper {
+      display: flex;
+      width: 6200px;
+      height: 100%;
+      transition: all 1000ms ease-in-out;
+
+      &.active {
+        z-index: 1;
+      }
+    }
   }
 }
