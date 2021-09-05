@@ -15,6 +15,7 @@ export default class ProductList extends Component {
     const { product } = this.props;
     const { image, tag } = product;
     const { isEntered } = this.state;
+    const price = parseInt(product.price);
 
     return (
       <li className="productList">
@@ -39,7 +40,7 @@ export default class ProductList extends Component {
           {product.discount > 0 ? (
             <div className="priceWrapper original">
               <span className="amount">
-                {product.discount > 0 ? product.price.toLocaleString() : ""}
+                {product.discount > 0 ? price.toLocaleString() : ""}
               </span>
               <span className="currency">원</span>
             </div>
@@ -50,8 +51,8 @@ export default class ProductList extends Component {
           <div className="priceWrapper discount">
             <span className="amount">
               {product.discount > 0
-                ? ((1 - product.discount) * product.price).toLocaleString()
-                : product.price}
+                ? ((1 - product.discount) * price).toLocaleString()
+                : price.toLocaleString()}
             </span>
             <span className="currency">원</span>
           </div>
