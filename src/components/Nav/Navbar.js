@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import "./Navbar.scss";
+import Login from "../../pages/Sign/Login/Login";
+import Signup from "../../pages/Sign/Signup/Signup";
 import { Link } from "react-router-dom";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
+  state = {
+    isLogin: false,
+    isSignup: false,
+  };
   render() {
     return (
       <nav className="nav letter">
@@ -20,11 +26,13 @@ export default class Navbar extends Component {
         </div>
         <div className="asideMenu">
           <ul>
-            <li>
-              <Link to="/">Login</Link>
+            <li onClick={() => this.setState({ isLogin: true })}>
+              Login
+              {this.state.isLogin && <Login />}
             </li>
-            <li>
-              <Link to="/">Join</Link>
+            <li onClick={() => this.setState({ isSignup: true })}>
+              Join
+              {this.state.isSignup && <Signup />}
             </li>
             <li>
               <Link to="/">Cart</Link>
@@ -35,3 +43,5 @@ export default class Navbar extends Component {
     );
   }
 }
+
+export default Navbar;

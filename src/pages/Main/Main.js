@@ -3,7 +3,7 @@ import "./Main.scss";
 
 class Main extends Component {
   render() {
-    return <div>crying...</div>;
+    return <div>메인 화면</div>;
   }
 }
 
