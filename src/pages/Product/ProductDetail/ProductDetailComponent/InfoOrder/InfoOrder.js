@@ -8,7 +8,7 @@ export default class InfoOrder extends Component {
         <button className="infoOrderBuy">구매하기</button>
         <button className="infoOrderCart">장바구니</button>
         <button className="infoOrderLike">
-          <i className="far fa-heart" /> 2
+          <i className="far fa-heart" /> {this.props.likeCount}
         </button>
       </div>
     );

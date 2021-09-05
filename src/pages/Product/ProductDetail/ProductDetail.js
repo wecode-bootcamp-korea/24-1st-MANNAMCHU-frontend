@@ -16,9 +16,9 @@ export default class ProductDetail extends Component {
       detailData: { product_detail: {} },
       activeOpt: "disappear",
       activeCartData: "disappear",
-      // cartTotalCount: 0,
-      // cartTotalPrice: 0,
-      cartData: { cartTotalCount: 0, cartTotalPrice: 0, cartTotalOption: [] },
+      cartTotalCount: 0,
+      cartTotalPrice: 0,
+      cartData: [],
     };
   }
 
@@ -52,47 +52,42 @@ export default class ProductDetail extends Component {
       : this.setState({ activeOpt: "disappear" });
   };
 
-  activeCartDataViewer = () => {
-    this.state.cartTotalCount === 0
-      ? this.setState({ activeCartData: "disappear" })
-      : this.setState({ activeCartData: "infoConfigOpt" });
-  };
-
   addCartData = (id, option, price) => {
-    //선택 옵션 추가
     const addCartData = {
       cartId: id,
       cartOptionCount: 1,
       cartOption: option,
       cartPrice: price,
     };
+
     this.setState({
-      cartData: this.state.cartData.cartTotalOption.concat(addCartData),
+      cartData: this.state.cartData.concat(addCartData),
     });
-    // this.addTotalPrice();
-    // this.addTotalCount();
-    this.activeCartDataViewer();
   };
 
-  // addTotalCount = () => {
-  //   let totalCount = 0;
-  //   for (let i = 0; i < this.state.cartData.cartTotalOption.length; i++) {
-  //     totalCount =
-  //       totalCount + this.state.cartData.cartTotalOption[i].cartOptionCount;
-  //   }
+  addCartTotalCount = () => {
+    let addCartTotalCount = 0;
+    for (let i = 0; i < this.state.cartData.length; i++) {
+      addCartTotalCount =
+        addCartTotalCount + this.state.cartData[i].cartOptionCount;
+    }
+    return addCartTotalCount;
+  };
 
-  //   console.log(this.state.cartData.cartTotalCount);
-  // };
-
-  // addTotalPrice = () => {
-  //   let totalPrice = 0;
-  //   for (let i = 0; i < this.state.cartData.length; i++) {
-  //     totalPrice += parseInt(this.state.cartData[i].cartPrice);
-  //   }
-  //   this.setState({ cartTotalPrice: totalPrice });
-  // };
+  addCartTotalPrice = () => {
+    let addCartTotalPrice = 0;
+    for (let i = 0; i < this.state.cartData.length; i++) {
+      addCartTotalPrice =
+        addCartTotalPrice +
+        parseInt(this.state.detailData.product_detail.price) *
+          (1 - this.state.detailData.product_detail.discount) +
+        parseInt(this.state.cartData[i].cartPrice);
+    }
+    return addCartTotalPrice;
+  };
 
   render() {
+    console.log(new Date().getHours());
     const {
       name,
       price,
@@ -126,7 +121,7 @@ export default class ProductDetail extends Component {
               <div className="info">
                 {name && <InfoName infoName={name} infoTag={tag} />}
                 <InfoPrice priceReal={parseInt(price)} priceSale={discount} />
-                <InfoImg />
+                <InfoImg origin={origin} />
                 <InfoBenefit priceReal={price} priceSale={discount} />
                 <InfoSend />
                 {options && (
@@ -134,14 +129,17 @@ export default class ProductDetail extends Component {
                     options={options[0]}
                     activeOptionViewer={this.activeOptionViewer}
                     activeOpt={this.state.activeOpt}
-                    activeCartDataViewer={this.activeCartDataViewer}
                     activeCartData={this.state.activeCartData}
                     totalCount={this.state.cartTotalCount}
                     totalPrice={this.state.cartTotalPrice}
                     addCartData={this.addCartData}
+                    cartData={this.state.cartData}
+                    addCartTotalCount={this.addCartTotalCount}
+                    addCartTotalPrice={this.addCartTotalPrice}
+                    realPrice={price * (1 - discount)}
                   />
                 )}
-                <InfoOrder />
+                <InfoOrder likeCount={like_count} />
               </div>
             </div>
             <div className="tab">

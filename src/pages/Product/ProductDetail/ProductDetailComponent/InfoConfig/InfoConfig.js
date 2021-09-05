@@ -28,17 +28,27 @@ export default class InfoConfig extends Component {
             })}
           </div>
         </div>
-        <div className={this.props.activeCartData}>
-          <InfoConfigOptPrice />
-          <div className="infoConfigOptResult">
-            <span className="infoConfigOptTotalCount">
-              총 상품금액({this.props.totalCount})
-            </span>
-            <span className="infoConfigOptTotalPrice">
-              {this.props.totalPrice}
-            </span>
+        {this.props.cartData.length > 0 && (
+          <div className="infoConfigOpt">
+            {this.props.cartData.map((selOption, idx) => {
+              return (
+                <InfoConfigOptPrice
+                  key={idx}
+                  cartOption={selOption}
+                  realPrice={this.props.realPrice}
+                />
+              );
+            })}
+            <div className="infoConfigOptResult">
+              <span className="infoConfigOptTotalCount">
+                총 상품금액({this.props.addCartTotalCount()})
+              </span>
+              <span className="infoConfigOptTotalPrice">
+                {this.props.addCartTotalPrice()}원
+              </span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }

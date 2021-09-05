@@ -6,7 +6,7 @@ export default class InfoConfigOptPrice extends Component {
     return (
       <div className="infoConfigOptPrice">
         <div className="infoConfigOptName">
-          <span>`1) 민어사시미(필렛500g)`</span>
+          <span>{this.props.cartOption.cartOption}</span>
           <span>
             <i className="far fa-times-circle"></i>
           </span>
@@ -14,10 +14,17 @@ export default class InfoConfigOptPrice extends Component {
         <div className="infoConfigOptCount">
           <div className="infoConfigOptCountBox">
             <button className="infoConfigOptCountDown">-</button>
-            <div className="infoConfigOptCountNum">1</div>
+            <div className="infoConfigOptCountNum">
+              {this.props.cartOption.cartOptionCount &&
+                this.props.cartOption.cartOptionCount}
+            </div>
             <button className="infoConfigOptCountUp">+</button>
           </div>
-          <div className="infoConfigOptCountPrice">85000원</div>
+          <div className="infoConfigOptCountPrice">
+            {parseInt(this.props.cartOption.cartPrice) +
+              parseInt(this.props.realPrice)}
+            원
+          </div>
         </div>
       </div>
     );
