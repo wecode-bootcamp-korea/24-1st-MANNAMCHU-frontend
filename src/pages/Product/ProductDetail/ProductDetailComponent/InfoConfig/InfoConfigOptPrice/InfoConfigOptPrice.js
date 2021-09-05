@@ -21,8 +21,10 @@ export default class InfoConfigOptPrice extends Component {
             <button className="infoConfigOptCountUp">+</button>
           </div>
           <div className="infoConfigOptCountPrice">
-            {parseInt(this.props.cartOption.cartPrice) +
-              parseInt(this.props.realPrice)}
+            {(
+              parseInt(this.props.cartOption.cartPrice) +
+              parseInt(this.props.realPrice)
+            ).toLocaleString()}
             원
           </div>
         </div>

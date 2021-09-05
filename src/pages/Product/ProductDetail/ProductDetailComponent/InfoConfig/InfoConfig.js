@@ -44,7 +44,7 @@ export default class InfoConfig extends Component {
                 총 상품금액({this.props.addCartTotalCount()})
               </span>
               <span className="infoConfigOptTotalPrice">
-                {this.props.addCartTotalPrice()}원
+                {this.props.addCartTotalPrice().toLocaleString()}원
               </span>
             </div>
           </div>

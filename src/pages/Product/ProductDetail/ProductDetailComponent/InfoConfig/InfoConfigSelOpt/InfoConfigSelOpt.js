@@ -19,7 +19,9 @@ export default class InfoConfigSelOpt extends Component {
       >
         {this.props.option.option}
         {this.props.option.additional_price !== "0.00" ? (
-          <div>+ {parseInt(this.props.option.additional_price)}원</div>
+          <div>
+            + {parseInt(this.props.option.additional_price).toLocaleString()}원
+          </div>
         ) : (
           ""
         )}
