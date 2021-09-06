@@ -12,6 +12,9 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="nav letter">
+        <div className="brandName">
+          <p>MANNAMCHU</p>
+        </div>
         <div className="mainMenu">
           <ul>
             <li>
