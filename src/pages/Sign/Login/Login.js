@@ -9,7 +9,7 @@ class Login extends Component {
     this.state = {
       emailVal: "",
       pwVal: "",
-      isActive: "true",
+      isActive: true,
     };
   }
 
