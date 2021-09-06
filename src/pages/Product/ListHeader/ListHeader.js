@@ -5,7 +5,7 @@ export default class ListHeader extends Component {
   render() {
     return (
       <header className="listHeader letter">
-        <h1 className="logo title">Market</h1>
+        <h1 className="logo theme">Market</h1>
         <h2 className="titleDetail">실패 없이 맛있는 과일 구매</h2>
         <div className="explanation">
           <div className="explanationIntro">

@@ -36,7 +36,7 @@ export default class ProductList extends Component {
           />
         </div>
         <div className="letterWrapper">
-          <strong className="title letter">{product.name}</strong>
+          <strong className="theme">{product.name}</strong>
           {product.discount > 0 ? (
             <div className="priceWrapper original">
               <span className="amount">
