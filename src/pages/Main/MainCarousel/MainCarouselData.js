@@ -41,7 +41,7 @@ const CAROUSELS = [
   },
   {
     id: 5,
-    name: "thirdCarousel",
+    name: "fifthCarousel",
     image: [
       { id: 1, url: "/sources/images/instagram/pot.jpg" },
       { id: 2, url: "/sources/images/instagram/potato.jpg" },
