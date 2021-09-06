@@ -11,38 +11,36 @@ class Navbar extends Component {
   };
   render() {
     return (
-      <nav className="nav letter">
-        <div className="brandName">
-          <p>MANNAMCHU</p>
-        </div>
-        <div className="mainMenu">
-          <ul>
-            <li>
-              <Link to="/">market</Link>
-            </li>
-            <li>
-              <Link to="/">menu 1</Link>
-            </li>{" "}
-            <li>menu 2</li>
-            <li>menu 3</li>
-          </ul>
-        </div>
-        <div className="asideMenu">
-          <ul>
-            <li onClick={() => this.setState({ isLogin: true })}>
-              Login
-              {this.state.isLogin && <Login />}
-            </li>
-            <li onClick={() => this.setState({ isSignup: true })}>
-              Join
-              {this.state.isSignup && <Signup />}
-            </li>
-            <li>
-              <Link to="/">Cart</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <>
+        <nav className="nav letter">
+          <div className="brandName">
+            <p>MANNAMCHU</p>
+          </div>
+          <div className="mainMenu">
+            <ul>
+              <li>
+                <Link to="/">market</Link>
+              </li>
+              <li>
+                <Link to="/">menu 1</Link>
+              </li>{" "}
+              <li>menu 2</li>
+              <li>menu 3</li>
+            </ul>
+          </div>
+          <div className="asideMenu">
+            <ul>
+              <li onClick={() => this.setState({ isLogin: true })}>Login</li>
+              <li onClick={() => this.setState({ isSignup: true })}>Join</li>
+              <li>
+                <Link to="/">Cart</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {this.state.isLogin && <Login />}
+        {this.state.isSignup && <Signup />}
+      </>
     );
   }
 }
