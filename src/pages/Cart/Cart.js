@@ -6,6 +6,7 @@ export default class Cart extends Component {
     super(props);
     this.state = {
       cartData: {},
+      postPrice: 90000,
     };
   }
 
@@ -19,12 +20,22 @@ export default class Cart extends Component {
       });
   };
 
+  addTotalPrice = () => {
+    let addTotalPrice = 0;
+    for (let i = 0; i < this.state.cartData.listData.length; i++) {
+      addTotalPrice = addTotalPrice + this.state.cartData.listData[i].price;
+    }
+    return addTotalPrice;
+  };
+
   render() {
     return (
       <div className="cart">
         <div className="cartTop">
           <div className="cartHead letter">장바구니</div>
-          <div className="cartCount purple">1</div>
+          <div className="cartCount purple">
+            {this.state.cartData.listData?.length}
+          </div>
         </div>
         <div className="product">
           <ul className="productList productListHead">
@@ -40,11 +51,10 @@ export default class Cart extends Component {
             <li className="productBtn letter"></li>
           </ul>
         </div>
-        {this.state.cartData.listData && (
-          <Product
-            thumbnails={this.state.cartData.listData[0].thumbnails[0].item}
-          />
-        )}
+        {this.state.cartData.listData &&
+          this.state.cartData.listData.map((listData, idx) => {
+            return <Product key={idx} listData={listData} />;
+          })}
         <div className="itemTotal">
           <div className="itemTotalTitle">
             <span className="letter">상품가격</span>
@@ -52,9 +62,21 @@ export default class Cart extends Component {
             <span className="letter">적립예정포인트</span>
           </div>
           <div className="itemTotalContent">
-            <span className="letter">259900원</span>
-            <span className="letter">무료</span>
-            <span className="letter">2599포인트</span>
+            <span className="letter">
+              {this.state.cartData.listData &&
+                this.addTotalPrice().toLocaleString()}
+              원
+            </span>
+            <span className="letter">
+              {this.state.cartData.listData &&
+                (this.addTotalPrice() > this.state.postPrice
+                  ? "무료"
+                  : "3,000원")}
+            </span>
+            <span className="letter">
+              {this.state.cartData.listData && this.addTotalPrice() / 100}
+              포인트
+            </span>
           </div>
         </div>
         <div className="cartSelect">
@@ -64,7 +86,14 @@ export default class Cart extends Component {
           </div>
           <div className="cartSelectTotal">
             <span className="cartSelectTotalText letter">결제금액</span>
-            <span className="cartSelectTotalPrice logo">259900원</span>
+            <span className="cartSelectTotalPrice logo">
+              {this.state.cartData.listData &&
+                (
+                  (this.addTotalPrice() > this.state.postPrice ? 0 : 3000) +
+                  this.addTotalPrice()
+                ).toLocaleString()}
+              원
+            </span>
           </div>
         </div>
         <button className="cartOrder purple">주문하기</button>
@@ -98,11 +127,13 @@ class Product extends Component {
               <img
                 className="productItemImg"
                 alt="상품이미지"
-                src={this.props.thumbnails}
+                src={this.props.listData.thumbnails[0].item}
               />
             </div>
             <div>
-              <div className="productItemName letter">상품명</div>
+              <div className="productItemName letter">
+                {this.props.listData.name}
+              </div>
               <div className="productItemOpt letter">상품옵션</div>
             </div>
           </li>
@@ -115,7 +146,9 @@ class Product extends Component {
           </li>
           <li className="productShip letter">택배</li>
           <li className="productShipPrice letter">3000원</li>
-          <li className="productPrice letter">32,000원</li>
+          <li className="productPrice letter">
+            {parseInt(this.props.listData.price).toLocaleString()}원
+          </li>
           <li className="productBtn">
             <button className="productOrder">주문</button>
             <button className="productDelete">삭제</button>
