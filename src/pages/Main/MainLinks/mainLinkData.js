@@ -1,4 +1,4 @@
-const mainLists = [
+const MAIN_LISTS = [
   {
     id: 1,
     name: "gift",
@@ -31,4 +31,4 @@ const mainLists = [
   },
 ];
 
-export default mainLists;
+export default MAIN_LISTS;

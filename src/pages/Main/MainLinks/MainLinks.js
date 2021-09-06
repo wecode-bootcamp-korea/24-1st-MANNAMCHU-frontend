@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import MainLink from "./MainLink/MainLink";
-import mainLists from "./mainLinkData";
+import MAIN_LISTS from "./mainLinkData";
 import "./MainLinks.scss";
 
 class MainLinks extends Component {
   render() {
     return (
       <ul className="mainLinks letter">
-        {mainLists.map(link => (
+        {MAIN_LISTS.map(link => (
           <MainLink key={link.id} link={link} />
         ))}
         <li className="mainLink mapLink">
