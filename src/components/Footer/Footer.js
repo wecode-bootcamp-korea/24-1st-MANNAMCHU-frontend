@@ -5,7 +5,7 @@ import "./Footer.scss";
 export default class Footer extends Component {
   render() {
     return (
-      <div className="footer background beige">
+      <footer className="footer background beige letter">
         <div className="info">
           <div className="company">
             맛남츄 | 대표 : 위사장 | 사업자등록번호 : 307-24-05277 |
@@ -34,7 +34,7 @@ export default class Footer extends Component {
           <br />
           <Link to="/">Privacy</Link>
         </div>
-      </div>
+      </footer>
     );
   }
 }
