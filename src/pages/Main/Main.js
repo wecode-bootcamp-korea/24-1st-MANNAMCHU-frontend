@@ -1,9 +1,20 @@
 import React, { Component } from "react";
+import MainSlides from "./MainSlides/MainSlides";
+import MainLinks from "./MainLinks/MainLinks";
+import MainContents from "./MainContents/MainContents";
+import MainCarousel from "./MainCarousel/MainCarousel";
 import "./Main.scss";
 
 class Main extends Component {
   render() {
-    return <div className="main">메인 화면</div>;
+    return (
+      <>
+        <MainSlides />
+        <MainLinks />
+        <MainContents />
+        <MainCarousel />
+      </>
+    );
   }
 }
 
