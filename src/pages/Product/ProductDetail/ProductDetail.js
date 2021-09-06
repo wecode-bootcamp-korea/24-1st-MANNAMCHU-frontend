@@ -59,7 +59,6 @@ export default class ProductDetail extends Component {
       cartOption: option,
       cartPrice: price,
     };
-
     this.setState({
       cartData: this.state.cartData.concat(addCartData),
     });
@@ -85,6 +84,12 @@ export default class ProductDetail extends Component {
         parseInt(this.state.cartData[i].cartPrice);
     }
     return addCartTotalPrice;
+  };
+
+  plusOptionCount = id => {
+    const result = this.state.cartData.filter(cart => cart.cartId === id);
+    console.log("hello");
+    console.log(result);
   };
 
   render() {
@@ -138,6 +143,7 @@ export default class ProductDetail extends Component {
                     addCartTotalCount={this.addCartTotalCount}
                     addCartTotalPrice={this.addCartTotalPrice}
                     realPrice={price * (1 - discount)}
+                    plusOptionCount={this.plusOptionCount}
                   />
                 )}
                 <InfoOrder likeCount={like_count} />
