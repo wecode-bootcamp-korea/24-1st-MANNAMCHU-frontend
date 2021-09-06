@@ -2,27 +2,24 @@
   min-height: 30px;
 
   span {
-    display: inline-block;
-    padding: 2px 4px;
-    height: 16px;
-  }
-
-  .new {
+    font-size: 8px;
     margin: 3px;
-    color: white;
-    background-color: #2e2452;
-  }
+    padding: 3px 9px;
+    &.new {
+      color: white;
+      background-color: #2e2452;
+    }
 
-  .sale {
-    margin: 3px;
-    color: white;
-    background-color: #e85a58;
-  }
+    &.sale {
+      color: white;
+      background-color: #e95455;
+    }
 
-  .best {
-    margin: 3px;
-    color: #e85a58;
-    background-color: white;
-    border: 1px solid rgba(64, 64, 64, 0.5);
+    &.best {
+      padding: 2px 8px;
+      color: #e95455;
+      background-color: white;
+      border: 0.5px solid #cccccc;
+    }
   }
 }
