@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Login.scss";
 import logo from "../logo.png";
+import "./Login.scss";
 
 class Login extends Component {
   constructor() {
