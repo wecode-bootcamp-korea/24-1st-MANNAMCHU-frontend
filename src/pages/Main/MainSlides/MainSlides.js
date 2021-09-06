@@ -43,7 +43,7 @@ export default class MainSlides extends Component {
         <button className="goLeft" onClick={this.handleLeft}>
           <i className="fas fa-arrow-left" />
         </button>
-        <button className="goRight" onClick={SLIDES && this.handleRight}>
+        <button className="goRight" onClick={this.handleRight}>
           <i className="fas fa-arrow-right" />
         </button>
         <ul className="pagination"></ul>
