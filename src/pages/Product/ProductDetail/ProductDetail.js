@@ -64,6 +64,7 @@ export default class ProductDetail extends Component {
       cartData: this.state.cartData.concat(addCartData),
     });
   };
+  // filter 사용해서 내가 클릭한거랑, 지금 addCartData의 id랑 일치하면, cartOptionCount를 1 증가시키고, setState시킨다
 
   addCartTotalCount = () => {
     let addCartTotalCount = 0;
