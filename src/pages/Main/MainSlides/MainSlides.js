@@ -46,7 +46,6 @@ export default class MainSlides extends Component {
         <button className="goRight" onClick={this.handleRight}>
           <i className="fas fa-arrow-right" />
         </button>
-        <ul className="pagination"></ul>
       </div>
     );
   }

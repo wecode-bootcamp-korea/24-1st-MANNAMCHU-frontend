@@ -48,7 +48,12 @@ class MainCarousel extends Component {
             ))}
           </div>
         </div>
-        <ul className="pagination"></ul>
+        <button className="goLeft" onClick={this.handleLeft}>
+          <i className="fas fa-chevron-left" />
+        </button>
+        <button className="goRight" onClick={this.handleRight}>
+          <i className="fas fa-chevron-right" />
+        </button>
       </div>
     );
   }
