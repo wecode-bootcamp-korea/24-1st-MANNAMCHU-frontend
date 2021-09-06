@@ -1,0 +1,49 @@
+.slideWrapper {
+  position: relative;
+  opacity: 0;
+  z-index: 0;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+  font-size: 40px;
+
+  &.active {
+    opacity: 1;
+    z-index: 1;
+    animation: fadein 1000ms ease-in-out;
+  }
+
+  .slideImg {
+    width: 100vw;
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.5;
+  }
+
+  .comment {
+    position: absolute;
+    top: 38%;
+    left: 31%;
+    text-align: center;
+
+    p {
+      margin-bottom: 35px;
+    }
+
+    .logo {
+      font-size: 70px;
+      letter-spacing: 0.8rem;
+      font-weight: 700;
+    }
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
