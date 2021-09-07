@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import logo from "../logo.png";
 import "./Login.scss";
 
 class Login extends Component {
@@ -8,6 +9,7 @@ class Login extends Component {
     this.state = {
       emailVal: "",
       pwVal: "",
+      isActive: true,
     };
   }
 
@@ -26,7 +28,7 @@ class Login extends Component {
   checkValid = () => {
     const { emailVal, pwVal } = this.state;
 
-    return emailVal.includes("@") && pwVal.length >= 6;
+    return emailVal.includes("@") && pwVal.length >= 8;
   };
 
   handleLogin = () => {
@@ -48,12 +50,18 @@ class Login extends Component {
       });
   };
 
+  handleActive = e => {
+    this.setState({
+      isActive: false,
+    });
+  };
+
   render() {
     const { emailVal, pwVal } = this.state;
     return (
-      <div className="login">
-        <div className="loginBackground"></div>
+      <div className="login" onClick={this.handleActive}>
         <div className="loginContainer letter">
+          <img alt="logo" src={logo} />
           <h1>로그인</h1>
           <input
             type="text"

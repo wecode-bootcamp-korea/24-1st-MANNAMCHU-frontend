@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Login from "../../pages/Sign/Login/Login";
 import "./Navbar.scss";
 import Login from "../../pages/Sign/Login/Login";
 import Signup from "../../pages/Sign/Signup/Signup";
