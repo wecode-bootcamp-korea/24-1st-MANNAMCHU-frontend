@@ -54,7 +54,11 @@ export default class ProductList extends Component {
             </span>
             <span className="currency">원</span>
           </div>
-          <Tags isNew={tag[0].new} isSale={tag[0].sale} isBest={tag[0].best} />
+          <Tags
+            isNew={tag.includes("new")}
+            isSale={tag.includes("sale")}
+            isBest={tag.includes("best")}
+          />
           <div className="likes">
             <i className="far fa-heart" />
             <span>{product.like_count}</span>

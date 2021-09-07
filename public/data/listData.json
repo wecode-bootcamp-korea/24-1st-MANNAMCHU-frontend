@@ -8,13 +8,7 @@
         "https://i.ibb.co/hHxSQ4G/kotagauni-srinivas-Bq-OTm-SUQHvg-unsplash.jpg",
         "https://i.ibb.co/HPkq4VW/marek-studzinski-g-HKn-SDj-UTg-unsplash.jpg"
       ],
-      "tag": [
-        {
-          "new": true,
-          "sale": true,
-          "best": true
-        }
-      ],
+      "tag": ["new", "sale", "best"],
       "like_count": 10
     },
     {
@@ -25,13 +19,7 @@
         "https://i.ibb.co/4s6HCPt/al-soot-IO6-Mqma-Nb44-unsplash.jpg",
         "https://i.ibb.co/yhV6zxj/joshua-hoehne-uy5u-Bpovw5g-unsplash.jpg"
       ],
-      "tag": [
-        {
-          "new": false,
-          "sale": false,
-          "best": false
-        }
-      ],
+      "tag": [],
       "like_count": 10
     },
     {
@@ -42,13 +30,7 @@
         "https://i.ibb.co/YRdkxLC/jacek-dylag-r-OWn-ACMh-Bb-M-unsplash.jpg",
         "https://i.ibb.co/0hTLjnL/mohammad-amin-masoudi-3-ANwn-z-Uf-NQ-unsplash.jpg"
       ],
-      "tag": [
-        {
-          "new": true,
-          "sale": false,
-          "best": false
-        }
-      ],
+      "tag": ["new"],
       "like_count": 10
     },
     {
@@ -59,13 +41,7 @@
         "https://i.ibb.co/6wVyr0H/fa-barboza-Pv-h-XDd-PHk-unsplash.jpg",
         "https://i.ibb.co/GFm1Z9Q/fedor-BRi-T-s3t-N6-Y-unsplash.jpg"
       ],
-      "tag": [
-        {
-          "new": false,
-          "sale": true,
-          "best": false
-        }
-      ],
+      "tag": ["sale"],
       "like_count": 10
     },
     {
@@ -76,13 +52,7 @@
         "https://i.ibb.co/FqBThgn/alexander-schimmeck-v-TXt-Q8-ZBzv-Y-unsplash.jpg",
         "https://i.ibb.co/sCGQtfC/heather-gill-ICVexv-Zju-C0-unsplash.jpg"
       ],
-      "tag": [
-        {
-          "new": false,
-          "sale": false,
-          "best": true
-        }
-      ],
+      "tag": ["new", "sale", "best"],
       "like_count": 10
     }
   ]

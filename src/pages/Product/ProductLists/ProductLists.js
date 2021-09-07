@@ -15,7 +15,7 @@ export default class ProductLists extends Component {
   };
 
   componentDidMount() {
-    fetch("/data/listData.json", {
+    fetch("http://10.58.4.175:8000/products/list?page=1&tag=", {
       method: "GET",
     })
       .then(res => res.json())
@@ -25,9 +25,12 @@ export default class ProductLists extends Component {
   // fetch url 완성하면 아래 로직 통해서 filter uri 호출
   componentDidUpdate = (prevProps, prevState) => {
     if (this.state.filter !== prevState.filter) {
-      fetch("/data/filterData.json", {
-        method: "GET",
-      })
+      fetch(
+        `http://10.58.4.175:8000/products/list?page=1&tag=${this.state.filter}`,
+        {
+          method: "GET",
+        }
+      )
         .then(res => res.json())
         .then(items => this.setState({ items }));
     }
