@@ -11,7 +11,7 @@ export default class ProductLists extends Component {
 
   handleClick = e => {
     const clickedName = e.target.className;
-    this.setState({ ...this.state, filter: clickedName });
+    this.setState({ filter: clickedName });
   };
 
   componentDidMount() {
