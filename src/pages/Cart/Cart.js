@@ -10,13 +10,31 @@ export default class Cart extends Component {
     };
   }
 
+  // componentDidMount = () => {
+  //   fetch("/data/listData.json")
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       this.setState({
+  //         cartData: response,
+  //       });
+  //     });
+  // };
+
   componentDidMount = () => {
-    fetch("/data/listData.json")
+    fetch("http://10.58.4.175:8000/products/cart", {
+      method: "GET",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.gkCFFEj525ntZJdHEqKnUD8X-v9oy75acVxJrqqtpZE",
+      },
+    })
       .then(response => response.json())
       .then(response => {
         this.setState({
           cartData: response,
         });
+
+        console.log(this.state.cartData);
       });
   };
 
