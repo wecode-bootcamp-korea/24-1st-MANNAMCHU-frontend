@@ -1,7 +1,11 @@
 .productList {
+  display: block;
   width: 100%;
 
-  .imgWrapper {
+  .listImgWrapper {
+    width: 290px;
+    height: 290px;
+
     .productImg {
       display: block;
       width: 100%;
