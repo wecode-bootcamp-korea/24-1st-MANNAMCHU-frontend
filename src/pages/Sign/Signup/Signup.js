@@ -5,66 +5,34 @@ class Signup extends Component {
   constructor() {
     super();
     this.state = {
-      emailVal: "",
-      pwVal: "",
-      pwCheckVal: "",
-      nameVal: "",
-      phoneVal: "",
-      addressVal: "",
-      addressDetailVal: "",
+      accountInfo: {
+        email: "",
+        password: "",
+        name: "",
+        phone: "",
+        address: "",
+      },
+      addressDetail: "",
+      passwordCheck: "",
     };
   }
 
-  handleEmailInput = e => {
-    this.setState({
-      emailVal: e.target.value,
-    });
+  handleInput = e => {
+    const newInput = {
+      ...this.state.accountInfo,
+      [e.target.className]: e.target.value,
+    };
+    this.setState({ accountInfo: newInput });
   };
-
-  handlePwInput = e => {
-    this.setState({
-      pwVal: e.target.value,
-    });
-  };
-
-  // handlePwCheckInput = e => {
-  //   this.setState({
-  //     pwVal: e.target.value,
-  //   });
-  // };
-
-  handleNameInput = e => {
-    this.setState({
-      nameVal: e.target.value,
-    });
-  };
-
-  handlePhoneInput = e => {
-    this.setState({
-      phoneVal: e.target.value,
-    });
-  };
-
-  handleAddressInput = e => {
-    this.setState({
-      addressVal: e.target.value,
-    });
-  };
-
-  // handleAddressDetailInput = e => {
-  //   this.setState({
-  //     pwVal: e.target.value,
-  //   });
-  // };
 
   checkValid = () => {
-    const { emailVal, pwVal, nameVal, phoneVal, addressVal } = this.state;
+    const { email, password, name, phone, address } = this.state.accountInfo;
     return (
-      emailVal.includes("@") &&
-      pwVal.length >= 8 &&
-      nameVal.length >= 2 &&
-      phoneVal.length >= 10 &&
-      addressVal.length >= 4
+      email.includes("@") &&
+      password.length >= 8 &&
+      name.length >= 2 &&
+      phone.length >= 10 &&
+      address.length >= 4
     );
   };
 
@@ -72,11 +40,7 @@ class Signup extends Component {
     fetch("http://10.58.5.141:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
-        email: this.state.emailVal,
-        password: this.state.pwVal,
-        name: this.state.nameVal,
-        phone: this.state.phoneVal,
-        address: this.state.addressVal,
+        ...this.state.accountInfo,
       }),
     })
       .then(response => response.json())
@@ -91,28 +55,20 @@ class Signup extends Component {
   };
 
   render() {
-    const {
-      emailVal,
-      pwVal,
-      // pwCheckVal,
-      nameVal,
-      phoneVal,
-      addressVal,
-      // addressCheckVal,
-    } = this.state;
+    const { email, password, name, phone, address } = this.state.accountInfo;
+    // const { passwordCheck, addressDetail } = this.state;
     return (
-      <div className="signup letter show-modal">
-        <div className="signupBackground"></div>
+      <div className="signup letter">
         <div className="signupContainer">
           <h1>회원 가입</h1>
           <h3>계정 정보</h3>
           <input
             type="text"
             placeholder="이메일"
-            className="inputEmail"
-            onChange={this.handleEmailInput}
+            className="email"
+            onChange={this.handleInput}
           />
-          {emailVal && !emailVal.includes("@") && (
+          {email && !email.includes("@") && (
             <div className="warning">
               이메일 형식에 맞게 입력해 주세요. ex '@' 포함
             </div>
@@ -120,38 +76,38 @@ class Signup extends Component {
           <input
             type="password"
             placeholder="비밀번호"
-            className="inputPw"
-            onChange={this.handlePwInput}
+            className="password"
+            onChange={this.handleInput}
           />
-          {pwVal && pwVal.length < 8 && (
+          {password && password.length < 8 && (
             <div className="warning">8글자 이상 입력해 주세요.</div>
           )}
           <input
             type="password"
             placeholder="비밀번호 확인"
-            className="inputPwCheck"
-            onChange={this.handlePwCheckInput}
+            className="passwordCheck"
+            onChange={this.handleInput}
           />
-          {/* {!pwCheckVal === pwVal && (
+          {/* {!passwordCheck === password && (
           <div className="warning">(비밀번호 확인과 관련한 문구 필요)</div>
         )} */}
           <h3>가입 정보</h3>
           <input
             type="text"
             placeholder="이름"
-            className="inputName"
-            onChange={this.handleNameInput}
+            className="name"
+            onChange={this.handleInput}
           />
-          {nameVal && nameVal.length < 2 && (
+          {name && name.length < 2 && (
             <div className="warning">이름을 입력해 주세요.</div>
           )}
           <input
             type="number"
             placeholder="휴대전화번호"
-            className="inputPhone"
-            onChange={this.handlePhoneInput}
+            className="phone"
+            onChange={this.handleInput}
           />
-          {phoneVal && phoneVal.length < 10 && (
+          {phone && phone.length < 10 && (
             <div className="warning">
               휴대전화 번호를 입력해 주세요. ex 01033334444
             </div>
@@ -159,16 +115,16 @@ class Signup extends Component {
           <input
             type="text"
             placeholder="주소"
-            className="inputAddress"
-            onChange={this.handleAddressInput}
+            className="address"
+            onChange={this.handleInput}
           />
           <input
             type="text"
             placeholder="상세 주소"
-            className="inputAddressDetail"
-            onChange={this.handleAddressDetailInput}
+            className="addressDetail"
+            onChange={this.handleInput}
           />
-          {addressVal && addressVal.length < 4 && (
+          {address && address.length < 4 && (
             <div className="warning">주소를 입력해 주세요.</div>
           )}{" "}
           <button
