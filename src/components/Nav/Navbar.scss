@@ -1,34 +1,37 @@
 .nav {
   display: flex;
   justify-content: center;
-  background-color: black;
-  opacity: 0.1;
+  background-color: #2e2452;
   color: white;
   font-size: 20px;
-}
 
-.brandName .mainMenu {
-  margin-right: 200px;
-  font-weight: bolder;
-  font-size: 40px;
-}
+  .brandName .mainMenu {
+    margin-right: 200px;
+    font-weight: bolder;
+    font-size: 40px;
 
-.brandName {
-  margin-top: 50px;
-  margin-right: 50px;
-}
+    .brandName {
+      font-weight: bold;
+    }
+  }
 
-ul li {
-  float: left;
-  margin: 50px 30px 50px 30px;
-}
+  .brandName {
+    margin-top: 50px;
+    margin-right: 50px;
+  }
 
-a:link {
-  color: white;
-  text-decoration: none;
-}
+  ul li {
+    float: left;
+    margin: 50px 30px 50px 30px;
+  }
 
-a:visited {
-  color: white;
-  text-decoration: none;
+  a:link {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: white;
+    text-decoration: none;
+  }
 }
