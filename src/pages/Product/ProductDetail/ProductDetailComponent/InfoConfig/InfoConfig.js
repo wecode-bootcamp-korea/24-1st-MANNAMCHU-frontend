@@ -36,7 +36,6 @@ export default class InfoConfig extends Component {
                   key={idx}
                   cartOption={selOption}
                   realPrice={this.props.realPrice}
-                  plusOptionCount={this.props.plusOptionCount}
                 />
               );
             })}

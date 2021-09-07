@@ -18,12 +18,10 @@ export default class InfoConfigSelOpt extends Component {
         onClick={this.handleClick}
       >
         {this.props.option.option}
-        {this.props.option.additional_price !== "0.00" ? (
+        {parseInt(this.props.option.additional_price) && (
           <div>
             + {parseInt(this.props.option.additional_price).toLocaleString()}원
           </div>
-        ) : (
-          ""
         )}
       </button>
     );

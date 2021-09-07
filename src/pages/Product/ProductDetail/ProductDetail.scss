@@ -10,12 +10,8 @@
     padding: 15px;
 
     .img {
-      max-width: 50%;
+      width: 50%;
       padding: 15px;
-
-      .imgMain {
-        width: 100%;
-      }
 
       &Sub {
         display: flex;
@@ -25,6 +21,11 @@
     .info {
       max-width: 50%;
       padding: 15px 15px 15px 100px;
+
+      &Img {
+        width: 100%;
+        border-top: 1px solid #dedede;
+      }
     }
   }
 

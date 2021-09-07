@@ -3,6 +3,7 @@ import "./InfoPrice.scss";
 
 export default class InfoPrice extends Component {
   render() {
+    console.log(this.props.priceSale);
     return (
       <div className="infoPrice">
         <span>

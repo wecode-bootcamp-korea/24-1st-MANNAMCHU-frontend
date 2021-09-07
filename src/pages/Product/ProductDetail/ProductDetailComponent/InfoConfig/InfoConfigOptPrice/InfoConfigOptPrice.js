@@ -18,12 +18,7 @@ export default class InfoConfigOptPrice extends Component {
               {this.props.cartOption.cartOptionCount &&
                 this.props.cartOption.cartOptionCount}
             </div>
-            <button
-              className="infoConfigOptCountUp"
-              onClick={this.props.plusOptionCount(this.props.cartOption.cartId)}
-            >
-              +
-            </button>
+            <button className="infoConfigOptCountUp">+</button>
           </div>
           <div className="infoConfigOptCountPrice">
             {(
