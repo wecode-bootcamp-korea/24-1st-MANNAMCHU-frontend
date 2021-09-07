@@ -74,12 +74,6 @@ export default class ProductDetail extends Component {
     this.activeOptionViewer();
   };
 
-  deleteCart = () => {
-    fetch("http://10.58.5.3:8000/products/cart?option_id=1", {
-      method: "DELETE",
-    });
-  };
-
   postCart = () => {
     fetch("http://10.58.5.3:8000/products/cart", {
       method: "POST",
