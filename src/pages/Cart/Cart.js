@@ -9,18 +9,9 @@ export default class Cart extends Component {
     this.state = {
       cartData: {},
       postPrice: 90000,
+      delCartData: [],
     };
   }
-
-  componentDidMount = () => {
-    fetch("/data/listData.json")
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          cartData: response,
-        });
-      });
-  };
 
   //서버와 통신
   // componentDidMount = () => {
@@ -38,6 +29,28 @@ export default class Cart extends Component {
   //       });
   //     });
   // };
+
+  componentDidMount = () => {
+    fetch("/data/listData.json")
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          cartData: response,
+        });
+      });
+  };
+
+  // delServerCartData = () => {
+  //   fetch(`http://10.58.5.3:8000/products/cart?option_id=${id}`, {
+  //     method: "DELETE",
+  //   });
+  // };
+
+  delCartData = (id, idx) => {
+    this.setState({ delCartData: this.state.delCartData.concat(id) });
+    this.state.cartData.splice(idx, 1);
+    console.log(this.state.cartData);
+  };
 
   addTotalPrice = () => {
     let addTotalPrice = 0;
@@ -81,6 +94,7 @@ export default class Cart extends Component {
                 key={idx}
                 listData={listData}
                 postPrice={this.state.postPrice}
+                delCartData={this.delCartData}
               />
             );
           })}
@@ -142,93 +156,3 @@ export default class Cart extends Component {
     );
   }
 }
-
-// class Product extends Component {
-//   render() {
-//     return (
-//       <div className="product">
-//         <ul className="productList">
-//           <li className="productCheck">
-//             <input type="checkbox" className="productCheckBtn" />
-//           </li>
-//           <li className="productItem">
-//             <div>
-//               <img
-//                 className="productItemImg"
-//                 alt="상품이미지"
-//                 src={this.props.listData.image}
-//               />
-//             </div>
-//             <div>
-//               <div className="productItemName letter">
-//                 {this.props.listData.product}
-//               </div>
-//               <div className="productItemOpt letter">
-//                 {this.props.listData.option}
-//               </div>
-//             </div>
-//           </li>
-//           <li className="productWish">
-//             <i className="far fa-heart" />
-//           </li>
-//           <li className="productCount">
-//             <div className="productCountNum">
-//               {this.props.listData.quantity}
-//             </div>
-//             <button className="productCountChange">변경</button>
-//           </li>
-//           <li className="productShip letter">택배</li>
-//           <li className="productShipPrice letter">
-//             {(parseInt(this.props.listData.price) +
-//               parseInt(this.props.listData.addtional_price)) *
-//               this.props.listData.quantity >
-//             this.props.postPrice
-//               ? "무료"
-//               : "3,000원"}
-//           </li>
-//           <li className="productPrice letter">
-//             {(
-//               (parseInt(this.props.listData.price) +
-//                 parseInt(this.props.listData.addtional_price)) *
-//               this.props.listData.quantity
-//             ).toLocaleString()}
-//             원
-//           </li>
-//           <li className="productBtn">
-//             <button className="productOrder">주문</button>
-//             <button className="productDelete">삭제</button>
-//           </li>
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-
-// class WishList extends Component {
-//   render() {
-//     return (
-//       <div className="wishList">
-//         <div className="wishListImg">
-//           <img
-//             alt="과일"
-//             src="	https://cdn.imweb.me/thumbnail/20210328/a279ae183ff9e.jpg"
-//           />
-//         </div>
-//         <div className="wishListName">[새벽배송] 메론스럽게,메론</div>
-//         <div className="wishListPrice">
-//           <span className="wishListPriceReal letter">64000원</span>
-//           <span className="wishListPriceSale letter">31500원</span>
-//         </div>
-//         <div className="wishListTags">
-//           <Tags isNew={true} isBest={true} isSale={true} />
-//         </div>
-//         <div className="wishListWish">
-//           <span>
-//             <i className="far fa-heart" />
-//           </span>
-//           <span className="wishListWishCount">2</span>
-//         </div>
-//       </div>
-//     );
-//   }
-// }

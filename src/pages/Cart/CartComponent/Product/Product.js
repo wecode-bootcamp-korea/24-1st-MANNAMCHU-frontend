@@ -53,7 +53,15 @@ export default class Product extends Component {
           </li>
           <li className="productBtn">
             <button className="productOrder">주문</button>
-            <button className="productDelete">삭제</button>
+            <button
+              className="productDelete"
+              onClick={this.props.delCartData(
+                this.props.listData.id,
+                this.props.key
+              )}
+            >
+              삭제
+            </button>
           </li>
         </ul>
       </div>
