@@ -8,7 +8,7 @@ export default class InfoConfigOptPrice extends Component {
         <div className="infoConfigOptName">
           <span>{this.props.cartOption.cartOption}</span>
           <span>
-            <i className="far fa-times-circle"></i>
+            <i className="far fa-times-circle" />
           </span>
         </div>
         <div className="infoConfigOptCount">

@@ -18,6 +18,18 @@ export default class ProductDetail extends Component {
       cartTotalCount: 0,
       cartTotalPrice: 0,
       cartData: [],
+      postData: [
+        {
+          user_id: 1,
+          quantity: 1,
+          option_id: 1,
+        },
+        {
+          user_id: 1,
+          quantity: 1,
+          option_id: 2,
+        },
+      ],
     };
   }
 
@@ -53,16 +65,51 @@ export default class ProductDetail extends Component {
 
   addCartData = (id, option, price) => {
     const addCartData = {
-      cartId: id,
-      cartOptionCount: 1,
+      option_id: id,
       cartOption: option,
       cartPrice: price,
+      cartOptionCount: 1,
     };
     this.setState({
       cartData: this.state.cartData.concat(addCartData),
     });
+
+    const postData = {
+      user_id: 1,
+      quantity: 1,
+      option_id: id,
+    };
+    this.setState({
+      postData: this.state.postData.concat(postData),
+    });
     this.activeOptionViewer();
   };
+
+  deleteCart = () => {
+    fetch("http://10.58.5.3:8000/products/cart?option_id=1", {
+      method: "DELETE",
+    });
+  };
+
+  postCart = () => {
+    fetch("http://10.58.5.3:8000/products/cart", {
+      method: "POST",
+      body: JSON.stringify(this.state.postData),
+    }).then(res => console.log(res));
+  };
+
+  // plusOptionCount = () => {
+  //   this.setState(({ cartData }) => ({
+  //     cartData: [
+  //       ...cartData.slice(0, 1),
+  //       {
+  //         ...cartData[1],
+  //         cartOptionCount: cartData[1].cartOptionCount + 1,
+  //       },
+  //       ...cartData.slice(2),
+  //     ],
+  //   }));
+  // };
 
   addCartTotalCount = () => {
     let addCartTotalCount = 0;
@@ -139,7 +186,7 @@ export default class ProductDetail extends Component {
                   realPrice={price * (1 - this.getSaleRate())}
                 />
               )}
-              <InfoOrder likeCount={like_count} />
+              <InfoOrder likeCount={like_count} postCart={this.postCart} />
             </div>
           </div>
           <div className="tab">
