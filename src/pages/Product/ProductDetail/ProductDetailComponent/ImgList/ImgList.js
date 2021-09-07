@@ -15,7 +15,9 @@ export default class ImgMainList extends Component {
 
   handleCurrentSlide = () => {
     const { selected } = this.state;
-    this.setState({ selected: selected === 5 ? 1 : selected + 1 });
+    this.setState({
+      selected: selected === this.props.image.length ? 1 : selected + 1,
+    });
   };
 
   render() {

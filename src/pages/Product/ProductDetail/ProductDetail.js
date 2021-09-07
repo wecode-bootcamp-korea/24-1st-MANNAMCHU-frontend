@@ -21,7 +21,7 @@ export default class ProductDetail extends Component {
     };
   }
 
-  //서버와 통신
+  // 서버와 통신
   // componentDidMount = () => {
   //   fetch("http://10.58.6.58:8000/products/detail?id=4", {
   //     method: "GET",
