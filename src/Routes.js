@@ -6,6 +6,7 @@ import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Sign/Login/Login";
 import Navbar from "./components/Nav/Navbar";
 import Footer from "./components/Footer/Footer";
+import Signup from "./pages/Sign/Signup/Signup";
 
 class Routes extends Component {
   render() {
@@ -17,6 +18,7 @@ class Routes extends Component {
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/navbar" component={Navbar} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
         <Footer />
       </Router>

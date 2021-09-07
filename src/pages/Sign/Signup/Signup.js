@@ -5,28 +5,22 @@ class Signup extends Component {
   constructor() {
     super();
     this.state = {
-      accountInfo: {
-        email: "",
-        password: "",
-        name: "",
-        phone: "",
-        address: "",
-      },
-      addressDetail: "",
+      email: "",
+      password: "",
+      name: "",
+      phone: "",
+      address: "",
       passwordCheck: "",
+      addressDetail: "",
     };
   }
 
   handleInput = e => {
-    const newInput = {
-      ...this.state.accountInfo,
-      [e.target.className]: e.target.value,
-    };
-    this.setState({ accountInfo: newInput });
+    this.setState({ [e.target.className]: e.target.value });
   };
 
   checkValid = () => {
-    const { email, password, name, phone, address } = this.state.accountInfo;
+    const { email, password, name, phone, address } = this.state;
     return (
       email.includes("@") &&
       password.length >= 8 &&
@@ -40,7 +34,11 @@ class Signup extends Component {
     fetch("http://10.58.5.141:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
-        ...this.state.accountInfo,
+        email: "",
+        password: "",
+        name: "",
+        phone: "",
+        address: "",
       }),
     })
       .then(response => response.json())
@@ -55,7 +53,7 @@ class Signup extends Component {
   };
 
   render() {
-    const { email, password, name, phone, address } = this.state.accountInfo;
+    const { email, password, name, phone, address } = this.state;
     // const { passwordCheck, addressDetail } = this.state;
     return (
       <div className="signup letter">
