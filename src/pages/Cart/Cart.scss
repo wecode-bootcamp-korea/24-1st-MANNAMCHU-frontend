@@ -45,7 +45,8 @@
         text-align: center;
 
         &Btn {
-          font-size: 100px;
+          width: 15px;
+          height: 15px;
         }
       }
 
@@ -221,52 +222,5 @@
     justify-content: space-between;
     width: 1200px;
     margin-top: 20px;
-  }
-
-  .wishList {
-    display: flex;
-    flex-direction: column;
-
-    &Img {
-      width: 230px;
-      height: 230px;
-
-      img {
-        width: 100%;
-      }
-    }
-
-    &Name {
-      margin-top: 30px;
-      font-weight: 600;
-    }
-
-    &Price {
-      margin-top: 10px;
-      font-size: 15px;
-
-      &Real {
-        color: #9f9f9f;
-        text-decoration: line-through;
-      }
-
-      &Sale {
-        margin-left: 10px;
-      }
-    }
-
-    &Tags {
-      margin-top: 10px;
-    }
-
-    &Wish {
-      margin-top: 15px;
-      color: #9b9b9b;
-    }
-
-    &WishCount {
-      margin-left: 5px;
-      color: #9b9b9b;
-    }
   }
 }
