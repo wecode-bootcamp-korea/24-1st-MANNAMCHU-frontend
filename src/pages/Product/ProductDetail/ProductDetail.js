@@ -81,18 +81,18 @@ export default class ProductDetail extends Component {
     }).then(res => console.log(res));
   };
 
-  // plusOptionCount = () => {
-  //   this.setState(({ cartData }) => ({
-  //     cartData: [
-  //       ...cartData.slice(0, 1),
-  //       {
-  //         ...cartData[1],
-  //         cartOptionCount: cartData[1].cartOptionCount + 1,
-  //       },
-  //       ...cartData.slice(2),
-  //     ],
-  //   }));
-  // };
+  plusOptionCount = () => {
+    this.setState(({ cartData }) => ({
+      cartData: [
+        ...cartData.slice(0, 1),
+        {
+          ...cartData[1],
+          cartOptionCount: cartData[1].cartOptionCount + 1,
+        },
+        ...cartData.slice(2),
+      ],
+    }));
+  };
 
   addCartTotalCount = () => {
     let addCartTotalCount = 0;
@@ -126,6 +126,7 @@ export default class ProductDetail extends Component {
   };
 
   render() {
+    console.log(this.state.cartData);
     const {
       name,
       price,
@@ -139,6 +140,7 @@ export default class ProductDetail extends Component {
     return (
       <>
         <div className="productDetail">
+          <button onClick={this.plusOptionCount}>테스트</button>
           <div className="top">
             <div className="img">{image && <ImgList image={image} />}</div>
             <div className="info">
