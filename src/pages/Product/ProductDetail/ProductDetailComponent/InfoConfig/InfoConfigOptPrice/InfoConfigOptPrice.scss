@@ -34,7 +34,8 @@
       width: 25px;
       height: 30px;
       background-color: #f9f9f9;
-      border: 1px solid #cccccc;
+      border-style: none;
+      border-right: 1px solid #cccccc;
     }
 
     &Num {
@@ -45,7 +46,8 @@
       width: 25px;
       height: 30px;
       background-color: #f9f9f9;
-      border: 1px solid #cccccc;
+      border-style: none;
+      border-left: 1px solid #cccccc;
     }
 
     &Price {

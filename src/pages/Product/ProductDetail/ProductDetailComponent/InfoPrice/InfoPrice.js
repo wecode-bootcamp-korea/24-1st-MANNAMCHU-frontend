@@ -3,24 +3,18 @@ import "./InfoPrice.scss";
 
 export default class InfoPrice extends Component {
   render() {
-    console.log(this.props.priceSale);
+    const { priceSale, priceReal } = this.props;
+
     return (
       <div className="infoPrice">
         <span>
           <span className="infoPriceReal">
-            {this.props.priceSale !== 0
-              ? (
-                  this.props.priceReal *
-                  (1 - this.props.priceSale)
-                ).toLocaleString() + "원"
-              : this.props.priceReal.toLocaleString() + "원"}
+            {priceSale !== 0
+              ? (priceReal * (1 - priceSale)).toLocaleString() + "원"
+              : priceReal.toLocaleString() + "원"}
           </span>
-          <span
-            className={
-              this.props.priceSale === 0 ? "disappear" : "infoPriceSale"
-            }
-          >
-            {this.props.priceReal.toLocaleString() + "원"}
+          <span className={priceSale === 0 ? "disappear" : "infoPriceSale"}>
+            {priceReal.toLocaleString() + "원"}
           </span>
         </span>
         <span className="infoPriceShare">

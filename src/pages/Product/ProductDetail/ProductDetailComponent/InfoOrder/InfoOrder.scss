@@ -15,5 +15,10 @@
 
   &Like {
     flex-grow: 1;
+
+    &On {
+      color: purple;
+      border-color: purple;
+    }
   }
 }
