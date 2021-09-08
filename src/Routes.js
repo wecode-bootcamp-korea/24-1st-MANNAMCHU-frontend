@@ -12,12 +12,12 @@ class Routes extends Component {
   render() {
     return (
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/product" component={Product} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/navbar" component={Navbar} />
           <Route exact path="/signup" component={Signup} />
         </Switch>
         <Footer />

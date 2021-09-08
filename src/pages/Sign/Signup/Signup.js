@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import "./Signup.scss";
 
 class Signup extends Component {
@@ -16,13 +18,13 @@ class Signup extends Component {
   }
 
   handleInput = e => {
-    this.setState({ [e.target.className]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   checkValid = () => {
     const { email, password, name, phone, address } = this.state;
     return (
-      email.includes("@") &&
+      email.includes("@" && ".") &&
       password.length >= 8 &&
       name.length >= 2 &&
       phone.length >= 10 &&
@@ -64,17 +66,19 @@ class Signup extends Component {
             type="text"
             placeholder="이메일"
             className="email"
+            name="email"
             onChange={this.handleInput}
           />
-          {email && !email.includes("@") && (
+          {email && !email.includes("@" && ".") && (
             <div className="warning">
-              이메일 형식에 맞게 입력해 주세요. ex '@' 포함
+              이메일 형식에 맞게 입력해 주세요. ex) aa@a.a
             </div>
           )}
           <input
             type="password"
-            placeholder="비밀번호"
+            placeholder="비밀번호 ( 8글자 이상 입력해 주세요. )"
             className="password"
+            name="password"
             onChange={this.handleInput}
           />
           {password && password.length < 8 && (
@@ -84,16 +88,21 @@ class Signup extends Component {
             type="password"
             placeholder="비밀번호 확인"
             className="passwordCheck"
+            name="passwordCheck"
             onChange={this.handleInput}
           />
           {/* {!passwordCheck === password && (
           <div className="warning">(비밀번호 확인과 관련한 문구 필요)</div>
         )} */}
+          <div className="toLogin">
+            이미 가입하셨나요? <Link to="/login">로그인하기</Link>
+          </div>
           <h3>가입 정보</h3>
           <input
             type="text"
             placeholder="이름"
             className="name"
+            name="name"
             onChange={this.handleInput}
           />
           {name && name.length < 2 && (
@@ -101,25 +110,28 @@ class Signup extends Component {
           )}
           <input
             type="number"
-            placeholder="휴대전화번호"
+            placeholder="휴대전화번호 ( '-' 없이 입력해 주세요. )"
             className="phone"
+            name="phone"
             onChange={this.handleInput}
           />
           {phone && phone.length < 10 && (
             <div className="warning">
-              휴대전화 번호를 입력해 주세요. ex 01033334444
+              알맞은 휴대전화 번호를 입력해 주세요. ex) 01022223333
             </div>
           )}
           <input
             type="text"
             placeholder="주소"
             className="address"
+            name="address"
             onChange={this.handleInput}
           />
           <input
             type="text"
             placeholder="상세 주소"
             className="addressDetail"
+            name="addressDetail"
             onChange={this.handleInput}
           />
           {address && address.length < 4 && (
@@ -130,7 +142,7 @@ class Signup extends Component {
             type="button"
             onClick={this.handleSignup}
           >
-            가입하기
+            가입
           </button>
           <div className="copyRight">
             © mannamchu, Co., Ltd.. All Rights Free
