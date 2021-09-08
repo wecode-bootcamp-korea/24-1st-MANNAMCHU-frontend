@@ -1,1 +1,84 @@
-//Login
+.login {
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+
+  img {
+    width: 250px;
+    margin-bottom: 10px;
+  }
+
+  .loginContainer {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 60px 40px;
+    margin: 50px auto;
+    background-color: #fff;
+    align-items: center;
+
+    .inputEmail,
+    .inputPw {
+      width: 100%;
+      height: 50px;
+      padding: 15px;
+      margin-top: 50px;
+      border: solid 1px lightgray;
+
+      &::placeholder {
+        font-family: "Nanum Myeongjo", serif;
+        font-size: 15px;
+      }
+    }
+
+    h1 {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .loginBtn {
+      width: 100%;
+      height: 50px;
+      margin-top: 50px;
+      border: none;
+      color: #fff;
+      background-color: #2e2452;
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    .warning {
+      width: 100%;
+      margin: 15px 0 0 31px;
+      color: #2e2452;
+      font-size: 13px;
+    }
+
+    .toJoin {
+      width: 350px;
+      margin-top: 20px;
+      margin-left: 35px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .copyRight {
+      margin-top: 100px;
+      color: grey;
+      font-size: 13px;
+    }
+  }
+}

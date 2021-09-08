@@ -92,6 +92,7 @@ export default class Cart extends Component {
             return (
               <Product
                 key={idx}
+                id={idx}
                 listData={listData}
                 postPrice={this.state.postPrice}
                 // delCartData={this.delCartData}

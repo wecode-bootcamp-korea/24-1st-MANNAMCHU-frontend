@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 export default class CartProduct extends Component {
+  delCartDataHendle = () => {
+    this.props.delCartData(this.props.listData.id);
+  };
+
   render() {
     return (
       <div className="product">
@@ -55,10 +59,10 @@ export default class CartProduct extends Component {
             <button className="productOrder">주문</button>
             <button
               className="productDelete"
-              // onClick={this.props.delCartData(
-              //   this.props.listData.id,
-              //   this.props.key
-              // )}
+              onClick={this.props.delCartData(
+                this.props.listData.option_id,
+                this.props.id
+              )}
             >
               삭제
             </button>

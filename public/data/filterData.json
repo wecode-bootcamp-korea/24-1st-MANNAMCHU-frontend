@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "name": "kimchi",
+      "price": "3000.00",
+      "discount": "0.00",
+      "image": [
+        {
+          "url": "aaa"
+        },
+        {
+          "url": "aaaa"
+        }
+      ],
+      "tag": [
+        {
+          "new": true,
+          "sale": true,
+          "best": true
+        }
+      ],
+      "like_count": 10
+    },
+    {
+      "name": "rice",
+      "price": "3000.00",
+      "discount": "0.00",
+      "image": [
+        {
+          "url": "ccc"
+        },
+        {
+          "url": "cccc"
+        }
+      ],
+      "tag": [
+        {
+          "new": true,
+          "sale": false,
+          "best": false
+        }
+      ],
+      "like_count": 10
+    }
+  ]
+}
