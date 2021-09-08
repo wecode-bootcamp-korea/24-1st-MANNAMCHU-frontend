@@ -32,7 +32,7 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    fetch("http://10.58.5.141:8000/users/signin", {
+    fetch("http://10.58.7.49:8000/users/signin", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.emailVal,
@@ -43,7 +43,7 @@ class Login extends Component {
       .then(response => {
         if (response.token) {
           localStorage.setItem("token", response.token);
-          this.props.history.push("/");
+          // this.props.history.push("/");
         } else {
           alert("이메일, 비밀번호를 다시 입력해 주세요.");
         }
