@@ -4,15 +4,16 @@
   display: flex;
 
   .mainLink {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 16.666%;
     height: 200px;
-    padding: 50px;
 
     /*fonts*/
     .listTitle {
       font-family: "Roboto Slab", serif;
-      font-size: 35px;
+      font-size: 36px;
       color: #2e2452;
       margin-bottom: 20px;
     }
