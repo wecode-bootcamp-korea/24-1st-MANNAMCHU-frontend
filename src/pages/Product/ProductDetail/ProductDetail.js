@@ -50,7 +50,14 @@ export default class ProductDetail extends Component {
     fetch("http://10.58.7.239:8000/products/cart", {
       method: "POST",
       body: JSON.stringify(this.state.postData),
-    }).then(res => console.log(res));
+    }).then(
+      res =>
+        this.setState({
+          cartData: [],
+          postData: [],
+        }),
+      alert("장바구니에 상품을 담았습니다")
+    );
   };
 
   activeOptionViewer = () => {
