@@ -79,13 +79,13 @@ class Signup extends Component {
           )}
           <input
             type="password"
-            placeholder="비밀번호 ( 8글자 이상 입력해 주세요. )"
+            placeholder="비밀번호 ( 8~20자를 입력해 주세요. )"
             className="password"
             name="password"
             onChange={this.handleInput}
           />
           {password && password.length < 8 && (
-            <div className="warning">8글자 이상 입력해 주세요.</div>
+            <div className="warning">8~20자를 입력해 주셔야 해요.</div>
           )}
           <input
             type="password"
