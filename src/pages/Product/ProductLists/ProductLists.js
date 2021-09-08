@@ -26,10 +26,7 @@ export default class ProductLists extends Component {
   componentDidUpdate = (prevProps, prevState) => {
     if (this.state.filter !== prevState.filter) {
       fetch(
-        `http://10.58.4.175:8000/products/list?page=1&tag=${this.state.filter}`,
-        {
-          method: "GET",
-        }
+        `http://10.58.4.175:8000/products/list?page=1&tag=${this.state.filter}`
       )
         .then(res => res.json())
         .then(items => this.setState({ items }));
@@ -39,7 +36,6 @@ export default class ProductLists extends Component {
   render() {
     const { products } = this.state.items;
     const { filter } = this.state;
-    console.log(filter);
     return (
       <section className="productLists">
         <div className="filterWrapper">
