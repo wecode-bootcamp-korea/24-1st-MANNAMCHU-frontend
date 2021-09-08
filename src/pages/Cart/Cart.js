@@ -40,11 +40,11 @@ export default class Cart extends Component {
       });
   };
 
-  // delServerCartData = () => {
-  //   fetch(`http://10.58.5.3:8000/products/cart?option_id=${id}`, {
-  //     method: "DELETE",
-  //   });
-  // };
+  delServerCartData = () => {
+    fetch(`http://10.58.5.3:8000/products/cart?option_id=${id}`, {
+      method: "DELETE",
+    });
+  };
 
   delCartData = (id, idx) => {
     this.setState({ delCartData: this.state.delCartData.concat(id) });
