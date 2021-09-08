@@ -1,0 +1,23 @@
+.infoSend {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #e7e7e7;
+
+  &Truck {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    color: white;
+    background-color: #2e2452;
+    border-radius: 50%;
+
+    &Icon {
+      transform: translate(12px, 12px);
+    }
+  }
+
+  &Text {
+    margin-left: 10px;
+  }
+}

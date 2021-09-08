@@ -1,0 +1,41 @@
+.infoConfig {
+  margin-top: 20px;
+  padding-top: 10px;
+
+  &Sel {
+    position: relative;
+
+    &Btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 30px;
+      margin-top: 10px;
+      background-color: #efefef;
+      border: 1px solid #c1c1c1;
+    }
+
+    &Opt {
+      position: absolute;
+      top: 30px;
+      width: 100%;
+    }
+  }
+
+  &OptResult {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .infoConfigOptTotalCount {
+      margin-left: 15px;
+      color: #858585;
+    }
+
+    .infoConfigOptTotalPrice {
+      margin-right: 15px;
+      font-size: 30px;
+    }
+  }
+}
