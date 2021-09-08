@@ -47,6 +47,11 @@ export default class ProductDetail extends Component {
   // };
 
   postCart = () => {
+    if (this.state.postData.length === 0) {
+      alert("항목을 선택해 주세요");
+      return;
+    }
+
     fetch("http://10.58.7.239:8000/products/cart", {
       method: "POST",
       body: JSON.stringify(this.state.postData),
