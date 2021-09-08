@@ -27,7 +27,6 @@ class Login extends Component {
 
   checkValid = () => {
     const { emailVal, pwVal } = this.state;
-
     return emailVal.includes("@") && pwVal.length >= 8;
   };
 
