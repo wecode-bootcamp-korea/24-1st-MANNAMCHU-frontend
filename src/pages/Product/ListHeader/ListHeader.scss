@@ -1,0 +1,52 @@
+//scss
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap");
+
+.listHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  color: #2e2452;
+  text-align: center;
+  margin-bottom: 60px;
+  z-index: 1;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 60vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("https://cdn.imweb.me/thumbnail/20210829/ef4c1f40f5e8e.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-color: #fff;
+    opacity: 0.5;
+    z-index: -1;
+  }
+
+  .logo {
+    font-size: 100px;
+    margin-bottom: 20px;
+  }
+
+  .titleDetail {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .explanation {
+    strong {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .explanationIntro {
+      margin-bottom: 10px;
+    }
+  }
+}
