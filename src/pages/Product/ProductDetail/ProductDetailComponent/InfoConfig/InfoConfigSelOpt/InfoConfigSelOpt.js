@@ -11,17 +11,17 @@ export default class InfoConfigSelOpt extends Component {
   };
 
   render() {
+    const { id, option, additional_price } = this.props.option;
+
     return (
       <button
         className="infoConfigSelOptList"
-        id={this.props.option.id}
+        id={id}
         onClick={this.handleClick}
       >
-        {this.props.option.option}
-        {parseInt(this.props.option.additional_price) && (
-          <div>
-            + {parseInt(this.props.option.additional_price).toLocaleString()}원
-          </div>
+        {option}
+        {parseInt(additional_price) && (
+          <div>+ {parseInt(additional_price).toLocaleString()}원</div>
         )}
       </button>
     );
