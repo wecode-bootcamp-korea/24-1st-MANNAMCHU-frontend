@@ -1,11 +1,16 @@
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: #2e2452;
   opacity: 0.9;
-  color: white;
-  font-size: 20px;
+
+  .navMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1100px;
+    margin: 0 auto;
+    color: white;
+    font-size: 20px;
+  }
 
   .brandName {
     margin-left: 30px;

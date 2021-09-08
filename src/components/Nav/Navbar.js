@@ -27,41 +27,43 @@ class Navbar extends Component {
     return (
       <>
         <nav className="nav letter">
-          <div className="brandName">
-            <Link to="/">MANNAMCHU</Link>
-          </div>
-          <div className="mainMenu">
-            <ul>
-              <li>
-                <Link to="/product">Market</Link>
-              </li>
-              <li>
-                <Link to="/">New</Link>
-              </li>{" "}
-              <li>
-                <Link to="/">Best</Link>
-              </li>
-              <li>
-                <Link to="/">Sale</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="asideMenu">
-            <ul>
-              {localStorage.getItem("token") ? (
-                <li onClick={this.handleLogout}>Logout</li>
-              ) : (
-                <li onClick={() => this.setState({ isLoginModalOn: true })}>
-                  Login
+          <div className="navMenu">
+            <div className="brandName">
+              <Link to="/main">MANNAMCHU</Link>
+            </div>
+            <div className="mainMenu">
+              <ul>
+                <li>
+                  <Link to="/product">Market</Link>
                 </li>
-              )}
-              <li onClick={() => this.setState({ isSignupModalOn: true })}>
-                Join
-              </li>
-              <li>
-                <Link to="/cart">Cart</Link>
-              </li>
-            </ul>
+                <li>
+                  <Link to="/">New</Link>
+                </li>{" "}
+                <li>
+                  <Link to="/">Best</Link>
+                </li>
+                <li>
+                  <Link to="/">Sale</Link>
+                </li>
+              </ul>
+            </div>
+            <div className="asideMenu">
+              <ul>
+                {localStorage.getItem("token") ? (
+                  <li onClick={this.handleLogout}>Logout</li>
+                ) : (
+                  <li onClick={() => this.setState({ isLoginModalOn: true })}>
+                    Login
+                  </li>
+                )}
+                <li onClick={() => this.setState({ isSignupModalOn: true })}>
+                  Join
+                </li>
+                <li>
+                  <Link to="/cart">Cart</Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
         {this.state.isLoginModalOn && (
