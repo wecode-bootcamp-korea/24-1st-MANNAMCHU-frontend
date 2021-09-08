@@ -10,14 +10,15 @@ class Navbar extends Component {
     isSignup: false,
   };
 
+  // 로그인 안한 상태 ? 로그인이냐 로그아웃이냐?
+
   handleActive = () => {
     this.setState({
-      isLogin: !this.state.isLogin,
+      isLogin: false,
     });
   };
 
   render() {
-    console.log(this.state.isLogin);
     return (
       <>
         <nav className="nav letter">
@@ -44,12 +45,7 @@ class Navbar extends Component {
             </ul>
           </div>
         </nav>
-        {this.state.isLogin && (
-          <Login
-            isLogin={this.state.isLogin}
-            handleActive={this.handleActive}
-          />
-        )}
+        {this.state.isLogin && <Login handleActive={this.handleActive} />}
         {this.state.isSignup && <Signup />}
       </>
     );

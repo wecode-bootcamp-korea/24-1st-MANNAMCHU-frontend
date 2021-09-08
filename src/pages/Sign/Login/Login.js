@@ -9,6 +9,7 @@ class Login extends Component {
     this.state = {
       emailVal: "",
       pwVal: "",
+      isActive: true,
     };
   }
 
@@ -50,14 +51,14 @@ class Login extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { emailVal, pwVal } = this.state;
-    const { isLogin } = this.props;
-
     return (
-      <div
-        className={`login ${isLogin ? "" : "disappear"}`}
-        onClick={() => this.props.handleActive()}
-      >
+      <div className="login">
+        <div
+          className="loginBackground"
+          onClick={this.props.handleActive}
+        ></div>
         <div className="loginContainer letter">
           <img alt="logo" src={logo} />
           <h1>로그인</h1>

@@ -12,6 +12,12 @@
     margin-bottom: 10px;
   }
 
+  .loginBackground {
+    width: 100%;
+    height: 100%;
+    z-index: 88;
+  }
+
   .loginContainer {
     position: absolute;
     top: 0;
