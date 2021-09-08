@@ -5,16 +5,21 @@ import "./ProductList.scss";
 export default class ProductList extends Component {
   state = {
     isEntered: false,
+    isLiked: false,
   };
 
   handleMouse = () => {
     this.setState({ isEntered: !this.state.isEntered });
   };
 
+  handleClick = () => {
+    this.setState({ isLiked: !this.state.isLiked });
+  };
+
   render() {
     const { product } = this.props;
     const { image, tag } = product;
-    const { isEntered } = this.state;
+    const { isEntered, isLiked } = this.state;
     const price = parseInt(product.price);
 
     return (
@@ -59,9 +64,9 @@ export default class ProductList extends Component {
             isSale={tag.includes("sale")}
             isBest={tag.includes("best")}
           />
-          <div className="likes">
-            <i className="far fa-heart" />
-            <span>{product.like_count}</span>
+          <div className="likes" onClick={this.handleClick}>
+            <i className={isLiked ? "fas fa-heart" : "far fa-heart"} />
+            <span>{isLiked ? product.like_count + 1 : product.like_count}</span>
           </div>
         </div>
       </li>

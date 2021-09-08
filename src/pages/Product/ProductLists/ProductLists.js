@@ -15,7 +15,7 @@ export default class ProductLists extends Component {
   };
 
   componentDidMount() {
-    fetch("http://10.58.4.175:8000/products/list?page=1&tag=", {
+    fetch("/data/listData.json", {
       method: "GET",
     })
       .then(res => res.json())
