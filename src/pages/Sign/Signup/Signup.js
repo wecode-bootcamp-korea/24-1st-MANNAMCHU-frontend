@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
 import "./Signup.scss";
 
 class Signup extends Component {
@@ -95,7 +94,7 @@ class Signup extends Component {
           <div className="warning">(비밀번호 확인과 관련한 문구 필요)</div>
         )} */}
           <div className="toLogin">
-            이미 가입하셨나요? <Link to="/login">로그인하기</Link>
+            <Link to="/login">여기를 클릭하면 바로 로그인할 수 있어요 :)</Link>
           </div>
           <h3>가입 정보</h3>
           <input

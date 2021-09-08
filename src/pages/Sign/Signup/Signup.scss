@@ -6,18 +6,23 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 99;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .signupContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 450px;
-  padding: 60px 40px 20px 40px;
-  margin: auto;
+  width: 400px;
+  transform: translate(-50%, 0);
+  padding: 60px 40px;
+  margin: 120px auto;
   background-color: #fff;
+  border-radius: 5px;
+  align-items: center;
+  z-index: 1000;
 
   .password,
   .passwordCheck,
@@ -28,6 +33,7 @@
     padding: 15px;
     margin-top: 50px;
     border: solid 1px lightgray;
+    border-radius: 5px;
 
     &::placeholder {
       font-family: "Nanum Myeongjo", serif;
@@ -40,8 +46,9 @@
     width: 100%;
     height: 50px;
     padding: 15px;
-    margin-top: 20px;
+    margin-top: 50px;
     border: solid 1px lightgray;
+    border-radius: 5px;
 
     &::placeholder {
       font-family: "Nanum Myeongjo", serif;
@@ -58,8 +65,9 @@
     width: 100%;
     height: 50px;
     padding: 15px;
-    margin-top: -1px;
+    margin-top: 50px;
     border: solid 1px lightgray;
+    border-radius: 5px;
 
     &::placeholder {
       font-family: "Nanum Myeongjo", serif;
@@ -79,14 +87,15 @@
   .signupBtn {
     width: 100%;
     height: 50px;
-    cursor: pointer;
     margin-top: 50px;
-    border-color: none;
-    font-family: "Nanum Myeongjo", serif;
-    font-size: 17px;
-    font-weight: bold;
+    border: none;
     color: #fff;
     background-color: #2e2452;
+    border-radius: 5px;
+    font-family: "Nanum Myeongjo", serif;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
   }
 
   .disabled {
@@ -94,17 +103,25 @@
     cursor: default;
   }
 
-  .warning,
-  .toLogin {
+  .warning {
     width: 100%;
-    margin: 15px 0 0 32px;
+    margin: 15px 0 0 31px;
     color: #2e2452;
     font-size: 13px;
   }
 
-  .copyRight {
-    margin: 100px 0 50px;
+  .toLogin {
+    width: 350px;
+    margin-top: 20px;
+    margin-left: 60px;
+    text-align: left;
     font-size: 13px;
+    font-weight: bold;
+  }
+
+  .copyRight {
+    margin-top: 100px;
     color: grey;
+    font-size: 13px;
   }
 }
