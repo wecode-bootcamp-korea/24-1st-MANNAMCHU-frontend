@@ -22,20 +22,7 @@ export default class ProductDetail extends Component {
     };
   }
 
-  // 서버와 통신
-  // componentDidMount = () => {
-  //   fetch("http://10.58.6.58:8000/products/detail?id=4", {
-  //     method: "GET",
-  //   })
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       console.log(response);
-  //       this.setState({
-  //         detailData: response,
-  //       });
-  //     });
-  // };
-
+  // 목 데이터 통신
   componentDidMount = () => {
     fetch("/data/detailPage.json")
       .then(response => response.json())
@@ -44,6 +31,26 @@ export default class ProductDetail extends Component {
           detailData: response,
         });
       });
+  };
+
+  // 서버와 통신
+  // componentDidMount = () => {
+  //   fetch("http://10.58.7.239:8000/products/detail?id=4", {
+  //     method: "GET",
+  //   })
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       this.setState({
+  //         detailData: response,
+  //       });
+  //     });
+  // };
+
+  postCart = () => {
+    fetch("http://10.58.7.239:8000/products/cart", {
+      method: "POST",
+      body: JSON.stringify(this.state.postData),
+    }).then(res => console.log(res));
   };
 
   activeOptionViewer = () => {
@@ -59,6 +66,7 @@ export default class ProductDetail extends Component {
       cartPrice: price,
       cartOptionCount: 1,
     };
+
     this.setState({
       cartData: this.state.cartData.concat(addCartData),
     });
@@ -74,24 +82,138 @@ export default class ProductDetail extends Component {
     this.activeOptionViewer();
   };
 
-  postCart = () => {
-    fetch("http://10.58.5.3:8000/products/cart", {
-      method: "POST",
-      body: JSON.stringify(this.state.postData),
-    }).then(res => console.log(res));
+  plusOptionCount = idx => {
+    if (idx === 0) {
+      this.setState(({ cartData }) => ({
+        cartData: [
+          {
+            ...cartData[idx],
+            cartOptionCount: cartData[idx].cartOptionCount + 1,
+          },
+          ...cartData.slice(idx + 1),
+        ],
+      }));
+      this.setState(({ postData }) => ({
+        postData: [
+          {
+            ...postData[idx],
+            quantity: postData[idx].quantity + 1,
+          },
+          ...postData.slice(idx + 1),
+        ],
+      }));
+    } else if (idx < this.state.cartData.length - 1) {
+      this.setState(({ cartData }) => ({
+        cartData: [
+          ...cartData.slice(0, idx),
+          {
+            ...cartData[idx],
+            cartOptionCount: cartData[idx].cartOptionCount + 1,
+          },
+          ...cartData.slice(idx + 1),
+        ],
+      }));
+      this.setState(({ postData }) => ({
+        postData: [
+          ...postData.slice(0, idx),
+          {
+            ...postData[idx],
+            quantity: postData[idx].quantity + 1,
+          },
+          ...postData.slice(idx + 1),
+        ],
+      }));
+    } else if (idx === this.state.cartData.length - 1) {
+      this.setState(({ cartData }) => ({
+        cartData: [
+          ...cartData.slice(0, idx),
+          {
+            ...cartData[idx],
+            cartOptionCount: cartData[idx].cartOptionCount + 1,
+          },
+        ],
+      }));
+      this.setState(({ postData }) => ({
+        postData: [
+          ...postData.slice(0, idx),
+          {
+            ...postData[idx],
+            quantity: postData[idx].quantity + 1,
+          },
+        ],
+      }));
+    }
   };
 
-  plusOptionCount = () => {
-    this.setState(({ cartData }) => ({
-      cartData: [
-        ...cartData.slice(0, 1),
-        {
-          ...cartData[1],
-          cartOptionCount: cartData[1].cartOptionCount + 1,
-        },
-        ...cartData.slice(2),
-      ],
-    }));
+  minusOptionCount = idx => {
+    if (idx === 0) {
+      this.setState(({ cartData }) => ({
+        cartData: [
+          {
+            ...cartData[idx],
+            cartOptionCount: cartData[idx].cartOptionCount - 1,
+          },
+          ...cartData.slice(idx + 1),
+        ],
+      }));
+      this.setState(({ postData }) => ({
+        postData: [
+          {
+            ...postData[idx],
+            quantity: postData[idx].quantity - 1,
+          },
+          ...postData.slice(idx + 1),
+        ],
+      }));
+    } else if (idx < this.state.cartData.length - 1) {
+      this.setState(({ cartData }) => ({
+        cartData: [
+          ...cartData.slice(0, idx),
+          {
+            ...cartData[idx],
+            cartOptionCount: cartData[idx].cartOptionCount - 1,
+          },
+          ...cartData.slice(idx + 1),
+        ],
+      }));
+      this.setState(({ postData }) => ({
+        postData: [
+          ...postData.slice(0, idx),
+          {
+            ...postData[idx],
+            quantity: postData[idx].quantity - 1,
+          },
+          ...postData.slice(idx + 1),
+        ],
+      }));
+    } else if (idx === this.state.cartData.length - 1) {
+      this.setState(({ cartData }) => ({
+        cartData: [
+          ...cartData.slice(0, idx),
+          {
+            ...cartData[idx],
+            cartOptionCount: cartData[idx].cartOptionCount - 1,
+          },
+        ],
+      }));
+      this.setState(({ postData }) => ({
+        postData: [
+          ...postData.slice(0, idx),
+          {
+            ...postData[idx],
+            quantity: postData[idx].quantity - 1,
+          },
+        ],
+      }));
+    }
+  };
+
+  delOption = idx => {
+    let delOption = this.state.cartData;
+    delOption.splice(idx, 1);
+    this.setState({
+      cartData: delOption,
+    });
   };
 
   addCartTotalCount = () => {
@@ -108,9 +230,10 @@ export default class ProductDetail extends Component {
     for (let i = 0; i < this.state.cartData.length; i++) {
       addCartTotalPrice =
         addCartTotalPrice +
-        parseInt(this.state.detailData.product_detail.price) *
+        (parseInt(this.state.detailData.product_detail.price) *
           (1 - this.getSaleRate()) +
-        parseInt(this.state.cartData[i].cartPrice);
+          parseInt(this.state.cartData[i].cartPrice)) *
+          this.state.cartData[i].cartOptionCount;
     }
     return addCartTotalPrice;
   };
@@ -126,7 +249,6 @@ export default class ProductDetail extends Component {
   };
 
   render() {
-    console.log(this.state.cartData);
     const {
       name,
       price,
@@ -140,7 +262,6 @@ export default class ProductDetail extends Component {
     return (
       <>
         <div className="productDetail">
-          <button onClick={this.plusOptionCount}>테스트</button>
           <div className="top">
             <div className="img">{image && <ImgList image={image} />}</div>
             <div className="info">
@@ -169,6 +290,9 @@ export default class ProductDetail extends Component {
                   addCartTotalCount={this.addCartTotalCount}
                   addCartTotalPrice={this.addCartTotalPrice}
                   realPrice={price * (1 - this.getSaleRate())}
+                  plusOptionCount={this.plusOptionCount}
+                  minusOptionCount={this.minusOptionCount}
+                  delOption={this.delOption}
                 />
               )}
               <InfoOrder likeCount={like_count} postCart={this.postCart} />
