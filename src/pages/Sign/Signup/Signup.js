@@ -57,8 +57,12 @@ class Signup extends Component {
     const { email, password, name, phone, address } = this.state;
     // const { passwordCheck, addressDetail } = this.state;
     return (
-      <div className="signup letter">
-        <div className="signupContainer">
+      <div className="signup">
+        <div
+          className="signupBackground"
+          onClick={this.props.handleActive}
+        ></div>
+        <div className="signupContainer letter">
           <h1>회원 가입</h1>
           <h3>계정 정보</h3>
           <input
@@ -70,7 +74,7 @@ class Signup extends Component {
           />
           {email && !email.includes("@" && ".") && (
             <div className="warning">
-              이메일 형식에 맞게 입력해 주세요. ex) aa@a.a
+              이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
             </div>
           )}
           <input
@@ -137,7 +141,7 @@ class Signup extends Component {
             <div className="warning">주소를 입력해 주세요.</div>
           )}{" "}
           <button
-            className={this.checkValid() ? "signupBtn" : "signupBtn disabled"}
+            className={`signupBtn ${this.checkValid() ? "" : "disabled"}`}
             type="button"
             onClick={this.handleSignup}
           >
