@@ -2,20 +2,27 @@ import React, { Component } from "react";
 import "./Navbar.scss";
 import Login from "../../pages/Sign/Login/Login";
 import Signup from "../../pages/Sign/Signup/Signup";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
   state = {
-    isLogin: false,
-    isSignup: false,
+    isLoginModalOn: false,
+    isSignupModalOn: false,
   };
 
   // 로그인 안한 상태 ? 로그인이냐 로그아웃이냐?
 
   handleActive = () => {
     this.setState({
-      isLogin: false,
+      isLoginModalOn: false,
+      isSignupModalOn: false,
     });
+  };
+
+  handleLogout = () => {
+    localStorage.removeItem("token");
+    this.props.history.push("/");
+    alert("로그아웃되었습니다.");
   };
 
   render() {
@@ -24,32 +31,50 @@ class Navbar extends Component {
         <nav className="nav letter">
           <div className="mainMenu">
             <ul>
-              <li className="brandName">MANNAMCHU</li>
-              <li>
-                <Link to="/">market</Link>
+              <li className="brandName">
+                <Link to="/">MANNAMCHU</Link>
               </li>
               <li>
-                <Link to="/">menu 1</Link>
+                <Link to="/product">Market</Link>
+              </li>
+              <li>
+                <Link to="/">New</Link>
               </li>{" "}
-              <li>menu 2</li>
-              <li>menu 3</li>
+              <li>
+                <Link to="/">Best</Link>
+              </li>
+              <li>
+                <Link to="/">Sale</Link>
+              </li>
             </ul>
           </div>
           <div className="asideMenu">
             <ul>
-              <li onClick={() => this.setState({ isLogin: true })}>Login</li>
-              <li onClick={() => this.setState({ isSignup: true })}>Join</li>
+              {localStorage.getItem("token") ? (
+                <li onClick={this.handleLogout}>Logout</li>
+              ) : (
+                <li onClick={() => this.setState({ isLoginModalOn: true })}>
+                  Login
+                </li>
+              )}
+              <li onClick={() => this.setState({ isSignupModalOn: true })}>
+                Join
+              </li>
               <li>
-                <Link to="/">Cart</Link>
+                <Link to="/cart">Cart</Link>
               </li>
             </ul>
           </div>
         </nav>
-        {this.state.isLogin && <Login handleActive={this.handleActive} />}
-        {this.state.isSignup && <Signup />}
+        {this.state.isLoginModalOn && (
+          <Login handleActive={this.handleActive} />
+        )}
+        {this.state.isSignupModalOn && (
+          <Signup handleActive={this.handleActive} />
+        )}
       </>
     );
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

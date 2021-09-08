@@ -28,7 +28,7 @@ class Login extends Component {
   checkValid = () => {
     const { emailVal, pwVal } = this.state;
 
-    return emailVal.includes("@") && pwVal.length >= 8;
+    return emailVal.includes("@" && ".") && pwVal.length >= 8;
   };
 
   handleLogin = () => {
@@ -51,7 +51,6 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { emailVal, pwVal } = this.state;
     return (
       <div className="login">
@@ -61,16 +60,16 @@ class Login extends Component {
         ></div>
         <div className="loginContainer letter">
           <img alt="logo" src={logo} />
-          <h1>로그인</h1>
+          <h1>방문해 주셔서 감사합니다</h1>
           <input
             type="text"
             placeholder="이메일"
             className="inputEmail"
             onChange={this.handleEmailInput}
           />
-          {emailVal && !emailVal.includes("@") && (
+          {emailVal && !emailVal.includes("@" && ".") && (
             <div className="warning">
-              이메일 형식에 맞게 입력해 주세요. ex '@' 포함
+              이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
             </div>
           )}
           <input
@@ -87,7 +86,7 @@ class Login extends Component {
             type="button"
             onClick={this.handleLogin}
           >
-            로그인하기
+            로그인
           </button>
           <div className="toJoin">
             <Link to="/">회원가입</Link>
