@@ -1,0 +1,44 @@
+.productLists {
+  width: 70%;
+  margin: auto;
+
+  .filterWrapper {
+    margin-bottom: 20px;
+
+    .filters {
+      display: flex;
+      justify-content: flex-end;
+
+      .filter {
+        float: left;
+
+        &::after {
+          content: "|";
+          color: rgba(64, 64, 64, 0.5);
+        }
+
+        &:last-child::after {
+          content: "";
+        }
+
+        button {
+          cursor: pointer;
+          color: rgba(64, 64, 64, 0.5);
+        }
+
+        &.active {
+          button {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  .listWrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+  }
+}
