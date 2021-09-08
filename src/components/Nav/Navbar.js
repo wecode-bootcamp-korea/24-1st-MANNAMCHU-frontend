@@ -10,8 +10,6 @@ class Navbar extends Component {
     isSignupModalOn: false,
   };
 
-  // 로그인 안한 상태 ? 로그인이냐 로그아웃이냐?
-
   handleActive = () => {
     this.setState({
       isLoginModalOn: false,
@@ -29,11 +27,11 @@ class Navbar extends Component {
     return (
       <>
         <nav className="nav letter">
+          <div className="brandName">
+            <Link to="/">MANNAMCHU</Link>
+          </div>
           <div className="mainMenu">
             <ul>
-              <li className="brandName">
-                <Link to="/">MANNAMCHU</Link>
-              </li>
               <li>
                 <Link to="/product">Market</Link>
               </li>
