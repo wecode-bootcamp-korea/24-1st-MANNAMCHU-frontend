@@ -6,7 +6,7 @@ import "./Product.scss";
 export default class Product extends Component {
   render() {
     return (
-      <section>
+      <section className="productSection">
         <ListHeader />
         <ProductLists />
       </section>
