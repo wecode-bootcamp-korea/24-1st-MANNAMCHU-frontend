@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Product from "./CartComponent/Product/Product";
+import Product from "./CartComponent/CartProduct/CartProduct";
 import WishList from "./CartComponent/WishList/WishList";
 import "./Cart.scss";
 
@@ -40,11 +40,11 @@ export default class Cart extends Component {
       });
   };
 
-  delServerCartData = () => {
-    fetch(`http://10.58.5.3:8000/products/cart?option_id=${id}`, {
-      method: "DELETE",
-    });
-  };
+  // delServerCartData = () => {
+  //   fetch(`http://10.58.5.3:8000/products/cart?option_id=${id}`, {
+  //     method: "DELETE",
+  //   });
+  // };
 
   delCartData = (id, idx) => {
     this.setState({ delCartData: this.state.delCartData.concat(id) });
@@ -94,7 +94,7 @@ export default class Cart extends Component {
                 key={idx}
                 listData={listData}
                 postPrice={this.state.postPrice}
-                delCartData={this.delCartData}
+                // delCartData={this.delCartData}
               />
             );
           })}
