@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Login from "../../pages/Sign/Login/Login";
 import "./Navbar.scss";
 import Login from "../../pages/Sign/Login/Login";
 import Signup from "../../pages/Sign/Signup/Signup";
@@ -10,7 +9,15 @@ class Navbar extends Component {
     isLogin: false,
     isSignup: false,
   };
+
+  handleActive = () => {
+    this.setState({
+      isLogin: !this.state.isLogin,
+    });
+  };
+
   render() {
+    console.log(this.state.isLogin);
     return (
       <>
         <nav className="nav letter">
@@ -37,7 +44,12 @@ class Navbar extends Component {
             </ul>
           </div>
         </nav>
-        {this.state.isLogin && <Login />}
+        {this.state.isLogin && (
+          <Login
+            isLogin={this.state.isLogin}
+            handleActive={this.handleActive}
+          />
+        )}
         {this.state.isSignup && <Signup />}
       </>
     );

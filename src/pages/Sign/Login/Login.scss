@@ -5,8 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
 
   img {
     width: 250px;
@@ -14,13 +13,18 @@
   }
 
   .loginContainer {
+    position: absolute;
+    top: 0;
+    left: 50%;
     display: flex;
     flex-direction: column;
     width: 400px;
+    transform: translate(-50%, 0);
     padding: 60px 40px;
-    margin: 50px auto;
+    margin: 120px auto;
     background-color: #fff;
     align-items: center;
+    z-index: 99;
 
     .inputEmail,
     .inputPw {

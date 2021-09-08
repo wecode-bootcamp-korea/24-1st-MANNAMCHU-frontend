@@ -2,27 +2,19 @@
   display: flex;
   justify-content: center;
   background-color: #2e2452;
+  opacity: 0.9;
   color: white;
   font-size: 20px;
 
   .brandName .mainMenu {
     margin-right: 200px;
     font-weight: bolder;
-    font-size: 40px;
-
-    .brandName {
-      font-weight: bold;
-    }
-  }
-
-  .brandName {
-    margin-top: 50px;
-    margin-right: 50px;
   }
 
   ul li {
     float: left;
     margin: 50px 30px 50px 30px;
+    cursor: pointer;
   }
 
   a:link {

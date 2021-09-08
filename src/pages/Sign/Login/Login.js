@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../logo.png";
 import "./Login.scss";
+import logo from "../logo.png";
 
 class Login extends Component {
   constructor() {
@@ -9,7 +9,6 @@ class Login extends Component {
     this.state = {
       emailVal: "",
       pwVal: "",
-      isActive: true,
     };
   }
 
@@ -50,16 +49,15 @@ class Login extends Component {
       });
   };
 
-  handleActive = e => {
-    this.setState({
-      isActive: false,
-    });
-  };
-
   render() {
     const { emailVal, pwVal } = this.state;
+    const { isLogin } = this.props;
+
     return (
-      <div className="login" onClick={this.handleActive}>
+      <div
+        className={`login ${isLogin ? "" : "disappear"}`}
+        onClick={() => this.props.handleActive()}
+      >
         <div className="loginContainer letter">
           <img alt="logo" src={logo} />
           <h1>로그인</h1>
