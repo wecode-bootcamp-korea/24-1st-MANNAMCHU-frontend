@@ -14,25 +14,8 @@ export default class Cart extends Component {
   }
 
   // mockdata 통신
-  componentDidMount = () => {
-    fetch("/data/cartListData.json")
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          cartDatas: response,
-        });
-      });
-  };
-
-  //서버와 통신
   // componentDidMount = () => {
-  //   fetch("http://10.58.4.175:8000/products/cart", {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization:
-  //         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.gkCFFEj525ntZJdHEqKnUD8X-v9oy75acVxJrqqtpZE",
-  //     },
-  //   })
+  //   fetch("/data/cartListData.json")
   //     .then(response => response.json())
   //     .then(response => {
   //       this.setState({
@@ -40,6 +23,23 @@ export default class Cart extends Component {
   //       });
   //     });
   // };
+
+  //서버와 통신
+  componentDidMount = () => {
+    fetch("http://10.58.2.168:8000/products/cart", {
+      method: "GET",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.gkCFFEj525ntZJdHEqKnUD8X-v9oy75acVxJrqqtpZE",
+      },
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          cartDatas: response,
+        });
+      });
+  };
 
   delCartData = (idx, option_id) => {
     let cartDatas = this.state.cartDatas;
@@ -52,7 +52,7 @@ export default class Cart extends Component {
 
   componentWillUnmount = () => {
     this.delServerCartData();
-    fetch("http://10.58.7.239:8000/products/cart", {
+    fetch("http://10.58.2.168:8000/products/cart", {
       method: "POST",
       body: JSON.stringify(this.state.cartDatas),
     });
@@ -60,7 +60,7 @@ export default class Cart extends Component {
 
   delServerCartData = () => {
     this.state.delCartData.map(option_id => {
-      fetch(`http://10.58.5.3:8000/products/cart?option_id=${option_id}`, {
+      fetch(`http://10.58.2.168:8000/products/cart?option_id=${option_id}`, {
         method: "DELETE",
       });
     });
