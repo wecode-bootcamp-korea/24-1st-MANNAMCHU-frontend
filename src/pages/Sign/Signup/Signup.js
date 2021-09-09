@@ -36,18 +36,18 @@ class Signup extends Component {
     fetch("http://10.58.5.141:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
-        email: "",
-        password: "",
-        name: "",
-        phone: "",
-        address: "",
+        email: this.state.enmail,
+        password: this.state.password,
+        name: this.state.name,
+        phone: this.state.phone,
+        address: this.address,
       }),
     })
       .then(response => response.json())
       .then(response => {
         if (response.token) {
           localStorage.setItem("token", response.token);
-          this.props.history.push("/");
+          this.props.history.push("/main");
         } else {
           alert("회원 가입에 실패했습니다.");
         }
@@ -88,7 +88,7 @@ class Signup extends Component {
               name="password"
               onChange={this.handleInput}
             />
-            {password && password.length < 8 && (
+            {password && (password.length < 8 || password.length > 20) && (
               <div className="warning">8~20자를 입력해 주셔야 해요.</div>
             )}
           </div>
@@ -131,7 +131,7 @@ class Signup extends Component {
             />
             {phone && phone.length < 10 && (
               <div className="warning">
-                알맞은 휴대전화 번호를 입력해 주세요. ex) 01022223333
+                알맞은 휴대전화 번호를 입력해 주세요.
               </div>
             )}
           </div>
@@ -156,15 +156,17 @@ class Signup extends Component {
               <div className="warning">주소를 입력해 주세요.</div>
             )}{" "}
           </div>
+          <button
+            className={`signupBtn ${this.checkValid() ? "" : "disabled"}`}
+            type="button"
+            onClick={this.handleSignup}
+          >
+            가입
+          </button>
+          <div className="copyRight">
+            © mannamchu, Co., Ltd.. All Rights Free
+          </div>
         </div>
-        <button
-          className={`signupBtn ${this.checkValid() ? "" : "disabled"}`}
-          type="button"
-          onClick={this.handleSignup}
-        >
-          가입
-        </button>
-        <div className="copyRight">© mannamchu, Co., Ltd.. All Rights Free</div>
       </div>
     );
   }
