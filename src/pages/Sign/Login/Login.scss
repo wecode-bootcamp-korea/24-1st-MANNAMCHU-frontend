@@ -92,10 +92,14 @@
     .toJoin {
       width: 350px;
       margin-top: 20px;
-      margin-left: 35px;
+      margin-left: 68px;
       text-align: left;
       font-size: 13px;
       font-weight: bold;
+
+      span {
+        cursor: pointer;
+      }
     }
 
     .copyRight {

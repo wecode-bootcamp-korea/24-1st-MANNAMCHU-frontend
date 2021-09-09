@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
 import { SIGN_UP } from "../../../config";
 import "./Signup.scss";
 
@@ -24,7 +23,8 @@ class Signup extends Component {
   checkValid = () => {
     const { email, password, name, phone, address } = this.state;
     return (
-      email.includes("@" && ".") &&
+      email.includes("@") &&
+      email.includes(".") &&
       password.length >= 8 &&
       password.length <= 20 &&
       name.length >= 2 &&
@@ -47,7 +47,7 @@ class Signup extends Component {
       .then(response => response.json())
       .then(response => {
         if (response.message === "SUCCESS") {
-          this.props.history.push("/");
+          this.props.handleChangeModal();
         } else {
           alert("회원 가입에 실패했습니다.");
         }
@@ -56,7 +56,6 @@ class Signup extends Component {
 
   render() {
     const { email, password, name, phone, address } = this.state;
-    // const { passwordCheck, addressDetail } = this.state;
     return (
       <div className="signup">
         <div
@@ -74,11 +73,11 @@ class Signup extends Component {
               name="email"
               onChange={this.handleInput}
             />
-            {email && !email.includes("@" && ".") && (
+            {email && !(email.includes("@") && email.includes(".")) && (
               <div className="warning">
                 이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
               </div>
-            )}
+            }
           </div>
           <div className="signupInputContainer">
             <input
@@ -101,11 +100,10 @@ class Signup extends Component {
               onChange={this.handleInput}
             />
           </div>
-          {/* {!passwordCheck === password && (
-          <div className="warning">(비밀번호 확인과 관련한 문구 필요)</div>
-        )} */}
           <div className="toLogin">
-            <Link to="/login">여기를 클릭하면 바로 로그인할 수 있어요 :)</Link>
+            <span onClick={this.props.handleChangeModal}>
+              `여기를 클릭하면 바로 로그인할 수 있어요 :)`
+            </span>
           </div>
           <h3>가입 정보</h3>
 
@@ -160,6 +158,7 @@ class Signup extends Component {
             className={`signupBtn ${this.checkValid() ? "" : "disabled"}`}
             type="button"
             onClick={this.handleSignup}
+            disabled={!this.checkValid()}
           >
             가입
           </button>
@@ -171,4 +170,5 @@ class Signup extends Component {
     );
   }
 }
-export default withRouter(Signup);
+
+export default Signup;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./Navbar.scss";
+import { Link, withRouter } from "react-router-dom";
 import Login from "../../pages/Sign/Login/Login";
 import Signup from "../../pages/Sign/Signup/Signup";
-import { Link, withRouter } from "react-router-dom";
+import "./Navbar.scss";
 
 class Navbar extends Component {
   state = {
@@ -14,6 +14,13 @@ class Navbar extends Component {
     this.setState({
       isLoginModalOn: false,
       isSignupModalOn: false,
+    });
+  };
+
+  handleChangeModal = () => {
+    this.setState({
+      isLoginModalOn: !this.state.isLoginModalOn,
+      isSignupModalOn: !this.state.isSignupModalOn,
     });
   };
 
@@ -67,10 +74,16 @@ class Navbar extends Component {
           </div>
         </nav>
         {this.state.isLoginModalOn && (
-          <Login handleActive={this.handleActive} />
+          <Login
+            handleActive={this.handleActive}
+            handleChangeModal={this.handleChangeModal}
+          />
         )}
         {this.state.isSignupModalOn && (
-          <Signup handleActive={this.handleActive} />
+          <Signup
+            handleActive={this.handleActive}
+            handleChangeModal={this.handleChangeModal}
+          />
         )}
       </>
     );
