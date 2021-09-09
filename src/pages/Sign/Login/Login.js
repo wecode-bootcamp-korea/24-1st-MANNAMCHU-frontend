@@ -77,8 +77,9 @@ class Login extends Component {
             />
             {email && !(email.includes("@") && email.includes(".")) && (
               <div className="warning">
-                이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
-              </div>}
+                `이메일 형식에 맞게 입력해 주세요. 예) aa@a.a`
+              </div>
+            )}
           </div>
           <div className="loginInputContainer">
             <input
