@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Tags from "../../../../components/Tags/Tags";
+import { withRouter } from "react-router-dom";
 import "./ProductList.scss";
 
-export default class ProductList extends Component {
+class ProductList extends Component {
   state = {
     isEntered: false,
     isLiked: false,
@@ -18,12 +19,15 @@ export default class ProductList extends Component {
 
   render() {
     const { product } = this.props;
-    const { image, tag } = product;
+    const { image, tag, id } = product;
     const { isEntered, isLiked } = this.state;
     const price = parseInt(product.price);
 
     return (
-      <li className="productList">
+      <li
+        className="productList"
+        onClick={() => this.props.history.push(`/product-detail/${id}`)}
+      >
         <div
           className="listImgWrapper"
           onMouseEnter={() => this.handleMouse()}
@@ -73,3 +77,5 @@ export default class ProductList extends Component {
     );
   }
 }
+
+export default withRouter(ProductList);

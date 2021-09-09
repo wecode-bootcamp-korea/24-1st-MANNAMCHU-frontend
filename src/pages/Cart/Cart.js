@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CartProduct from "./CartComponent/CartProduct/CartProduct";
 import WishList from "./CartComponent/WishList/WishList";
+import { CART_API } from "../../.config";
 import "./Cart.scss";
 
 export default class Cart extends Component {
@@ -26,7 +27,7 @@ export default class Cart extends Component {
 
   //서버와 통신
   componentDidMount = () => {
-    fetch("http://10.58.2.168:8000/products/cart", {
+    fetch(`${CART_API}`, {
       method: "GET",
       headers: {
         Authorization:
