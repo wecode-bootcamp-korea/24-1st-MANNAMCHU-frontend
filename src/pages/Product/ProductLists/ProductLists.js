@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProductList from "./ProductList/ProductList";
+import { PRODUCT_LIST_API } from "../../../config";
 import "./ProductLists.scss";
 
 export default class ProductLists extends Component {
@@ -15,9 +16,7 @@ export default class ProductLists extends Component {
   };
 
   handleFetch = () => {
-    fetch(
-      `http://10.58.2.168:8000/products/list?page=&tag=${this.state.filter}`
-    )
+    fetch(`${PRODUCT_LIST_API}page=&tag=${this.state.filter}`)
       .then(res => res.json())
       .then(items => this.setState({ items }));
   };
@@ -25,7 +24,7 @@ export default class ProductLists extends Component {
   handlePageFetch = () => {
     if (this.state.page < 3) {
       fetch(
-        `http://10.58.2.168:8000/products/list?page=${this.state.page}&tag=${this.state.filter}`
+        `${PRODUCT_LIST_API}page=${this.state.page}&tag=${this.state.filter}`
       )
         .then(res => res.json())
         .then(items => {

@@ -6,6 +6,7 @@ import InfoSend from "./ProductDetailComponent/InfoSend/InfoSend";
 import InfoConfig from "./ProductDetailComponent/InfoConfig/InfoConfig";
 import InfoOrder from "./ProductDetailComponent/InfoOrder/InfoOrder";
 import ImgList from "./ProductDetailComponent/ImgList/ImgList";
+import { PRODUCT_DETAIL_API, CART_API } from "../../../config";
 import "./ProductDetail.scss";
 
 export default class ProductDetail extends Component {
@@ -23,21 +24,8 @@ export default class ProductDetail extends Component {
   }
 
   // 목 데이터 통신
-  componentDidMount = () => {
-    fetch("/data/detailPage.json")
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          detailData: response,
-        });
-      });
-  };
-
-  // 서버와 통신
   // componentDidMount = () => {
-  //   fetch("http://10.58.7.239:8000/products/detail?id=4", {
-  //     method: "GET",
-  //   })
+  //   fetch("/data/detailPage.json")
   //     .then(response => response.json())
   //     .then(response => {
   //       this.setState({
@@ -46,13 +34,26 @@ export default class ProductDetail extends Component {
   //     });
   // };
 
+  // 서버와 통신
+  componentDidMount = () => {
+    fetch(`${PRODUCT_DETAIL_API}${this.props.match.params.id}`, {
+      method: "GET",
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          detailData: response,
+        });
+      });
+  };
+
   postCart = () => {
     if (this.state.postData.length === 0) {
       alert("항목을 선택해 주세요");
       return;
     }
 
-    fetch("http://10.58.2.168:8000/products/cart", {
+    fetch(`${CART_API}`, {
       method: "POST",
       body: JSON.stringify(this.state.postData),
     }).then(

@@ -29,7 +29,7 @@ class Navbar extends Component {
         <nav className="nav letter">
           <div className="navMenu">
             <div className="brandName">
-              <Link to="/main">MANNAMCHU</Link>
+              <Link to="/">MANNAMCHU</Link>
             </div>
             <div className="mainMenu">
               <ul>
