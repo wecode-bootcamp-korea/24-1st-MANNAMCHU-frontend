@@ -23,7 +23,8 @@ class Signup extends Component {
   checkValid = () => {
     const { email, password, name, phone, address } = this.state;
     return (
-      email.includes("@" && ".") &&
+      email.includes("@") &&
+      email.includes(".") &&
       password.length >= 8 &&
       password.length <= 20 &&
       name.length >= 2 &&
@@ -73,7 +74,7 @@ class Signup extends Component {
               name="email"
               onChange={this.handleInput}
             />
-            {email && !email.includes("@" && ".") && (
+            {email && !(email.includes("@") && email.includes(".")) && (
               <div className="warning">
                 이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
               </div>
@@ -159,6 +160,7 @@ class Signup extends Component {
             className={`signupBtn ${this.checkValid() ? "" : "disabled"}`}
             type="button"
             onClick={this.handleSignup}
+            disabled={!this.checkValid()}
           >
             가입
           </button>
