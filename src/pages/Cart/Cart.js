@@ -11,6 +11,7 @@ export default class Cart extends Component {
       cartDatas: {},
       postPrice: 90000,
       delCartData: [],
+      postDatas: [],
     };
   }
 
@@ -38,22 +39,18 @@ export default class Cart extends Component {
         this.setState({
           cartDatas: response,
         });
+        this.addCartData(response);
       });
   };
 
-  delCartData = (idx, option_id) => {
-    let cartDatas = this.state.cartDatas;
-    cartDatas.message.splice(idx, 1);
-    this.setState({
-      cartDatas: cartDatas,
-      delCartData: this.state.delCartData.concat(option_id),
-    });
-  };
-
   componentWillUnmount = () => {
+    console.log(this.state.postDatas);
     fetch(`${CART_API}`, {
       method: "POST",
-      body: JSON.stringify(this.state.cartDatas),
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(this.state.postDatas),
     });
     this.delServerCartData();
   };
@@ -67,6 +64,32 @@ export default class Cart extends Component {
         },
       });
     });
+  };
+
+  delCartData = (idx, option_id) => {
+    let cartDatas = this.state.cartDatas;
+    cartDatas.message.splice(idx, 1);
+    this.setState({
+      cartDatas: cartDatas,
+      delCartData: this.state.delCartData.concat(option_id),
+    });
+  };
+
+  addCartData = response => {
+    for (let i = 0; i < response.message.length; i++) {
+      const postData = {
+        user_id: 1,
+        quantity: response.message[i].quantity,
+        option_id: response.message[i].option_id,
+      };
+      this.setState({
+        postDatas: this.state.postDatas.concat(postData),
+      });
+    }
+  };
+
+  addCartDatas = () => {
+    this.addCartData(this.state.cartDatas);
   };
 
   addTotalPrice = () => {
@@ -94,6 +117,15 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity + 1,
+          },
+          ...postDatas.slice(idx + 1),
+        ],
+      }));
     } else if (idx < this.state.cartDatas.message.length - 1) {
       this.setState(({ cartDatas }) => ({
         cartDatas: {
@@ -107,6 +139,16 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          ...postDatas.slice(0, idx),
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity + 1,
+          },
+          ...postDatas.slice(idx + 1),
+        ],
+      }));
     } else if (idx === this.state.cartDatas.message.length - 1) {
       this.setState(({ cartDatas }) => ({
         cartDatas: {
@@ -118,6 +160,15 @@ export default class Cart extends Component {
             },
           ],
         },
+      }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          ...postDatas.slice(0, idx),
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity + 1,
+          },
+        ],
       }));
     }
   };
@@ -135,6 +186,15 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity - 1,
+          },
+          ...postDatas.slice(idx + 1),
+        ],
+      }));
     } else if (idx < this.state.cartDatas.message.length - 1) {
       this.setState(({ cartDatas }) => ({
         cartDatas: {
@@ -148,6 +208,16 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          ...postDatas.slice(0, idx),
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity - 1,
+          },
+          ...postDatas.slice(idx + 1),
+        ],
+      }));
     } else if (idx === this.state.cartDatas.message.length - 1) {
       this.setState(({ cartDatas }) => ({
         cartDatas: {
@@ -160,10 +230,20 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          ...postDatas.slice(0, idx),
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity - 1,
+          },
+        ],
+      }));
     }
   };
 
   render() {
+    console.log(this.state.postDatas);
     const { message } = this.state.cartDatas;
     return (
       <div className="cart">
@@ -196,6 +276,7 @@ export default class Cart extends Component {
                 delCartData={this.delCartData}
                 plusOptionCount={this.plusOptionCount}
                 minusOptionCount={this.minusOptionCount}
+                addCartDatas={this.addCartDatas}
               />
             );
           })}
