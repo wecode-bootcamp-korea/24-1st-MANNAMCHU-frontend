@@ -107,7 +107,6 @@ class Signup extends Component {
             <Link to="/login">여기를 클릭하면 바로 로그인할 수 있어요 :)</Link>
           </div>
           <h3>가입 정보</h3>
-
           <div className="signupInputContainer">
             <input
               type="text"
