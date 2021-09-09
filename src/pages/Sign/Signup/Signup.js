@@ -33,20 +33,19 @@ class Signup extends Component {
   };
 
   handleSignup = () => {
-    fetch("http://10.58.5.141:8000/users/signup", {
+    fetch("http://10.58.2.168:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
-        email: this.state.enmail,
+        email: this.state.email,
         password: this.state.password,
         name: this.state.name,
         phone: this.state.phone,
-        address: this.address,
+        address: this.state.address,
       }),
     })
       .then(response => response.json())
       .then(response => {
-        if (response.token) {
-          localStorage.setItem("token", response.token);
+        if (response.message === "SUCCESS") {
           this.props.history.push("/main");
         } else {
           alert("회원 가입에 실패했습니다.");
