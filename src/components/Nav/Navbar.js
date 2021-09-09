@@ -17,6 +17,13 @@ class Navbar extends Component {
     });
   };
 
+  handleChangeModal = () => {
+    this.setState({
+      isLoginModalOn: !this.state.isLoginModalOn,
+      isSignupModalOn: !this.state.isSignupModalOn,
+    });
+  };
+
   handleLogout = () => {
     localStorage.removeItem("token");
     this.props.history.push("/");
@@ -67,10 +74,16 @@ class Navbar extends Component {
           </div>
         </nav>
         {this.state.isLoginModalOn && (
-          <Login handleActive={this.handleActive} />
+          <Login
+            handleActive={this.handleActive}
+            handleChangeModal={this.handleChangeModal}
+          />
         )}
         {this.state.isSignupModalOn && (
-          <Signup handleActive={this.handleActive} />
+          <Signup
+            handleActive={this.handleActive}
+            handleChangeModal={this.handleChangeModal}
+          />
         )}
       </>
     );

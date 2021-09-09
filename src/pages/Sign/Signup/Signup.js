@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./Signup.scss";
 
 class Signup extends Component {
@@ -47,7 +46,7 @@ class Signup extends Component {
       .then(response => response.json())
       .then(response => {
         if (response.message === "SUCCESS") {
-          this.props.history.push("/main");
+          this.props.handleChangeModal();
         } else {
           alert("회원 가입에 실패했습니다.");
         }
@@ -56,7 +55,6 @@ class Signup extends Component {
 
   render() {
     const { email, password, name, phone, address } = this.state;
-    // const { passwordCheck, addressDetail } = this.state;
     return (
       <div className="signup">
         <div
@@ -101,11 +99,10 @@ class Signup extends Component {
               onChange={this.handleInput}
             />
           </div>
-          {/* {!passwordCheck === password && (
-          <div className="warning">(비밀번호 확인과 관련한 문구 필요)</div>
-        )} */}
           <div className="toLogin">
-            <Link to="/login">여기를 클릭하면 바로 로그인할 수 있어요 :)</Link>
+            <span onClick={this.props.handleChangeModal}>
+              여기를 클릭하면 바로 로그인할 수 있어요 :)
+            </span>
           </div>
           <h3>가입 정보</h3>
 
