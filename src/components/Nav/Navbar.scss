@@ -1,6 +1,10 @@
 .nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: #2e2452;
-  opacity: 0.9;
+  z-index: 1000;
 
   .navMenu {
     display: flex;
