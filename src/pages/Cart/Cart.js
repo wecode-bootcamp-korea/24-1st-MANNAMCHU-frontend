@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CartProduct from "./CartComponent/CartProduct/CartProduct";
 import WishList from "./CartComponent/WishList/WishList";
-import { CART_API } from "../../.config";
+import { CART_API } from "../../config";
 import "./Cart.scss";
 
 export default class Cart extends Component {

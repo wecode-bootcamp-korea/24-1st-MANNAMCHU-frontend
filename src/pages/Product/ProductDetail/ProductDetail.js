@@ -6,7 +6,7 @@ import InfoSend from "./ProductDetailComponent/InfoSend/InfoSend";
 import InfoConfig from "./ProductDetailComponent/InfoConfig/InfoConfig";
 import InfoOrder from "./ProductDetailComponent/InfoOrder/InfoOrder";
 import ImgList from "./ProductDetailComponent/ImgList/ImgList";
-import { PRODUCT_DETAIL_API, CART_API } from "../../../.config";
+import { PRODUCT_DETAIL_API, CART_API } from "../../../config";
 import "./ProductDetail.scss";
 
 export default class ProductDetail extends Component {

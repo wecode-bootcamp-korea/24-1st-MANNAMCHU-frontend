@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ProductList from "./ProductList/ProductList";
-import { PRODUCT_LIST_API } from "../../../.config";
+import { PRODUCT_LIST_API } from "../../../config";
 import "./ProductLists.scss";
 
 export default class ProductLists extends Component {
