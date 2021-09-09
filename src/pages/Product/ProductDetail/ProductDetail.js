@@ -52,7 +52,7 @@ export default class ProductDetail extends Component {
       return;
     }
 
-    fetch("http://10.58.7.239:8000/products/cart", {
+    fetch("http://10.58.2.168:8000/products/cart", {
       method: "POST",
       body: JSON.stringify(this.state.postData),
     }).then(

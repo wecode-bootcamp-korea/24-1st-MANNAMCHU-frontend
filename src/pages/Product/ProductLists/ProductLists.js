@@ -6,7 +6,7 @@ export default class ProductLists extends Component {
   state = {
     items: {},
     filter: "",
-    view: 8,
+    page: 1,
   };
 
   handleClick = e => {
@@ -14,32 +14,59 @@ export default class ProductLists extends Component {
     this.setState({ filter: clickedName });
   };
 
-  componentDidMount() {
-    fetch("/data/listData.json", {
-      method: "GET",
-    })
+  handleFetch = () => {
+    fetch(
+      `http://10.58.2.168:8000/products/list?page=&tag=${this.state.filter}`
+    )
       .then(res => res.json())
       .then(items => this.setState({ items }));
+  };
+
+  handlePageFetch = () => {
+    if (this.state.page < 3) {
+      fetch(
+        `http://10.58.2.168:8000/products/list?page=${this.state.page}&tag=${this.state.filter}`
+      )
+        .then(res => res.json())
+        .then(items => {
+          const fetchData = items;
+          const mergeData = this.state.items.products.concat(
+            ...fetchData.products
+          );
+          const newObj = { products: mergeData };
+          this.setState({ items: newObj });
+          console.log(this.state);
+        });
+    }
+  };
+
+  handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight >= scrollHeight) {
+      this.setState({ page: this.state.page + 1 });
+    }
+  };
+
+  componentDidMount() {
+    this.handleFetch();
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   // fetch url 완성하면 아래 로직 통해서 filter uri 호출
   componentDidUpdate = (prevProps, prevState) => {
+    if (this.state.page !== prevState.page) {
+      this.handlePageFetch();
+    }
     if (this.state.filter !== prevState.filter) {
-      fetch(
-        `http://10.58.4.175:8000/products/list?page=1&tag=${this.state.filter}`,
-        {
-          method: "GET",
-        }
-      )
-        .then(res => res.json())
-        .then(items => this.setState({ items }));
+      this.handleFetch();
     }
   };
 
   render() {
     const { products } = this.state.items;
     const { filter } = this.state;
-    console.log(filter);
     return (
       <section className="productLists">
         <div className="filterWrapper">
