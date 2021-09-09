@@ -62,7 +62,7 @@ class Login extends Component {
         <div className="loginContainer letter">
           <img alt="logo" src={logo} />
           <h1>방문해 주셔서 감사합니다</h1>
-          <div className="inputContainer">
+          <div className="loginInputContainer">
             <input
               type="text"
               placeholder="이메일"
@@ -75,7 +75,7 @@ class Login extends Component {
               </div>
             )}
           </div>
-          <div className="inputContainer">
+          <div className="loginInputContainer">
             <input
               type="password"
               placeholder="비밀번호"
