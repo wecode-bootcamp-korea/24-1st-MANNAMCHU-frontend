@@ -13,9 +13,9 @@ class Routes extends Component {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/main" component={Main} />
+          <Route exact path="/" component={Main} />
           <Route exact path="/product" component={Product} />
-          <Route exact path="/product-detail" component={ProductDetail} />
+          <Route exact path="/product-detail/:id" component={ProductDetail} />
           <Route exact path="/cart" component={Cart} />
         </Switch>
         <Footer />
