@@ -14,25 +14,28 @@ export default class ProductLists extends Component {
     this.setState({ filter: clickedName });
   };
 
-  handleFirstFetch = () => {
+  handleFetch = () => {
     fetch(
-      `http://10.58.2.168:8000/products/list?page=${this.state.page}&tag=${this.state.filter}`
+      `http://10.58.2.168:8000/products/list?page=&tag=${this.state.filter}`
     )
       .then(res => res.json())
       .then(items => this.setState({ items }));
   };
 
-  handleFetch = () => {
+  handlePageFetch = () => {
     if (this.state.page < 3) {
       fetch(
         `http://10.58.2.168:8000/products/list?page=${this.state.page}&tag=${this.state.filter}`
       )
         .then(res => res.json())
         .then(items => {
-          const fetchData = items.products;
-          const mergeData = this.state.items.products.concat(...fetchData);
+          const fetchData = items;
+          const mergeData = this.state.items.products.concat(
+            ...fetchData.products
+          );
           const newObj = { products: mergeData };
           this.setState({ items: newObj });
+          console.log(this.state);
         });
     }
   };
@@ -47,14 +50,14 @@ export default class ProductLists extends Component {
   };
 
   componentDidMount() {
-    this.handleFirstFetch();
+    this.handleFetch();
     window.addEventListener("scroll", this.handleScroll);
   }
 
   // fetch url 완성하면 아래 로직 통해서 filter uri 호출
   componentDidUpdate = (prevProps, prevState) => {
     if (this.state.page !== prevState.page) {
-      this.handleFetch();
+      this.handlePageFetch();
     }
     if (this.state.filter !== prevState.filter) {
       this.handleFetch();
