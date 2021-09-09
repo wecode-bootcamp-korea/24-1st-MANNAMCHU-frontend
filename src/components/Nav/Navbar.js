@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./Navbar.scss";
+import { Link, withRouter } from "react-router-dom";
 import Login from "../../pages/Sign/Login/Login";
 import Signup from "../../pages/Sign/Signup/Signup";
-import { Link, withRouter } from "react-router-dom";
+import "./Navbar.scss";
 
 class Navbar extends Component {
   state = {
