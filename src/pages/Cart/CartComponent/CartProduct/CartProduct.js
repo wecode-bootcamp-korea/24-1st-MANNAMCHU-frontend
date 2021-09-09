@@ -5,6 +5,7 @@ export default class CartProduct extends Component {
     super(props);
     this.state = {
       disappear: false,
+      wishLike: false,
     };
   }
 
@@ -26,7 +27,15 @@ export default class CartProduct extends Component {
     this.props.minusOptionCount(this.props.id);
   };
 
+  likeHandleClick = () => {
+    this.state.wishLike === false
+      ? this.setState({ wishLike: true })
+      : this.setState({ wishLike: false });
+  };
+
   render() {
+    const { image, product, option, quantity, addtional_price, price } =
+      this.props.cartData;
     return (
       <div className="product">
         <ul className="productList">
@@ -35,28 +44,23 @@ export default class CartProduct extends Component {
           </li>
           <li className="productItem">
             <div>
-              <img
-                className="productItemImg"
-                alt="상품이미지"
-                src={this.props.cartData.image}
-              />
+              <img className="productItemImg" alt="상품이미지" src={image} />
             </div>
             <div>
-              <div className="productItemName letter">
-                {this.props.cartData.product}
-              </div>
-              <div className="productItemOpt letter">
-                {this.props.cartData.option}
-              </div>
+              <div className="productItemName letter">{product}</div>
+              <div className="productItemOpt letter">{option}</div>
             </div>
           </li>
           <li className="productWish">
-            <i className="far fa-heart" />
+            <i
+              className={
+                this.state.wishLike ? "fas fa-heart wishOn" : "far fa-heart"
+              }
+              onClick={this.likeHandleClick}
+            />
           </li>
           <li className="productCount">
-            <div className="productCountNum">
-              {this.props.cartData.quantity}
-            </div>
+            <div className="productCountNum">{quantity}</div>
             <div className="productCountChange">
               <button
                 className="productCountChangeBtn"
@@ -76,7 +80,7 @@ export default class CartProduct extends Component {
                         -
                       </button>
                       <div className="productCountChangeBoxPopNum">
-                        {this.props.cartData.quantity}
+                        {quantity}
                       </div>
                       <button
                         className="productCountChangeBoxPopPlus"
@@ -93,18 +97,15 @@ export default class CartProduct extends Component {
           </li>
           <li className="productShip letter">택배</li>
           <li className="productShipPrice letter">
-            {(parseInt(this.props.cartData.price) +
-              parseInt(this.props.cartData.addtional_price)) *
-              this.props.cartData.quantity >
+            {(parseInt(price) + parseInt(addtional_price)) * quantity >
             this.props.postPrice
               ? "무료"
               : "3,000원"}
           </li>
           <li className="productPrice letter">
             {(
-              (parseInt(this.props.cartData.price) +
-                parseInt(this.props.cartData.addtional_price)) *
-              this.props.cartData.quantity
+              (parseInt(price) + parseInt(addtional_price)) *
+              quantity
             ).toLocaleString()}
             원
           </li>

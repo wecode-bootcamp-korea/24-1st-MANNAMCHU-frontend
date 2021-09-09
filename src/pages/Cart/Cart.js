@@ -52,6 +52,10 @@ export default class Cart extends Component {
 
   componentWillUnmount = () => {
     this.delServerCartData();
+    fetch("http://10.58.7.239:8000/products/cart", {
+      method: "POST",
+      body: JSON.stringify(this.state.cartDatas),
+    });
   };
 
   delServerCartData = () => {
@@ -157,13 +161,12 @@ export default class Cart extends Component {
   };
 
   render() {
+    const { message } = this.state.cartDatas;
     return (
       <div className="cart">
         <div className="cartTop">
           <div className="cartHead letter">장바구니</div>
-          <div className="cartCount purple">
-            {this.state.cartDatas.message?.length}
-          </div>
+          <div className="cartCount purple">{message?.length}</div>
         </div>
         <div className="product">
           <ul className="productList productListHead">
@@ -179,8 +182,8 @@ export default class Cart extends Component {
             <li className="productBtn letter"></li>
           </ul>
         </div>
-        {this.state.cartDatas.message &&
-          this.state.cartDatas.message.map((cartData, idx) => {
+        {message &&
+          message.map((cartData, idx) => {
             return (
               <CartProduct
                 key={idx}
@@ -201,18 +204,16 @@ export default class Cart extends Component {
           </div>
           <div className="itemTotalContent">
             <span className="letter">
-              {this.state.cartDatas.message &&
-                this.addTotalPrice().toLocaleString()}
-              원
+              {message && this.addTotalPrice().toLocaleString()}원
             </span>
             <span className="letter">
-              {this.state.cartDatas.message &&
+              {message &&
                 (this.addTotalPrice() > this.state.postPrice
                   ? "무료"
                   : "3,000원")}
             </span>
             <span className="letter">
-              {this.state.cartDatas.message && this.addTotalPrice() / 100}
+              {message && this.addTotalPrice() / 100}
               포인트
             </span>
           </div>
@@ -225,7 +226,7 @@ export default class Cart extends Component {
           <div className="cartSelectTotal">
             <span className="cartSelectTotalText letter">결제금액</span>
             <span className="cartSelectTotalPrice logo">
-              {this.state.cartDatas.message &&
+              {message &&
                 (
                   (this.addTotalPrice() > this.state.postPrice ? 0 : 3000) +
                   this.addTotalPrice()
