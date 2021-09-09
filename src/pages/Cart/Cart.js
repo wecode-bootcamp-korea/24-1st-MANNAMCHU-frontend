@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Product from "./CartComponent/CartProduct/CartProduct";
+import CartProduct from "./CartComponent/CartProduct/CartProduct";
 import WishList from "./CartComponent/WishList/WishList";
 import "./Cart.scss";
 
@@ -7,11 +7,22 @@ export default class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartData: {},
+      cartDatas: {},
       postPrice: 90000,
       delCartData: [],
     };
   }
+
+  // mockdata 통신
+  componentDidMount = () => {
+    fetch("/data/cartListData.json")
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          cartDatas: response,
+        });
+      });
+  };
 
   //서버와 통신
   // componentDidMount = () => {
@@ -25,43 +36,124 @@ export default class Cart extends Component {
   //     .then(response => response.json())
   //     .then(response => {
   //       this.setState({
-  //         cartData: response,
+  //         cartDatas: response,
   //       });
   //     });
   // };
 
-  componentDidMount = () => {
-    fetch("/data/listData.json")
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          cartData: response,
-        });
-      });
+  delCartData = (idx, option_id) => {
+    let cartDatas = this.state.cartDatas;
+    cartDatas.message.splice(idx, 1);
+    this.setState({
+      cartDatas: cartDatas,
+      delCartData: this.state.delCartData.concat(option_id),
+    });
   };
 
-  // delServerCartData = () => {
-  //   fetch(`http://10.58.5.3:8000/products/cart?option_id=${id}`, {
-  //     method: "DELETE",
-  //   });
-  // };
+  componentWillUnmount = () => {
+    this.delServerCartData();
+  };
 
-  delCartData = (id, idx) => {
-    this.setState({ delCartData: this.state.delCartData.concat(id) });
-    this.state.cartData.splice(idx, 1);
-    console.log(this.state.cartData);
+  delServerCartData = () => {
+    this.state.delCartData.map(option_id => {
+      fetch(`http://10.58.5.3:8000/products/cart?option_id=${option_id}`, {
+        method: "DELETE",
+      });
+    });
   };
 
   addTotalPrice = () => {
     let addTotalPrice = 0;
-    for (let i = 0; i < this.state.cartData.message.length; i++) {
+    for (let i = 0; i < this.state.cartDatas.message.length; i++) {
       addTotalPrice =
         addTotalPrice +
-        (parseInt(this.state.cartData.message[i].price) +
-          parseInt(this.state.cartData.message[i].addtional_price)) *
-          this.state.cartData.message[i].quantity;
+        (parseInt(this.state.cartDatas.message[i].price) +
+          parseInt(this.state.cartDatas.message[i].addtional_price)) *
+          this.state.cartDatas.message[i].quantity;
     }
     return addTotalPrice;
+  };
+
+  plusOptionCount = idx => {
+    if (idx === 0) {
+      this.setState(({ cartDatas }) => ({
+        cartDatas: {
+          message: [
+            {
+              ...cartDatas.message[idx],
+              quantity: cartDatas.message[idx].quantity + 1,
+            },
+            ...cartDatas.message.slice(idx + 1),
+          ],
+        },
+      }));
+    } else if (idx < this.state.cartDatas.message.length - 1) {
+      this.setState(({ cartDatas }) => ({
+        cartDatas: {
+          message: [
+            ...cartDatas.message.slice(0, idx),
+            {
+              ...cartDatas.message[idx],
+              quantity: cartDatas.message[idx].quantity + 1,
+            },
+            ...cartDatas.message.slice(idx + 1),
+          ],
+        },
+      }));
+    } else if (idx === this.state.cartDatas.message.length - 1) {
+      this.setState(({ cartDatas }) => ({
+        cartDatas: {
+          message: [
+            ...cartDatas.message.slice(0, idx),
+            {
+              ...cartDatas.message[idx],
+              quantity: cartDatas.message[idx].quantity + 1,
+            },
+          ],
+        },
+      }));
+    }
+  };
+
+  minusOptionCount = idx => {
+    if (idx === 0) {
+      this.setState(({ cartDatas }) => ({
+        cartDatas: {
+          message: [
+            {
+              ...cartDatas.message[idx],
+              quantity: cartDatas.message[idx].quantity - 1,
+            },
+            ...cartDatas.message.slice(idx + 1),
+          ],
+        },
+      }));
+    } else if (idx < this.state.cartDatas.message.length - 1) {
+      this.setState(({ cartDatas }) => ({
+        cartDatas: {
+          message: [
+            ...cartDatas.message.slice(0, idx),
+            {
+              ...cartDatas.message[idx],
+              quantity: cartDatas.message[idx].quantity - 1,
+            },
+            ...cartDatas.message.slice(idx + 1),
+          ],
+        },
+      }));
+    } else if (idx === this.state.cartDatas.message.length - 1) {
+      this.setState(({ cartDatas }) => ({
+        cartDatas: {
+          message: [
+            ...cartDatas.message.slice(0, idx),
+            {
+              ...cartDatas.message[idx],
+              quantity: cartDatas.message[idx].quantity - 1,
+            },
+          ],
+        },
+      }));
+    }
   };
 
   render() {
@@ -70,7 +162,7 @@ export default class Cart extends Component {
         <div className="cartTop">
           <div className="cartHead letter">장바구니</div>
           <div className="cartCount purple">
-            {this.state.cartData.message?.length}
+            {this.state.cartDatas.message?.length}
           </div>
         </div>
         <div className="product">
@@ -87,15 +179,17 @@ export default class Cart extends Component {
             <li className="productBtn letter"></li>
           </ul>
         </div>
-        {this.state.cartData.message &&
-          this.state.cartData.message.map((listData, idx) => {
+        {this.state.cartDatas.message &&
+          this.state.cartDatas.message.map((cartData, idx) => {
             return (
-              <Product
+              <CartProduct
                 key={idx}
                 id={idx}
-                listData={listData}
+                cartData={cartData}
                 postPrice={this.state.postPrice}
-                // delCartData={this.delCartData}
+                delCartData={this.delCartData}
+                plusOptionCount={this.plusOptionCount}
+                minusOptionCount={this.minusOptionCount}
               />
             );
           })}
@@ -107,18 +201,18 @@ export default class Cart extends Component {
           </div>
           <div className="itemTotalContent">
             <span className="letter">
-              {this.state.cartData.message &&
+              {this.state.cartDatas.message &&
                 this.addTotalPrice().toLocaleString()}
               원
             </span>
             <span className="letter">
-              {this.state.cartData.message &&
+              {this.state.cartDatas.message &&
                 (this.addTotalPrice() > this.state.postPrice
                   ? "무료"
                   : "3,000원")}
             </span>
             <span className="letter">
-              {this.state.cartData.message && this.addTotalPrice() / 100}
+              {this.state.cartDatas.message && this.addTotalPrice() / 100}
               포인트
             </span>
           </div>
@@ -131,7 +225,7 @@ export default class Cart extends Component {
           <div className="cartSelectTotal">
             <span className="cartSelectTotalText letter">결제금액</span>
             <span className="cartSelectTotalPrice logo">
-              {this.state.cartData.message &&
+              {this.state.cartDatas.message &&
                 (
                   (this.addTotalPrice() > this.state.postPrice ? 0 : 3000) +
                   this.addTotalPrice()
