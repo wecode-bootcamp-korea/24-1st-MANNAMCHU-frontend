@@ -1,0 +1,29 @@
+.infoOrder {
+  display: flex;
+  height: 40px;
+  margin-top: 20px;
+
+  button {
+    border: 1px solid black;
+    margin-left: 2px;
+  }
+
+  &Buy {
+    flex-grow: 1;
+    color: white;
+    background-color: #2e2452;
+  }
+
+  &Cart {
+    flex-grow: 1;
+  }
+
+  &Like {
+    flex-grow: 1;
+
+    &On {
+      color: purple;
+      border-color: purple;
+    }
+  }
+}

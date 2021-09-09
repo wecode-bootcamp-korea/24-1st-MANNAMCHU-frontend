@@ -1,0 +1,80 @@
+{
+  "product_detail": {
+    "name": "[반짝할인]제주 자연산 민어 사시미/지리/매운탕",
+    "price": "75000.00",
+    "like_count": 20,
+    "description": "./sources/images/test-detail.jpeg",
+    "origin": "/sources/images/상세정보.png",
+    "options": [
+      {
+        "id": 1,
+        "option": "1)민어사시미(필렛500g)",
+        "additional_price": "2300.00"
+      },
+      {
+        "id": 2,
+        "option": "2)민어지리 600g(2-3인분)",
+        "additional_price": "0.00"
+      },
+      {
+        "id": 3,
+        "option": "3)민어매운탕 600g(2-3인분)",
+        "additional_price": "2300.00"
+      },
+      {
+        "id": 4,
+        "option": "4)민어매운탕 600g(2-3인분)",
+        "additional_price": "23000.00"
+      },
+      {
+        "id": 5,
+        "option": "5)민어매운탕 600g(2-3인분)",
+        "additional_price": "2300.00"
+      },
+      {
+        "id": 6,
+        "option": "5)민어매운탕 600g(2-3인분)",
+        "additional_price": "2300.00"
+      }
+    ],
+    "image": [
+      {
+        "id": 1,
+        "url": "https://i.ibb.co/MD198ck/calum-lewis-9-RGPG-ks-S3-Q-unsplash.jpg"
+      },
+      {
+        "id": 2,
+        "url": "https://i.ibb.co/2KRkXmC/caroline-attwood-PYh-Ma-Wp-Hr-M-unsplash.jpg"
+      },
+      {
+        "id": 3,
+        "url": "https://i.ibb.co/x30BzDK/chris-reyem-w-H8y3nslmyo-unsplash.jpg"
+      },
+      {
+        "id": 4,
+        "url": "https://i.ibb.co/T1WVt55/monika-grabkowska-Bn4-FIs250d-Y-unsplash.jpg"
+      },
+      {
+        "id": 5,
+        "url": "https://i.ibb.co/cxSDk9T/natalie-rhea-S-Aqs-N193-U8-unsplash.jpg"
+      }
+    ],
+    "tag": [
+      {
+        "product_id": 1,
+        "sale_rate": 0,
+        "tag_id": "new"
+      },
+      {
+        "product_id": 1,
+        "sale_rate": 0,
+        "tag_id": "best"
+      },
+      {
+        "product_id": 1,
+        "sale_rate": 10,
+        "tag_id": "sale"
+      }
+    ]
+  }
+}

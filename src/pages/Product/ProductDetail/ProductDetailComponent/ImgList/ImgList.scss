@@ -1,0 +1,20 @@
+.imgMain {
+  width: 580px;
+  height: 580px;
+  object-fit: cover;
+}
+
+.imgSub {
+  width: 580px;
+
+  .imgSubList {
+    width: 70px;
+    margin: 1px;
+
+    &Img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+    }
+  }
+}

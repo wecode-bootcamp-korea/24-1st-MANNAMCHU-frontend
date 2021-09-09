@@ -1,0 +1,57 @@
+.infoConfigOptPrice {
+  margin-top: 20px;
+  background-color: #e9e9e9;
+
+  .infoConfigOptName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin: 0px 15px;
+    padding: 15px;
+    color: #818181;
+    border-bottom: 1px dashed #c1c1c1;
+  }
+
+  .infoConfigOptCount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin: 0px 15px;
+    padding: 15px;
+
+    &Box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 120px;
+      background-color: #f9f9f9;
+      border: 1px solid #cccccc;
+    }
+
+    &Down {
+      width: 25px;
+      height: 30px;
+      background-color: #f9f9f9;
+      border-style: none;
+      border-right: 1px solid #cccccc;
+    }
+
+    &Num {
+      text-align: center;
+    }
+
+    &Up {
+      width: 25px;
+      height: 30px;
+      background-color: #f9f9f9;
+      border-style: none;
+      border-left: 1px solid #cccccc;
+    }
+
+    &Price {
+      color: #505050;
+    }
+  }
+}

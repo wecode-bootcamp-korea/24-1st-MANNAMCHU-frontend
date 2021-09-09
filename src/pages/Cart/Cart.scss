@@ -1,1 +1,305 @@
-//cart
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+  margin: 0px auto 50px auto;
+
+  &Top {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    margin-top: 100px;
+
+    .cartHead {
+      font-size: 20px;
+    }
+
+    .cartCount {
+      width: 25px;
+      margin-left: 20px;
+      border-radius: 13px;
+      text-align: center;
+      line-height: 1.5;
+    }
+  }
+
+  .product {
+    display: flex;
+    width: 1200px;
+
+    &ListHead {
+      color: #9f9f9f;
+    }
+
+    &List {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0px;
+      color: #404040;
+      border-bottom: 1px solid #e5e5e5;
+
+      .productCheck {
+        width: 100px;
+        text-align: center;
+
+        &Btn {
+          width: 15px;
+          height: 15px;
+        }
+      }
+
+      .productItem {
+        display: flex;
+        width: 450px;
+
+        &Img {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          margin-right: 20px;
+        }
+
+        &Name {
+          margin-bottom: 10px;
+          font-size: 15px;
+        }
+      }
+
+      .productWish {
+        width: 100px;
+        text-align: center;
+
+        .wishOn {
+          color: #2e2452;
+        }
+      }
+
+      .productCount {
+        width: 100px;
+        text-align: center;
+
+        &Change {
+          position: relative;
+
+          &Btn {
+            padding: 5px 10px;
+            background-color: #fff;
+            border-radius: 15px;
+            border: 1px solid #dedede;
+
+            &:hover {
+              border: 1px solid #404040;
+            }
+          }
+
+          &Box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            bottom: 40px;
+            width: 100px;
+            height: 75px;
+            padding: 8px;
+            left: 0;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+            background: #ffffff;
+            border: 1px solid black;
+            color: #fff;
+            font-size: 14px;
+            box-shadow: 2px 2px 5px 2px gray;
+            z-index: 101;
+
+            &:after {
+              position: absolute;
+              top: 70px;
+              left: 50%;
+              width: 0;
+              height: 0;
+              margin-left: -10px;
+              border: solid transparent;
+              border-color: rgba(51, 51, 51, 0);
+              border-top-color: #ffffff;
+              border-width: 10px;
+              pointer-events: none;
+              content: " ";
+            }
+
+            &Text {
+              margin: 5px;
+              color: black;
+            }
+
+            &Pop {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              color: black;
+              width: 70px;
+              height: 25px;
+              border: 1px solid black;
+
+              &Minus {
+                height: 100%;
+                border-right: 1px solid black;
+              }
+
+              &Plus {
+                height: 100%;
+                border-left: 1px solid black;
+              }
+            }
+          }
+        }
+        .screen {
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          width: 100vw;
+          height: 100vh;
+          z-index: 100;
+        }
+      }
+
+      .productShip {
+        width: 100px;
+        text-align: center;
+      }
+
+      .productShipPrice {
+        width: 100px;
+        text-align: center;
+      }
+
+      .productPrice {
+        width: 100px;
+        text-align: end;
+      }
+
+      .productBtn {
+        width: 150px;
+        text-align: center;
+
+        .productOrder {
+          margin-right: 10px;
+        }
+
+        button {
+          padding: 5px 10px;
+          background-color: #fff;
+          border-radius: 15px;
+          border: 1px solid #dedede;
+
+          &:hover {
+            border: 1px solid #404040;
+          }
+        }
+      }
+    }
+  }
+
+  .itemTotal {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding: 20px 0px;
+    border-bottom: 1px solid #e5e5e5;
+
+    .itemTotalTitle {
+      display: flex;
+      flex-direction: column;
+      margin: 0px 50px 0px auto;
+      text-align: end;
+
+      & span {
+        margin: 5px;
+      }
+    }
+
+    .itemTotalContent {
+      display: flex;
+      flex-direction: column;
+      margin-right: 150px;
+      text-align: end;
+
+      & span {
+        margin: 5px;
+      }
+    }
+  }
+
+  &Select {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+
+    &Btn {
+      button {
+        padding: 5px 10px;
+        margin-right: 10px;
+        background-color: #fff;
+        border-radius: 15px;
+        border: 1px solid #dedede;
+
+        &:hover {
+          border: 1px solid #404040;
+        }
+      }
+    }
+
+    &Total {
+      margin-right: 150px;
+
+      &Text {
+        margin-right: 70px;
+        font-size: 15px;
+      }
+
+      &Price {
+        color: #2e2452;
+        font-size: 25px;
+      }
+    }
+  }
+
+  &Order {
+    width: 150px;
+    height: 40px;
+    margin-top: 30px;
+  }
+
+  &GoProduct {
+    margin-top: 30px;
+    color: #2e2452;
+    text-decoration: underline;
+  }
+
+  &WishListTop {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  &WishListMore {
+    padding: 5px 10px;
+    margin-left: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid #dedede;
+
+    &:hover {
+      border: 1px solid #404040;
+    }
+  }
+
+  &WishList {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin-top: 20px;
+  }
+}

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import logo from "../logo.png";
 import "./Login.scss";
 
@@ -56,6 +55,7 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
+
     return (
       <div className="login">
         <div
@@ -98,7 +98,7 @@ class Login extends Component {
             로그인
           </button>
           <div className="toJoin">
-            <Link to="/signup">회원 가입</Link>
+            <span onClick={this.props.handleChangeModal}>회원 가입</span>
           </div>
           <div className="copyRight">
             © mannamchu, Co., Ltd.. All Rights Free

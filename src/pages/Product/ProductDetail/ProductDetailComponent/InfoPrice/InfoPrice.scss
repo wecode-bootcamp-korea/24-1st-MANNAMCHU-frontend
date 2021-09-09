@@ -1,0 +1,19 @@
+.infoPrice {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+
+  &Real {
+    font-size: 30px;
+  }
+
+  &Sale {
+    margin-left: 10px;
+    font-size: 20px;
+    text-decoration: line-through;
+  }
+
+  &Share {
+    font-size: 25px;
+  }
+}

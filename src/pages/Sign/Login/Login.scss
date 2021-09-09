@@ -6,6 +6,7 @@
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000000000;
 
   img {
     width: 250px;
@@ -91,10 +92,14 @@
     .toJoin {
       width: 350px;
       margin-top: 20px;
-      margin-left: 35px;
+      margin-left: 68px;
       text-align: left;
       font-size: 13px;
       font-weight: bold;
+
+      span {
+        cursor: pointer;
+      }
     }
 
     .copyRight {
