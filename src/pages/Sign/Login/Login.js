@@ -1,34 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Login.scss";
 import logo from "../logo.png";
+import "./Login.scss";
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      emailVal: "",
-      pwVal: "",
+      email: "",
+      password: "",
       isActive: true,
     };
   }
 
   handleEmailInput = e => {
     this.setState({
-      emailVal: e.target.value,
+      email: e.target.value,
     });
   };
 
   handlePwInput = e => {
     this.setState({
-      pwVal: e.target.value,
+      password: e.target.value,
     });
   };
 
   checkValid = () => {
-    const { emailVal, pwVal } = this.state;
+    const { email, password } = this.state;
     return (
-      emailVal.includes("@" && ".") && pwVal.length >= 8 && pwVal.length <= 20
+      email.includes("@") &&
+      email.includes(".") &&
+      password.length >= 8 &&
+      password.length <= 20
     );
   };
 
@@ -36,8 +39,8 @@ class Login extends Component {
     fetch("http://10.58.7.49:8000/users/signin", {
       method: "POST",
       body: JSON.stringify({
-        email: this.state.emailVal,
-        password: this.state.pwVal,
+        email: this.state.email,
+        password: this.state.password,
       }),
     })
       .then(response => response.json())
@@ -52,7 +55,7 @@ class Login extends Component {
   };
 
   render() {
-    const { emailVal, pwVal } = this.state;
+    const { email, password } = this.state;
     return (
       <div className="login">
         <div
@@ -69,7 +72,7 @@ class Login extends Component {
               className="inputEmail"
               onChange={this.handleEmailInput}
             />
-            {emailVal && !emailVal.includes("@" && ".") && (
+            {email && !(email.includes("@") && email.includes(".")) && (
               <div className="warning">
                 이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
               </div>
@@ -82,7 +85,7 @@ class Login extends Component {
               className="inputPw"
               onChange={this.handlePwInput}
             />
-            {pwVal && pwVal.length < 8 && (
+            {password && (password.length < 8 || password.length > 20) && (
               <div className="warning">비밀번호는 8~20글자입니다.</div>
             )}
           </div>
@@ -90,6 +93,7 @@ class Login extends Component {
             className={`loginBtn ${this.checkValid() ? "" : "disabled"}`}
             type="button"
             onClick={this.handleLogin}
+            disabled={!this.checkValid}
           >
             로그인
           </button>
