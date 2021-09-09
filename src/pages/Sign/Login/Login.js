@@ -27,7 +27,9 @@ class Login extends Component {
 
   checkValid = () => {
     const { emailVal, pwVal } = this.state;
-    return emailVal.includes("@" && ".") && pwVal.length >= 8;
+    return (
+      emailVal.includes("@" && ".") && pwVal.length >= 8 && pwVal.length <= 20
+    );
   };
 
   handleLogin = () => {
@@ -42,7 +44,7 @@ class Login extends Component {
       .then(response => {
         if (response.token) {
           localStorage.setItem("token", response.token);
-          // this.props.history.push("/");
+          this.props.history.push("/");
         } else {
           alert("이메일, 비밀번호를 다시 입력해 주세요.");
         }
@@ -81,7 +83,7 @@ class Login extends Component {
               onChange={this.handlePwInput}
             />
             {pwVal && pwVal.length < 8 && (
-              <div className="warning">8글자 이상 입력해 주세요.</div>
+              <div className="warning">비밀번호는 8~20글자입니다.</div>
             )}
           </div>
           <button
@@ -92,7 +94,7 @@ class Login extends Component {
             로그인
           </button>
           <div className="toJoin">
-            <Link to="/">회원가입</Link>
+            <Link to="/signup">회원 가입</Link>
           </div>
           <div className="copyRight">
             © mannamchu, Co., Ltd.. All Rights Free
