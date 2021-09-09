@@ -55,6 +55,9 @@ export default class ProductDetail extends Component {
 
     fetch(`${CART_API}`, {
       method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
       body: JSON.stringify(this.state.postData),
     }).then(
       res =>

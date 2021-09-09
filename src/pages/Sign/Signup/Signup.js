@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SIGN_UP } from "../../../config";
 import "./Signup.scss";
 
 class Signup extends Component {
@@ -33,7 +34,7 @@ class Signup extends Component {
   };
 
   handleSignup = () => {
-    fetch("http://10.58.2.168:8000/users/signup", {
+    fetch(`${SIGN_UP}`, {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email,
@@ -74,7 +75,7 @@ class Signup extends Component {
             />
             {email && !(email.includes("@") && email.includes(".")) && (
               <div className="warning">
-                이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
+                `이메일 형식에 맞게 입력해 주세요. 예) aa@a.a`
               </div>
             )}
           </div>
@@ -101,7 +102,7 @@ class Signup extends Component {
           </div>
           <div className="toLogin">
             <span onClick={this.props.handleChangeModal}>
-              여기를 클릭하면 바로 로그인할 수 있어요 :)
+              `여기를 클릭하면 바로 로그인할 수 있어요 :)`
             </span>
           </div>
           <h3>가입 정보</h3>
@@ -169,4 +170,5 @@ class Signup extends Component {
     );
   }
 }
+
 export default Signup;
