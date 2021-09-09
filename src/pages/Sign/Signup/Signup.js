@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { SIGN_UP } from "../../../config";
 import "./Signup.scss";
 
 class Signup extends Component {
@@ -33,7 +34,7 @@ class Signup extends Component {
   };
 
   handleSignup = () => {
-    fetch("http://10.58.2.168:8000/users/signup", {
+    fetch(`${SIGN_UP}`, {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email,
@@ -46,7 +47,7 @@ class Signup extends Component {
       .then(response => response.json())
       .then(response => {
         if (response.message === "SUCCESS") {
-          this.props.history.push("/main");
+          this.props.history.push("/");
         } else {
           alert("회원 가입에 실패했습니다.");
         }
@@ -170,4 +171,4 @@ class Signup extends Component {
     );
   }
 }
-export default Signup;
+export default withRouter(Signup);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { SIGN_IN } from "../../../config";
 import "./Login.scss";
 import logo from "../logo.png";
 
@@ -33,7 +34,7 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    fetch("http://10.58.7.49:8000/users/signin", {
+    fetch(`${SIGN_IN}`, {
       method: "POST",
       body: JSON.stringify({
         email: this.state.emailVal,

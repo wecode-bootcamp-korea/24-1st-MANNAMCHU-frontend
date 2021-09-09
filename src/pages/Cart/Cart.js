@@ -30,8 +30,7 @@ export default class Cart extends Component {
     fetch(`${CART_API}`, {
       method: "GET",
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.gkCFFEj525ntZJdHEqKnUD8X-v9oy75acVxJrqqtpZE",
+        Authorization: localStorage.getItem("token"),
       },
     })
       .then(response => response.json())
@@ -52,17 +51,20 @@ export default class Cart extends Component {
   };
 
   componentWillUnmount = () => {
-    this.delServerCartData();
-    fetch("http://10.58.2.168:8000/products/cart", {
+    fetch(`${CART_API}`, {
       method: "POST",
       body: JSON.stringify(this.state.cartDatas),
     });
+    this.delServerCartData();
   };
 
   delServerCartData = () => {
     this.state.delCartData.map(option_id => {
-      fetch(`http://10.58.2.168:8000/products/cart?option_id=${option_id}`, {
+      fetch(`${CART_API}?option_id=${option_id}`, {
         method: "DELETE",
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
       });
     });
   };
