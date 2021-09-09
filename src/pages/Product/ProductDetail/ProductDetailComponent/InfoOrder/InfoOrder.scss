@@ -3,6 +3,11 @@
   height: 40px;
   margin-top: 20px;
 
+  button {
+    border: 1px solid black;
+    margin-left: 2px;
+  }
+
   &Buy {
     flex-grow: 1;
     color: white;
@@ -15,5 +20,10 @@
 
   &Like {
     flex-grow: 1;
+
+    &On {
+      color: purple;
+      border-color: purple;
+    }
   }
 }

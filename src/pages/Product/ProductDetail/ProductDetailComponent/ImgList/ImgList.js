@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./ImgList.scss";
 
-export default class ImgMainList extends Component {
+export default class ImgList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 1,
+      selected: 0,
     };
   }
 
@@ -16,7 +16,7 @@ export default class ImgMainList extends Component {
   handleCurrentSlide = () => {
     const { selected } = this.state;
     this.setState({
-      selected: selected === this.props.image.length ? 1 : selected + 1,
+      selected: selected === this.props.image.length - 1 ? 0 : selected + 1,
     });
   };
 
@@ -24,10 +24,10 @@ export default class ImgMainList extends Component {
     return (
       <>
         {this.props.image.map(
-          img =>
-            this.state.selected === img.id && (
+          (img, idx) =>
+            this.state.selected === idx && (
               <img
-                key={img.id}
+                key={idx}
                 alt="상품이미지"
                 src={img.url}
                 className="imgMain"
@@ -35,13 +35,13 @@ export default class ImgMainList extends Component {
             )
         )}
         <ul className="imgSub">
-          {this.props.image.map(img => (
-            <li className="imgSubList">
+          {this.props.image.map((img, idx) => (
+            <li key={idx} className="imgSubList">
               <img
                 alt="상품이미지"
                 src={img.url}
                 className="imgSubListImg"
-                onMouseOver={() => this.setState({ selected: img.id })}
+                onMouseOver={() => this.setState({ selected: idx })}
               />
             </li>
           ))}
@@ -50,17 +50,3 @@ export default class ImgMainList extends Component {
     );
   }
 }
-
-// render() {
-//   return (
-//     <>
-//       {this.props.image.map(
-//         img =>
-//           this.state.selected === img.id && (
-//             <img key={img.id} src={img.url} className="imgMain" />
-//           )
-//       )}
-//     </>
-//   );
-// }
-// }

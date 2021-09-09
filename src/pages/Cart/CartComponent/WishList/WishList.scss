@@ -1,0 +1,48 @@
+.wishList {
+  display: flex;
+  flex-direction: column;
+
+  &Img {
+    width: 230px;
+    height: 230px;
+
+    img {
+      width: 230px;
+      height: 230px;
+      object-fit: cover;
+    }
+  }
+
+  &Name {
+    margin-top: 30px;
+    font-weight: 600;
+  }
+
+  &Price {
+    margin-top: 10px;
+    font-size: 15px;
+
+    &Real {
+      color: #9f9f9f;
+      text-decoration: line-through;
+    }
+
+    &Sale {
+      margin-left: 10px;
+    }
+  }
+
+  &Tags {
+    margin-top: 10px;
+  }
+
+  &Wish {
+    margin-top: 15px;
+    color: #9b9b9b;
+  }
+
+  &WishCount {
+    margin-left: 5px;
+    color: #9b9b9b;
+  }
+}

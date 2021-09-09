@@ -6,6 +6,7 @@ import ProductDetail from "./pages/Product/ProductDetail/ProductDetail";
 import Cart from "./pages/Cart/Cart";
 import Navbar from "./components/Nav/Navbar";
 import Footer from "./components/Footer/Footer";
+import Signup from "./pages/Sign/Signup/Signup";
 
 class Routes extends Component {
   render() {

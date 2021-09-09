@@ -1,0 +1,44 @@
+{
+  "message": [
+    {
+      "option_id": 1,
+      "product": "제주의 포근한, 감자🥔",
+      "price": "13000.00",
+      "option": "1번 상품 옵션",
+      "addtional_price": "2300.00",
+      "quantity": 3,
+      "image": "https://cdn.imweb.me/thumbnail/20210818/0aac7b336339f.png",
+      "sale_rate": [0]
+    },
+    {
+      "option_id": 2,
+      "product": "[반짝할인] 제주 자연산 민어 사시미/지리/매운탕",
+      "price": "5000.00",
+      "option": "2번 상품 옵션",
+      "addtional_price": "1000.00",
+      "quantity": 3,
+      "image": "https://cdn.imweb.me/thumbnail/20210829/01de1332adfbe.jpg",
+      "sale_rate": [10]
+    },
+    {
+      "option_id": 3,
+      "product": "[전국택배] 달달구리 Candy,heart💝 (강력추천!)",
+      "price": "16000.00",
+      "option": "3번 상품 옵션",
+      "addtional_price": "1300.00",
+      "quantity": 1,
+      "image": "https://cdn.imweb.me/thumbnail/20210703/234bfb01c89a5.jpg",
+      "sale_rate": [0]
+    },
+    {
+      "option_id": 4,
+      "product": "[전국택배] 최상급! 국내산 푸룬(자두)💜",
+      "price": "23000.00",
+      "option": "4번 상품 옵션",
+      "addtional_price": "1500.00",
+      "quantity": 5,
+      "image": "https://cdn.imweb.me/thumbnail/20210815/f1ef564f843db.jpeg",
+      "sale_rate": [0]
+    }
+  ]
+}
