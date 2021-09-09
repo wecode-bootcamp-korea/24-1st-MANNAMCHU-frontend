@@ -27,7 +27,6 @@ class Login extends Component {
 
   checkValid = () => {
     const { emailVal, pwVal } = this.state;
-
     return emailVal.includes("@" && ".") && pwVal.length >= 8;
   };
 
@@ -61,26 +60,30 @@ class Login extends Component {
         <div className="loginContainer letter">
           <img alt="logo" src={logo} />
           <h1>방문해 주셔서 감사합니다</h1>
-          <input
-            type="text"
-            placeholder="이메일"
-            className="inputEmail"
-            onChange={this.handleEmailInput}
-          />
-          {emailVal && !emailVal.includes("@" && ".") && (
-            <div className="warning">
-              이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
-            </div>
-          )}
-          <input
-            type="password"
-            placeholder="비밀번호"
-            className="inputPw"
-            onChange={this.handlePwInput}
-          />
-          {pwVal && pwVal.length < 8 && (
-            <div className="warning">8글자 이상 입력해 주세요.</div>
-          )}
+          <div className="inputContainer">
+            <input
+              type="text"
+              placeholder="이메일"
+              className="inputEmail"
+              onChange={this.handleEmailInput}
+            />
+            {emailVal && !emailVal.includes("@" && ".") && (
+              <div className="warning">
+                이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
+              </div>
+            )}
+          </div>
+          <div className="inputContainer">
+            <input
+              type="password"
+              placeholder="비밀번호"
+              className="inputPw"
+              onChange={this.handlePwInput}
+            />
+            {pwVal && pwVal.length < 8 && (
+              <div className="warning">8글자 이상 입력해 주세요.</div>
+            )}
+          </div>
           <button
             className={`loginBtn ${this.checkValid() ? "" : "disabled"}`}
             type="button"
