@@ -11,6 +11,7 @@ export default class Cart extends Component {
       cartDatas: {},
       postPrice: 90000,
       delCartData: [],
+      postDatas: [],
     };
   }
 
@@ -30,8 +31,7 @@ export default class Cart extends Component {
     fetch(`${CART_API}`, {
       method: "GET",
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.gkCFFEj525ntZJdHEqKnUD8X-v9oy75acVxJrqqtpZE",
+        Authorization: localStorage.getItem("token"),
       },
     })
       .then(response => response.json())
@@ -39,7 +39,31 @@ export default class Cart extends Component {
         this.setState({
           cartDatas: response,
         });
+        this.addCartData(response);
       });
+  };
+
+  componentWillUnmount = () => {
+    console.log(this.state.postDatas);
+    fetch(`${CART_API}`, {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(this.state.postDatas),
+    });
+    this.delServerCartData();
+  };
+
+  delServerCartData = () => {
+    this.state.delCartData.map(option_id => {
+      fetch(`${CART_API}?option_id=${option_id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      });
+    });
   };
 
   delCartData = (idx, option_id) => {
@@ -51,20 +75,21 @@ export default class Cart extends Component {
     });
   };
 
-  componentWillUnmount = () => {
-    this.delServerCartData();
-    fetch("http://10.58.2.168:8000/products/cart", {
-      method: "POST",
-      body: JSON.stringify(this.state.cartDatas),
-    });
+  addCartData = response => {
+    for (let i = 0; i < response.message.length; i++) {
+      const postData = {
+        user_id: 1,
+        quantity: response.message[i].quantity,
+        option_id: response.message[i].option_id,
+      };
+      this.setState({
+        postDatas: this.state.postDatas.concat(postData),
+      });
+    }
   };
 
-  delServerCartData = () => {
-    this.state.delCartData.map(option_id => {
-      fetch(`http://10.58.2.168:8000/products/cart?option_id=${option_id}`, {
-        method: "DELETE",
-      });
-    });
+  addCartDatas = () => {
+    this.addCartData(this.state.cartDatas);
   };
 
   addTotalPrice = () => {
@@ -92,6 +117,15 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity + 1,
+          },
+          ...postDatas.slice(idx + 1),
+        ],
+      }));
     } else if (idx < this.state.cartDatas.message.length - 1) {
       this.setState(({ cartDatas }) => ({
         cartDatas: {
@@ -105,6 +139,16 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          ...postDatas.slice(0, idx),
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity + 1,
+          },
+          ...postDatas.slice(idx + 1),
+        ],
+      }));
     } else if (idx === this.state.cartDatas.message.length - 1) {
       this.setState(({ cartDatas }) => ({
         cartDatas: {
@@ -116,6 +160,15 @@ export default class Cart extends Component {
             },
           ],
         },
+      }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          ...postDatas.slice(0, idx),
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity + 1,
+          },
+        ],
       }));
     }
   };
@@ -133,6 +186,15 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity - 1,
+          },
+          ...postDatas.slice(idx + 1),
+        ],
+      }));
     } else if (idx < this.state.cartDatas.message.length - 1) {
       this.setState(({ cartDatas }) => ({
         cartDatas: {
@@ -146,6 +208,16 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          ...postDatas.slice(0, idx),
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity - 1,
+          },
+          ...postDatas.slice(idx + 1),
+        ],
+      }));
     } else if (idx === this.state.cartDatas.message.length - 1) {
       this.setState(({ cartDatas }) => ({
         cartDatas: {
@@ -158,10 +230,20 @@ export default class Cart extends Component {
           ],
         },
       }));
+      this.setState(({ postDatas }) => ({
+        postDatas: [
+          ...postDatas.slice(0, idx),
+          {
+            ...postDatas[idx],
+            quantity: postDatas[idx].quantity - 1,
+          },
+        ],
+      }));
     }
   };
 
   render() {
+    console.log(this.state.postDatas);
     const { message } = this.state.cartDatas;
     return (
       <div className="cart">
@@ -194,6 +276,7 @@ export default class Cart extends Component {
                 delCartData={this.delCartData}
                 plusOptionCount={this.plusOptionCount}
                 minusOptionCount={this.minusOptionCount}
+                addCartDatas={this.addCartDatas}
               />
             );
           })}

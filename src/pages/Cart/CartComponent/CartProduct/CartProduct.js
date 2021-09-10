@@ -14,6 +14,7 @@ export default class CartProduct extends Component {
   };
 
   handleClick = () => {
+    this.props.addCartDatas();
     this.state.disappear === false
       ? this.setState({ disappear: true })
       : this.setState({ disappear: false });

@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { SIGN_IN } from "../../../config";
+import "./Login.scss";
 import logo from "../logo.png";
 import "./Login.scss";
 
@@ -35,7 +38,7 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    fetch("http://10.58.7.49:8000/users/signin", {
+    fetch(`${SIGN_IN}`, {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email,
@@ -74,7 +77,7 @@ class Login extends Component {
             />
             {email && !(email.includes("@") && email.includes(".")) && (
               <div className="warning">
-                이메일 형식에 맞게 입력해 주세요. 예) aa@a.a
+                `이메일 형식에 맞게 입력해 주세요. 예) aa@a.a`
               </div>
             )}
           </div>
@@ -108,4 +111,5 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+
+export default withRouter(Login);
