@@ -1,4 +1,4 @@
-const BASE_URL = "http://10.58.3.94:8000";
+const BASE_URL = "http://54.180.82.122:8000";
 export const PRODUCT_LIST_API = `${BASE_URL}/products/list?`;
 export const PRODUCT_DETAIL_API = `${BASE_URL}/products/detail?id=`;
 export const CART_API = `${BASE_URL}/products/cart`;
