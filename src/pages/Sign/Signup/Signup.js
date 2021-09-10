@@ -102,7 +102,7 @@ class Signup extends Component {
           </div>
           <div className="toLogin">
             <span onClick={this.props.handleChangeModal}>
-              `여기를 클릭하면 바로 로그인할 수 있어요 :)`
+              여기를 클릭하면 바로 로그인할 수 있어요 :)
             </span>
           </div>
           <h3>가입 정보</h3>
